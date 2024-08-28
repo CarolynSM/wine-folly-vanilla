@@ -1,0 +1,6 @@
+query GetWineTypes {
+  types {
+    name
+    id
+  }
+}

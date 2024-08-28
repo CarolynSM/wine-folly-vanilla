@@ -1,0 +1,5284 @@
+schema {
+  query: Query
+  mutation: Mutation
+}
+
+"""
+A BigInt value up to 64 bits in size, which can be a number or a string if used inline, or a string only if used as a variable. Always returned as a string.
+"""
+scalar BigInt
+
+type BigIntAggregateSelection {
+  average: BigInt
+  max: BigInt
+  min: BigInt
+  sum: BigInt
+}
+
+type Cheeses {
+  id: BigInt!
+  includes(directed: Boolean = true, options: FoodsOptions, where: FoodsWhere): [Foods!]!
+  includesAggregate(directed: Boolean = true, where: FoodsWhere): CheesesFoodsIncludesAggregationSelection
+  includesConnection(after: String, directed: Boolean = true, first: Int, sort: [CheesesIncludesConnectionSort!], where: CheesesIncludesConnectionWhere): CheesesIncludesConnection!
+  name: String!
+  stylesPairsWith(directed: Boolean = true, options: StylesOptions, where: StylesWhere): [Styles!]!
+  stylesPairsWithAggregate(directed: Boolean = true, where: StylesWhere): CheesesStylesStylesPairsWithAggregationSelection
+  stylesPairsWithConnection(after: String, directed: Boolean = true, first: Int, sort: [CheesesStylesPairsWithConnectionSort!], where: CheesesStylesPairsWithConnectionWhere): CheesesStylesPairsWithConnection!
+  types: String!
+}
+
+type CheesesAggregateSelection {
+  count: Int!
+  id: BigIntAggregateSelection!
+  name: StringAggregateSelection!
+  types: StringAggregateSelection!
+}
+
+input CheesesConnectInput {
+  includes: [CheesesIncludesConnectFieldInput!]
+  stylesPairsWith: [CheesesStylesPairsWithConnectFieldInput!]
+}
+
+input CheesesConnectWhere {
+  node: CheesesWhere!
+}
+
+type CheesesConnection {
+  edges: [CheesesEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+input CheesesCreateInput {
+  id: BigInt!
+  includes: CheesesIncludesFieldInput
+  name: String!
+  stylesPairsWith: CheesesStylesPairsWithFieldInput
+  types: String!
+}
+
+input CheesesDeleteInput {
+  includes: [CheesesIncludesDeleteFieldInput!]
+  stylesPairsWith: [CheesesStylesPairsWithDeleteFieldInput!]
+}
+
+input CheesesDisconnectInput {
+  includes: [CheesesIncludesDisconnectFieldInput!]
+  stylesPairsWith: [CheesesStylesPairsWithDisconnectFieldInput!]
+}
+
+type CheesesEdge {
+  cursor: String!
+  node: Cheeses!
+}
+
+type CheesesFoodsIncludesAggregationSelection {
+  count: Int!
+  node: CheesesFoodsIncludesNodeAggregateSelection
+}
+
+type CheesesFoodsIncludesNodeAggregateSelection {
+  id: BigIntAggregateSelection!
+  name: StringAggregateSelection!
+}
+
+input CheesesIncludesAggregateInput {
+  AND: [CheesesIncludesAggregateInput!]
+  NOT: CheesesIncludesAggregateInput
+  OR: [CheesesIncludesAggregateInput!]
+  count: Int
+  count_GT: Int
+  count_GTE: Int
+  count_LT: Int
+  count_LTE: Int
+  node: CheesesIncludesNodeAggregationWhereInput
+}
+
+input CheesesIncludesConnectFieldInput {
+  connect: [FoodsConnectInput!]
+  """
+  Whether or not to overwrite any matching relationship with the new properties.
+  """
+  overwrite: Boolean! = true
+  where: FoodsConnectWhere
+}
+
+type CheesesIncludesConnection {
+  edges: [CheesesIncludesRelationship!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+input CheesesIncludesConnectionSort {
+  node: FoodsSort
+}
+
+input CheesesIncludesConnectionWhere {
+  AND: [CheesesIncludesConnectionWhere!]
+  NOT: CheesesIncludesConnectionWhere
+  OR: [CheesesIncludesConnectionWhere!]
+  node: FoodsWhere
+}
+
+input CheesesIncludesCreateFieldInput {
+  node: FoodsCreateInput!
+}
+
+input CheesesIncludesDeleteFieldInput {
+  delete: FoodsDeleteInput
+  where: CheesesIncludesConnectionWhere
+}
+
+input CheesesIncludesDisconnectFieldInput {
+  disconnect: FoodsDisconnectInput
+  where: CheesesIncludesConnectionWhere
+}
+
+input CheesesIncludesFieldInput {
+  connect: [CheesesIncludesConnectFieldInput!]
+  create: [CheesesIncludesCreateFieldInput!]
+}
+
+input CheesesIncludesNodeAggregationWhereInput {
+  AND: [CheesesIncludesNodeAggregationWhereInput!]
+  NOT: CheesesIncludesNodeAggregationWhereInput
+  OR: [CheesesIncludesNodeAggregationWhereInput!]
+  id_AVERAGE_EQUAL: BigInt
+  id_AVERAGE_GT: BigInt
+  id_AVERAGE_GTE: BigInt
+  id_AVERAGE_LT: BigInt
+  id_AVERAGE_LTE: BigInt
+  id_MAX_EQUAL: BigInt
+  id_MAX_GT: BigInt
+  id_MAX_GTE: BigInt
+  id_MAX_LT: BigInt
+  id_MAX_LTE: BigInt
+  id_MIN_EQUAL: BigInt
+  id_MIN_GT: BigInt
+  id_MIN_GTE: BigInt
+  id_MIN_LT: BigInt
+  id_MIN_LTE: BigInt
+  id_SUM_EQUAL: BigInt
+  id_SUM_GT: BigInt
+  id_SUM_GTE: BigInt
+  id_SUM_LT: BigInt
+  id_SUM_LTE: BigInt
+  name_AVERAGE_LENGTH_EQUAL: Float
+  name_AVERAGE_LENGTH_GT: Float
+  name_AVERAGE_LENGTH_GTE: Float
+  name_AVERAGE_LENGTH_LT: Float
+  name_AVERAGE_LENGTH_LTE: Float
+  name_LONGEST_LENGTH_EQUAL: Int
+  name_LONGEST_LENGTH_GT: Int
+  name_LONGEST_LENGTH_GTE: Int
+  name_LONGEST_LENGTH_LT: Int
+  name_LONGEST_LENGTH_LTE: Int
+  name_SHORTEST_LENGTH_EQUAL: Int
+  name_SHORTEST_LENGTH_GT: Int
+  name_SHORTEST_LENGTH_GTE: Int
+  name_SHORTEST_LENGTH_LT: Int
+  name_SHORTEST_LENGTH_LTE: Int
+}
+
+type CheesesIncludesRelationship {
+  cursor: String!
+  node: Foods!
+}
+
+input CheesesIncludesUpdateConnectionInput {
+  node: FoodsUpdateInput
+}
+
+input CheesesIncludesUpdateFieldInput {
+  connect: [CheesesIncludesConnectFieldInput!]
+  create: [CheesesIncludesCreateFieldInput!]
+  delete: [CheesesIncludesDeleteFieldInput!]
+  disconnect: [CheesesIncludesDisconnectFieldInput!]
+  update: CheesesIncludesUpdateConnectionInput
+  where: CheesesIncludesConnectionWhere
+}
+
+input CheesesOptions {
+  limit: Int
+  offset: Int
+  """
+  Specify one or more CheesesSort objects to sort Cheeses by. The sorts will be applied in the order in which they are arranged in the array.
+  """
+  sort: [CheesesSort!]
+}
+
+input CheesesRelationInput {
+  includes: [CheesesIncludesCreateFieldInput!]
+  stylesPairsWith: [CheesesStylesPairsWithCreateFieldInput!]
+}
+
+"""
+Fields to sort Cheeses by. The order in which sorts are applied is not guaranteed when specifying many fields in one CheesesSort object.
+"""
+input CheesesSort {
+  id: SortDirection
+  name: SortDirection
+  types: SortDirection
+}
+
+input CheesesStylesPairsWithAggregateInput {
+  AND: [CheesesStylesPairsWithAggregateInput!]
+  NOT: CheesesStylesPairsWithAggregateInput
+  OR: [CheesesStylesPairsWithAggregateInput!]
+  count: Int
+  count_GT: Int
+  count_GTE: Int
+  count_LT: Int
+  count_LTE: Int
+  node: CheesesStylesPairsWithNodeAggregationWhereInput
+}
+
+input CheesesStylesPairsWithConnectFieldInput {
+  connect: [StylesConnectInput!]
+  edge: PairsWithPropertiesCreateInput!
+  """
+  Whether or not to overwrite any matching relationship with the new properties.
+  """
+  overwrite: Boolean! = true
+  where: StylesConnectWhere
+}
+
+type CheesesStylesPairsWithConnection {
+  edges: [CheesesStylesPairsWithRelationship!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+input CheesesStylesPairsWithConnectionSort {
+  edge: PairsWithPropertiesSort
+  node: StylesSort
+}
+
+input CheesesStylesPairsWithConnectionWhere {
+  AND: [CheesesStylesPairsWithConnectionWhere!]
+  NOT: CheesesStylesPairsWithConnectionWhere
+  OR: [CheesesStylesPairsWithConnectionWhere!]
+  edge: PairsWithPropertiesWhere
+  node: StylesWhere
+}
+
+input CheesesStylesPairsWithCreateFieldInput {
+  edge: PairsWithPropertiesCreateInput!
+  node: StylesCreateInput!
+}
+
+input CheesesStylesPairsWithDeleteFieldInput {
+  delete: StylesDeleteInput
+  where: CheesesStylesPairsWithConnectionWhere
+}
+
+input CheesesStylesPairsWithDisconnectFieldInput {
+  disconnect: StylesDisconnectInput
+  where: CheesesStylesPairsWithConnectionWhere
+}
+
+input CheesesStylesPairsWithFieldInput {
+  connect: [CheesesStylesPairsWithConnectFieldInput!]
+  create: [CheesesStylesPairsWithCreateFieldInput!]
+}
+
+input CheesesStylesPairsWithNodeAggregationWhereInput {
+  AND: [CheesesStylesPairsWithNodeAggregationWhereInput!]
+  NOT: CheesesStylesPairsWithNodeAggregationWhereInput
+  OR: [CheesesStylesPairsWithNodeAggregationWhereInput!]
+  description_AVERAGE_LENGTH_EQUAL: Float
+  description_AVERAGE_LENGTH_GT: Float
+  description_AVERAGE_LENGTH_GTE: Float
+  description_AVERAGE_LENGTH_LT: Float
+  description_AVERAGE_LENGTH_LTE: Float
+  description_LONGEST_LENGTH_EQUAL: Int
+  description_LONGEST_LENGTH_GT: Int
+  description_LONGEST_LENGTH_GTE: Int
+  description_LONGEST_LENGTH_LT: Int
+  description_LONGEST_LENGTH_LTE: Int
+  description_SHORTEST_LENGTH_EQUAL: Int
+  description_SHORTEST_LENGTH_GT: Int
+  description_SHORTEST_LENGTH_GTE: Int
+  description_SHORTEST_LENGTH_LT: Int
+  description_SHORTEST_LENGTH_LTE: Int
+  id_AVERAGE_EQUAL: BigInt
+  id_AVERAGE_GT: BigInt
+  id_AVERAGE_GTE: BigInt
+  id_AVERAGE_LT: BigInt
+  id_AVERAGE_LTE: BigInt
+  id_MAX_EQUAL: BigInt
+  id_MAX_GT: BigInt
+  id_MAX_GTE: BigInt
+  id_MAX_LT: BigInt
+  id_MAX_LTE: BigInt
+  id_MIN_EQUAL: BigInt
+  id_MIN_GT: BigInt
+  id_MIN_GTE: BigInt
+  id_MIN_LT: BigInt
+  id_MIN_LTE: BigInt
+  id_SUM_EQUAL: BigInt
+  id_SUM_GT: BigInt
+  id_SUM_GTE: BigInt
+  id_SUM_LT: BigInt
+  id_SUM_LTE: BigInt
+  name_AVERAGE_LENGTH_EQUAL: Float
+  name_AVERAGE_LENGTH_GT: Float
+  name_AVERAGE_LENGTH_GTE: Float
+  name_AVERAGE_LENGTH_LT: Float
+  name_AVERAGE_LENGTH_LTE: Float
+  name_LONGEST_LENGTH_EQUAL: Int
+  name_LONGEST_LENGTH_GT: Int
+  name_LONGEST_LENGTH_GTE: Int
+  name_LONGEST_LENGTH_LT: Int
+  name_LONGEST_LENGTH_LTE: Int
+  name_SHORTEST_LENGTH_EQUAL: Int
+  name_SHORTEST_LENGTH_GT: Int
+  name_SHORTEST_LENGTH_GTE: Int
+  name_SHORTEST_LENGTH_LT: Int
+  name_SHORTEST_LENGTH_LTE: Int
+  typeId_AVERAGE_EQUAL: BigInt
+  typeId_AVERAGE_GT: BigInt
+  typeId_AVERAGE_GTE: BigInt
+  typeId_AVERAGE_LT: BigInt
+  typeId_AVERAGE_LTE: BigInt
+  typeId_MAX_EQUAL: BigInt
+  typeId_MAX_GT: BigInt
+  typeId_MAX_GTE: BigInt
+  typeId_MAX_LT: BigInt
+  typeId_MAX_LTE: BigInt
+  typeId_MIN_EQUAL: BigInt
+  typeId_MIN_GT: BigInt
+  typeId_MIN_GTE: BigInt
+  typeId_MIN_LT: BigInt
+  typeId_MIN_LTE: BigInt
+  typeId_SUM_EQUAL: BigInt
+  typeId_SUM_GT: BigInt
+  typeId_SUM_GTE: BigInt
+  typeId_SUM_LT: BigInt
+  typeId_SUM_LTE: BigInt
+}
+
+type CheesesStylesPairsWithRelationship {
+  cursor: String!
+  node: Styles!
+  properties: PairsWithProperties!
+}
+
+input CheesesStylesPairsWithUpdateConnectionInput {
+  edge: PairsWithPropertiesUpdateInput
+  node: StylesUpdateInput
+}
+
+input CheesesStylesPairsWithUpdateFieldInput {
+  connect: [CheesesStylesPairsWithConnectFieldInput!]
+  create: [CheesesStylesPairsWithCreateFieldInput!]
+  delete: [CheesesStylesPairsWithDeleteFieldInput!]
+  disconnect: [CheesesStylesPairsWithDisconnectFieldInput!]
+  update: CheesesStylesPairsWithUpdateConnectionInput
+  where: CheesesStylesPairsWithConnectionWhere
+}
+
+type CheesesStylesStylesPairsWithAggregationSelection {
+  count: Int!
+  node: CheesesStylesStylesPairsWithNodeAggregateSelection
+}
+
+type CheesesStylesStylesPairsWithNodeAggregateSelection {
+  description: StringAggregateSelection!
+  id: BigIntAggregateSelection!
+  name: StringAggregateSelection!
+  typeId: BigIntAggregateSelection!
+}
+
+input CheesesUpdateInput {
+  id: BigInt
+  id_DECREMENT: BigInt
+  id_INCREMENT: BigInt
+  includes: [CheesesIncludesUpdateFieldInput!]
+  name: String
+  stylesPairsWith: [CheesesStylesPairsWithUpdateFieldInput!]
+  types: String
+}
+
+input CheesesWhere {
+  AND: [CheesesWhere!]
+  NOT: CheesesWhere
+  OR: [CheesesWhere!]
+  id: BigInt
+  id_GT: BigInt
+  id_GTE: BigInt
+  id_IN: [BigInt!]
+  id_LT: BigInt
+  id_LTE: BigInt
+  includesAggregate: CheesesIncludesAggregateInput
+  """
+  Return Cheeses where all of the related CheesesIncludesConnections match this filter
+  """
+  includesConnection_ALL: CheesesIncludesConnectionWhere
+  """
+  Return Cheeses where none of the related CheesesIncludesConnections match this filter
+  """
+  includesConnection_NONE: CheesesIncludesConnectionWhere
+  """
+  Return Cheeses where one of the related CheesesIncludesConnections match this filter
+  """
+  includesConnection_SINGLE: CheesesIncludesConnectionWhere
+  """
+  Return Cheeses where some of the related CheesesIncludesConnections match this filter
+  """
+  includesConnection_SOME: CheesesIncludesConnectionWhere
+  """Return Cheeses where all of the related Foods match this filter"""
+  includes_ALL: FoodsWhere
+  """Return Cheeses where none of the related Foods match this filter"""
+  includes_NONE: FoodsWhere
+  """Return Cheeses where one of the related Foods match this filter"""
+  includes_SINGLE: FoodsWhere
+  """Return Cheeses where some of the related Foods match this filter"""
+  includes_SOME: FoodsWhere
+  name: String
+  name_CONTAINS: String
+  name_ENDS_WITH: String
+  name_IN: [String!]
+  name_STARTS_WITH: String
+  stylesPairsWithAggregate: CheesesStylesPairsWithAggregateInput
+  """
+  Return Cheeses where all of the related CheesesStylesPairsWithConnections match this filter
+  """
+  stylesPairsWithConnection_ALL: CheesesStylesPairsWithConnectionWhere
+  """
+  Return Cheeses where none of the related CheesesStylesPairsWithConnections match this filter
+  """
+  stylesPairsWithConnection_NONE: CheesesStylesPairsWithConnectionWhere
+  """
+  Return Cheeses where one of the related CheesesStylesPairsWithConnections match this filter
+  """
+  stylesPairsWithConnection_SINGLE: CheesesStylesPairsWithConnectionWhere
+  """
+  Return Cheeses where some of the related CheesesStylesPairsWithConnections match this filter
+  """
+  stylesPairsWithConnection_SOME: CheesesStylesPairsWithConnectionWhere
+  """Return Cheeses where all of the related Styles match this filter"""
+  stylesPairsWith_ALL: StylesWhere
+  """Return Cheeses where none of the related Styles match this filter"""
+  stylesPairsWith_NONE: StylesWhere
+  """Return Cheeses where one of the related Styles match this filter"""
+  stylesPairsWith_SINGLE: StylesWhere
+  """Return Cheeses where some of the related Styles match this filter"""
+  stylesPairsWith_SOME: StylesWhere
+  types: String
+  types_CONTAINS: String
+  types_ENDS_WITH: String
+  types_IN: [String!]
+  types_STARTS_WITH: String
+}
+
+type CreateCheesesMutationResponse {
+  cheeses: [Cheeses!]!
+  info: CreateInfo!
+}
+
+type CreateFlavorsMutationResponse {
+  flavors: [Flavors!]!
+  info: CreateInfo!
+}
+
+type CreateFoodsMutationResponse {
+  foods: [Foods!]!
+  info: CreateInfo!
+}
+
+type CreateHerbsAndSpicesMutationResponse {
+  herbsAndSpices: [Herbs_and_Spices!]!
+  info: CreateInfo!
+}
+
+"""
+Information about the number of nodes and relationships created during a create mutation
+"""
+type CreateInfo {
+  bookmark: String @deprecated(reason: "This field has been deprecated because bookmarks are now handled by the driver.")
+  nodesCreated: Int!
+  relationshipsCreated: Int!
+}
+
+type CreateMeatsMutationResponse {
+  info: CreateInfo!
+  meats: [Meats!]!
+}
+
+type CreateStylesMutationResponse {
+  info: CreateInfo!
+  styles: [Styles!]!
+}
+
+type CreateTypesMutationResponse {
+  info: CreateInfo!
+  types: [Types!]!
+}
+
+type CreateVarietalsMutationResponse {
+  info: CreateInfo!
+  varietals: [Varietals!]!
+}
+
+type CreateVegetablesMutationResponse {
+  info: CreateInfo!
+  vegetables: [Vegetables!]!
+}
+
+"""
+Information about the number of nodes and relationships deleted during a delete mutation
+"""
+type DeleteInfo {
+  bookmark: String @deprecated(reason: "This field has been deprecated because bookmarks are now handled by the driver.")
+  nodesDeleted: Int!
+  relationshipsDeleted: Int!
+}
+
+type Flavors {
+  id: BigInt!
+  name: String!
+  varietalsTastesLike(directed: Boolean = true, options: VarietalsOptions, where: VarietalsWhere): [Varietals!]!
+  varietalsTastesLikeAggregate(directed: Boolean = true, where: VarietalsWhere): FlavorsVarietalsVarietalsTastesLikeAggregationSelection
+  varietalsTastesLikeConnection(after: String, directed: Boolean = true, first: Int, sort: [FlavorsVarietalsTastesLikeConnectionSort!], where: FlavorsVarietalsTastesLikeConnectionWhere): FlavorsVarietalsTastesLikeConnection!
+}
+
+type FlavorsAggregateSelection {
+  count: Int!
+  id: BigIntAggregateSelection!
+  name: StringAggregateSelection!
+}
+
+input FlavorsConnectInput {
+  varietalsTastesLike: [FlavorsVarietalsTastesLikeConnectFieldInput!]
+}
+
+input FlavorsConnectWhere {
+  node: FlavorsWhere!
+}
+
+type FlavorsConnection {
+  edges: [FlavorsEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+input FlavorsCreateInput {
+  id: BigInt!
+  name: String!
+  varietalsTastesLike: FlavorsVarietalsTastesLikeFieldInput
+}
+
+input FlavorsDeleteInput {
+  varietalsTastesLike: [FlavorsVarietalsTastesLikeDeleteFieldInput!]
+}
+
+input FlavorsDisconnectInput {
+  varietalsTastesLike: [FlavorsVarietalsTastesLikeDisconnectFieldInput!]
+}
+
+type FlavorsEdge {
+  cursor: String!
+  node: Flavors!
+}
+
+input FlavorsOptions {
+  limit: Int
+  offset: Int
+  """
+  Specify one or more FlavorsSort objects to sort Flavors by. The sorts will be applied in the order in which they are arranged in the array.
+  """
+  sort: [FlavorsSort!]
+}
+
+input FlavorsRelationInput {
+  varietalsTastesLike: [FlavorsVarietalsTastesLikeCreateFieldInput!]
+}
+
+"""
+Fields to sort Flavors by. The order in which sorts are applied is not guaranteed when specifying many fields in one FlavorsSort object.
+"""
+input FlavorsSort {
+  id: SortDirection
+  name: SortDirection
+}
+
+input FlavorsUpdateInput {
+  id: BigInt
+  id_DECREMENT: BigInt
+  id_INCREMENT: BigInt
+  name: String
+  varietalsTastesLike: [FlavorsVarietalsTastesLikeUpdateFieldInput!]
+}
+
+input FlavorsVarietalsTastesLikeAggregateInput {
+  AND: [FlavorsVarietalsTastesLikeAggregateInput!]
+  NOT: FlavorsVarietalsTastesLikeAggregateInput
+  OR: [FlavorsVarietalsTastesLikeAggregateInput!]
+  count: Int
+  count_GT: Int
+  count_GTE: Int
+  count_LT: Int
+  count_LTE: Int
+  node: FlavorsVarietalsTastesLikeNodeAggregationWhereInput
+}
+
+input FlavorsVarietalsTastesLikeConnectFieldInput {
+  connect: [VarietalsConnectInput!]
+  """
+  Whether or not to overwrite any matching relationship with the new properties.
+  """
+  overwrite: Boolean! = true
+  where: VarietalsConnectWhere
+}
+
+type FlavorsVarietalsTastesLikeConnection {
+  edges: [FlavorsVarietalsTastesLikeRelationship!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+input FlavorsVarietalsTastesLikeConnectionSort {
+  node: VarietalsSort
+}
+
+input FlavorsVarietalsTastesLikeConnectionWhere {
+  AND: [FlavorsVarietalsTastesLikeConnectionWhere!]
+  NOT: FlavorsVarietalsTastesLikeConnectionWhere
+  OR: [FlavorsVarietalsTastesLikeConnectionWhere!]
+  node: VarietalsWhere
+}
+
+input FlavorsVarietalsTastesLikeCreateFieldInput {
+  node: VarietalsCreateInput!
+}
+
+input FlavorsVarietalsTastesLikeDeleteFieldInput {
+  delete: VarietalsDeleteInput
+  where: FlavorsVarietalsTastesLikeConnectionWhere
+}
+
+input FlavorsVarietalsTastesLikeDisconnectFieldInput {
+  disconnect: VarietalsDisconnectInput
+  where: FlavorsVarietalsTastesLikeConnectionWhere
+}
+
+input FlavorsVarietalsTastesLikeFieldInput {
+  connect: [FlavorsVarietalsTastesLikeConnectFieldInput!]
+  create: [FlavorsVarietalsTastesLikeCreateFieldInput!]
+}
+
+input FlavorsVarietalsTastesLikeNodeAggregationWhereInput {
+  AND: [FlavorsVarietalsTastesLikeNodeAggregationWhereInput!]
+  NOT: FlavorsVarietalsTastesLikeNodeAggregationWhereInput
+  OR: [FlavorsVarietalsTastesLikeNodeAggregationWhereInput!]
+  aka_AVERAGE_LENGTH_EQUAL: Float
+  aka_AVERAGE_LENGTH_GT: Float
+  aka_AVERAGE_LENGTH_GTE: Float
+  aka_AVERAGE_LENGTH_LT: Float
+  aka_AVERAGE_LENGTH_LTE: Float
+  aka_LONGEST_LENGTH_EQUAL: Int
+  aka_LONGEST_LENGTH_GT: Int
+  aka_LONGEST_LENGTH_GTE: Int
+  aka_LONGEST_LENGTH_LT: Int
+  aka_LONGEST_LENGTH_LTE: Int
+  aka_SHORTEST_LENGTH_EQUAL: Int
+  aka_SHORTEST_LENGTH_GT: Int
+  aka_SHORTEST_LENGTH_GTE: Int
+  aka_SHORTEST_LENGTH_LT: Int
+  aka_SHORTEST_LENGTH_LTE: Int
+  altGlass_AVERAGE_LENGTH_EQUAL: Float
+  altGlass_AVERAGE_LENGTH_GT: Float
+  altGlass_AVERAGE_LENGTH_GTE: Float
+  altGlass_AVERAGE_LENGTH_LT: Float
+  altGlass_AVERAGE_LENGTH_LTE: Float
+  altGlass_LONGEST_LENGTH_EQUAL: Int
+  altGlass_LONGEST_LENGTH_GT: Int
+  altGlass_LONGEST_LENGTH_GTE: Int
+  altGlass_LONGEST_LENGTH_LT: Int
+  altGlass_LONGEST_LENGTH_LTE: Int
+  altGlass_SHORTEST_LENGTH_EQUAL: Int
+  altGlass_SHORTEST_LENGTH_GT: Int
+  altGlass_SHORTEST_LENGTH_GTE: Int
+  altGlass_SHORTEST_LENGTH_LT: Int
+  altGlass_SHORTEST_LENGTH_LTE: Int
+  drinkByDateYears_AVERAGE_EQUAL: BigInt
+  drinkByDateYears_AVERAGE_GT: BigInt
+  drinkByDateYears_AVERAGE_GTE: BigInt
+  drinkByDateYears_AVERAGE_LT: BigInt
+  drinkByDateYears_AVERAGE_LTE: BigInt
+  drinkByDateYears_MAX_EQUAL: BigInt
+  drinkByDateYears_MAX_GT: BigInt
+  drinkByDateYears_MAX_GTE: BigInt
+  drinkByDateYears_MAX_LT: BigInt
+  drinkByDateYears_MAX_LTE: BigInt
+  drinkByDateYears_MIN_EQUAL: BigInt
+  drinkByDateYears_MIN_GT: BigInt
+  drinkByDateYears_MIN_GTE: BigInt
+  drinkByDateYears_MIN_LT: BigInt
+  drinkByDateYears_MIN_LTE: BigInt
+  drinkByDateYears_SUM_EQUAL: BigInt
+  drinkByDateYears_SUM_GT: BigInt
+  drinkByDateYears_SUM_GTE: BigInt
+  drinkByDateYears_SUM_LT: BigInt
+  drinkByDateYears_SUM_LTE: BigInt
+  glass_AVERAGE_LENGTH_EQUAL: Float
+  glass_AVERAGE_LENGTH_GT: Float
+  glass_AVERAGE_LENGTH_GTE: Float
+  glass_AVERAGE_LENGTH_LT: Float
+  glass_AVERAGE_LENGTH_LTE: Float
+  glass_LONGEST_LENGTH_EQUAL: Int
+  glass_LONGEST_LENGTH_GT: Int
+  glass_LONGEST_LENGTH_GTE: Int
+  glass_LONGEST_LENGTH_LT: Int
+  glass_LONGEST_LENGTH_LTE: Int
+  glass_SHORTEST_LENGTH_EQUAL: Int
+  glass_SHORTEST_LENGTH_GT: Int
+  glass_SHORTEST_LENGTH_GTE: Int
+  glass_SHORTEST_LENGTH_LT: Int
+  glass_SHORTEST_LENGTH_LTE: Int
+  id_AVERAGE_EQUAL: BigInt
+  id_AVERAGE_GT: BigInt
+  id_AVERAGE_GTE: BigInt
+  id_AVERAGE_LT: BigInt
+  id_AVERAGE_LTE: BigInt
+  id_MAX_EQUAL: BigInt
+  id_MAX_GT: BigInt
+  id_MAX_GTE: BigInt
+  id_MAX_LT: BigInt
+  id_MAX_LTE: BigInt
+  id_MIN_EQUAL: BigInt
+  id_MIN_GT: BigInt
+  id_MIN_GTE: BigInt
+  id_MIN_LT: BigInt
+  id_MIN_LTE: BigInt
+  id_SUM_EQUAL: BigInt
+  id_SUM_GT: BigInt
+  id_SUM_GTE: BigInt
+  id_SUM_LT: BigInt
+  id_SUM_LTE: BigInt
+  name_AVERAGE_LENGTH_EQUAL: Float
+  name_AVERAGE_LENGTH_GT: Float
+  name_AVERAGE_LENGTH_GTE: Float
+  name_AVERAGE_LENGTH_LT: Float
+  name_AVERAGE_LENGTH_LTE: Float
+  name_LONGEST_LENGTH_EQUAL: Int
+  name_LONGEST_LENGTH_GT: Int
+  name_LONGEST_LENGTH_GTE: Int
+  name_LONGEST_LENGTH_LT: Int
+  name_LONGEST_LENGTH_LTE: Int
+  name_SHORTEST_LENGTH_EQUAL: Int
+  name_SHORTEST_LENGTH_GT: Int
+  name_SHORTEST_LENGTH_GTE: Int
+  name_SHORTEST_LENGTH_LT: Int
+  name_SHORTEST_LENGTH_LTE: Int
+  origin_AVERAGE_LENGTH_EQUAL: Float
+  origin_AVERAGE_LENGTH_GT: Float
+  origin_AVERAGE_LENGTH_GTE: Float
+  origin_AVERAGE_LENGTH_LT: Float
+  origin_AVERAGE_LENGTH_LTE: Float
+  origin_LONGEST_LENGTH_EQUAL: Int
+  origin_LONGEST_LENGTH_GT: Int
+  origin_LONGEST_LENGTH_GTE: Int
+  origin_LONGEST_LENGTH_LT: Int
+  origin_LONGEST_LENGTH_LTE: Int
+  origin_SHORTEST_LENGTH_EQUAL: Int
+  origin_SHORTEST_LENGTH_GT: Int
+  origin_SHORTEST_LENGTH_GTE: Int
+  origin_SHORTEST_LENGTH_LT: Int
+  origin_SHORTEST_LENGTH_LTE: Int
+  servingTemp_AVERAGE_LENGTH_EQUAL: Float
+  servingTemp_AVERAGE_LENGTH_GT: Float
+  servingTemp_AVERAGE_LENGTH_GTE: Float
+  servingTemp_AVERAGE_LENGTH_LT: Float
+  servingTemp_AVERAGE_LENGTH_LTE: Float
+  servingTemp_LONGEST_LENGTH_EQUAL: Int
+  servingTemp_LONGEST_LENGTH_GT: Int
+  servingTemp_LONGEST_LENGTH_GTE: Int
+  servingTemp_LONGEST_LENGTH_LT: Int
+  servingTemp_LONGEST_LENGTH_LTE: Int
+  servingTemp_SHORTEST_LENGTH_EQUAL: Int
+  servingTemp_SHORTEST_LENGTH_GT: Int
+  servingTemp_SHORTEST_LENGTH_GTE: Int
+  servingTemp_SHORTEST_LENGTH_LT: Int
+  servingTemp_SHORTEST_LENGTH_LTE: Int
+}
+
+type FlavorsVarietalsTastesLikeRelationship {
+  cursor: String!
+  node: Varietals!
+}
+
+input FlavorsVarietalsTastesLikeUpdateConnectionInput {
+  node: VarietalsUpdateInput
+}
+
+input FlavorsVarietalsTastesLikeUpdateFieldInput {
+  connect: [FlavorsVarietalsTastesLikeConnectFieldInput!]
+  create: [FlavorsVarietalsTastesLikeCreateFieldInput!]
+  delete: [FlavorsVarietalsTastesLikeDeleteFieldInput!]
+  disconnect: [FlavorsVarietalsTastesLikeDisconnectFieldInput!]
+  update: FlavorsVarietalsTastesLikeUpdateConnectionInput
+  where: FlavorsVarietalsTastesLikeConnectionWhere
+}
+
+type FlavorsVarietalsVarietalsTastesLikeAggregationSelection {
+  count: Int!
+  node: FlavorsVarietalsVarietalsTastesLikeNodeAggregateSelection
+}
+
+type FlavorsVarietalsVarietalsTastesLikeNodeAggregateSelection {
+  aka: StringAggregateSelection!
+  altGlass: StringAggregateSelection!
+  drinkByDateYears: BigIntAggregateSelection!
+  glass: StringAggregateSelection!
+  id: BigIntAggregateSelection!
+  name: StringAggregateSelection!
+  origin: StringAggregateSelection!
+  servingTemp: StringAggregateSelection!
+}
+
+input FlavorsWhere {
+  AND: [FlavorsWhere!]
+  NOT: FlavorsWhere
+  OR: [FlavorsWhere!]
+  id: BigInt
+  id_GT: BigInt
+  id_GTE: BigInt
+  id_IN: [BigInt!]
+  id_LT: BigInt
+  id_LTE: BigInt
+  name: String
+  name_CONTAINS: String
+  name_ENDS_WITH: String
+  name_IN: [String!]
+  name_STARTS_WITH: String
+  varietalsTastesLikeAggregate: FlavorsVarietalsTastesLikeAggregateInput
+  """
+  Return Flavors where all of the related FlavorsVarietalsTastesLikeConnections match this filter
+  """
+  varietalsTastesLikeConnection_ALL: FlavorsVarietalsTastesLikeConnectionWhere
+  """
+  Return Flavors where none of the related FlavorsVarietalsTastesLikeConnections match this filter
+  """
+  varietalsTastesLikeConnection_NONE: FlavorsVarietalsTastesLikeConnectionWhere
+  """
+  Return Flavors where one of the related FlavorsVarietalsTastesLikeConnections match this filter
+  """
+  varietalsTastesLikeConnection_SINGLE: FlavorsVarietalsTastesLikeConnectionWhere
+  """
+  Return Flavors where some of the related FlavorsVarietalsTastesLikeConnections match this filter
+  """
+  varietalsTastesLikeConnection_SOME: FlavorsVarietalsTastesLikeConnectionWhere
+  """Return Flavors where all of the related Varietals match this filter"""
+  varietalsTastesLike_ALL: VarietalsWhere
+  """Return Flavors where none of the related Varietals match this filter"""
+  varietalsTastesLike_NONE: VarietalsWhere
+  """Return Flavors where one of the related Varietals match this filter"""
+  varietalsTastesLike_SINGLE: VarietalsWhere
+  """Return Flavors where some of the related Varietals match this filter"""
+  varietalsTastesLike_SOME: VarietalsWhere
+}
+
+type Foods {
+  cheeses(directed: Boolean = true, options: CheesesOptions, where: CheesesWhere): [Cheeses!]!
+  cheesesAggregate(directed: Boolean = true, where: CheesesWhere): FoodsCheesesCheesesAggregationSelection
+  cheesesConnection(after: String, directed: Boolean = true, first: Int, sort: [FoodsCheesesConnectionSort!], where: FoodsCheesesConnectionWhere): FoodsCheesesConnection!
+  herbsAndSpices(directed: Boolean = true, options: Herbs_and_SpicesOptions, where: Herbs_and_SpicesWhere): [Herbs_and_Spices!]!
+  herbsAndSpicesAggregate(directed: Boolean = true, where: Herbs_and_SpicesWhere): FoodsHerbs_and_SpicesHerbsAndSpicesAggregationSelection
+  herbsAndSpicesConnection(after: String, directed: Boolean = true, first: Int, sort: [FoodsHerbsAndSpicesConnectionSort!], where: FoodsHerbsAndSpicesConnectionWhere): FoodsHerbsAndSpicesConnection!
+  id: BigInt!
+  meats(directed: Boolean = true, options: MeatsOptions, where: MeatsWhere): [Meats!]!
+  meatsAggregate(directed: Boolean = true, where: MeatsWhere): FoodsMeatsMeatsAggregationSelection
+  meatsConnection(after: String, directed: Boolean = true, first: Int, sort: [FoodsMeatsConnectionSort!], where: FoodsMeatsConnectionWhere): FoodsMeatsConnection!
+  name: String!
+  vegetables(directed: Boolean = true, options: VegetablesOptions, where: VegetablesWhere): [Vegetables!]!
+  vegetablesAggregate(directed: Boolean = true, where: VegetablesWhere): FoodsVegetablesVegetablesAggregationSelection
+  vegetablesConnection(after: String, directed: Boolean = true, first: Int, sort: [FoodsVegetablesConnectionSort!], where: FoodsVegetablesConnectionWhere): FoodsVegetablesConnection!
+}
+
+type FoodsAggregateSelection {
+  count: Int!
+  id: BigIntAggregateSelection!
+  name: StringAggregateSelection!
+}
+
+input FoodsCheesesAggregateInput {
+  AND: [FoodsCheesesAggregateInput!]
+  NOT: FoodsCheesesAggregateInput
+  OR: [FoodsCheesesAggregateInput!]
+  count: Int
+  count_GT: Int
+  count_GTE: Int
+  count_LT: Int
+  count_LTE: Int
+  node: FoodsCheesesNodeAggregationWhereInput
+}
+
+type FoodsCheesesCheesesAggregationSelection {
+  count: Int!
+  node: FoodsCheesesCheesesNodeAggregateSelection
+}
+
+type FoodsCheesesCheesesNodeAggregateSelection {
+  id: BigIntAggregateSelection!
+  name: StringAggregateSelection!
+  types: StringAggregateSelection!
+}
+
+input FoodsCheesesConnectFieldInput {
+  connect: [CheesesConnectInput!]
+  """
+  Whether or not to overwrite any matching relationship with the new properties.
+  """
+  overwrite: Boolean! = true
+  where: CheesesConnectWhere
+}
+
+type FoodsCheesesConnection {
+  edges: [FoodsCheesesRelationship!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+input FoodsCheesesConnectionSort {
+  node: CheesesSort
+}
+
+input FoodsCheesesConnectionWhere {
+  AND: [FoodsCheesesConnectionWhere!]
+  NOT: FoodsCheesesConnectionWhere
+  OR: [FoodsCheesesConnectionWhere!]
+  node: CheesesWhere
+}
+
+input FoodsCheesesCreateFieldInput {
+  node: CheesesCreateInput!
+}
+
+input FoodsCheesesDeleteFieldInput {
+  delete: CheesesDeleteInput
+  where: FoodsCheesesConnectionWhere
+}
+
+input FoodsCheesesDisconnectFieldInput {
+  disconnect: CheesesDisconnectInput
+  where: FoodsCheesesConnectionWhere
+}
+
+input FoodsCheesesFieldInput {
+  connect: [FoodsCheesesConnectFieldInput!]
+  create: [FoodsCheesesCreateFieldInput!]
+}
+
+input FoodsCheesesNodeAggregationWhereInput {
+  AND: [FoodsCheesesNodeAggregationWhereInput!]
+  NOT: FoodsCheesesNodeAggregationWhereInput
+  OR: [FoodsCheesesNodeAggregationWhereInput!]
+  id_AVERAGE_EQUAL: BigInt
+  id_AVERAGE_GT: BigInt
+  id_AVERAGE_GTE: BigInt
+  id_AVERAGE_LT: BigInt
+  id_AVERAGE_LTE: BigInt
+  id_MAX_EQUAL: BigInt
+  id_MAX_GT: BigInt
+  id_MAX_GTE: BigInt
+  id_MAX_LT: BigInt
+  id_MAX_LTE: BigInt
+  id_MIN_EQUAL: BigInt
+  id_MIN_GT: BigInt
+  id_MIN_GTE: BigInt
+  id_MIN_LT: BigInt
+  id_MIN_LTE: BigInt
+  id_SUM_EQUAL: BigInt
+  id_SUM_GT: BigInt
+  id_SUM_GTE: BigInt
+  id_SUM_LT: BigInt
+  id_SUM_LTE: BigInt
+  name_AVERAGE_LENGTH_EQUAL: Float
+  name_AVERAGE_LENGTH_GT: Float
+  name_AVERAGE_LENGTH_GTE: Float
+  name_AVERAGE_LENGTH_LT: Float
+  name_AVERAGE_LENGTH_LTE: Float
+  name_LONGEST_LENGTH_EQUAL: Int
+  name_LONGEST_LENGTH_GT: Int
+  name_LONGEST_LENGTH_GTE: Int
+  name_LONGEST_LENGTH_LT: Int
+  name_LONGEST_LENGTH_LTE: Int
+  name_SHORTEST_LENGTH_EQUAL: Int
+  name_SHORTEST_LENGTH_GT: Int
+  name_SHORTEST_LENGTH_GTE: Int
+  name_SHORTEST_LENGTH_LT: Int
+  name_SHORTEST_LENGTH_LTE: Int
+  types_AVERAGE_LENGTH_EQUAL: Float
+  types_AVERAGE_LENGTH_GT: Float
+  types_AVERAGE_LENGTH_GTE: Float
+  types_AVERAGE_LENGTH_LT: Float
+  types_AVERAGE_LENGTH_LTE: Float
+  types_LONGEST_LENGTH_EQUAL: Int
+  types_LONGEST_LENGTH_GT: Int
+  types_LONGEST_LENGTH_GTE: Int
+  types_LONGEST_LENGTH_LT: Int
+  types_LONGEST_LENGTH_LTE: Int
+  types_SHORTEST_LENGTH_EQUAL: Int
+  types_SHORTEST_LENGTH_GT: Int
+  types_SHORTEST_LENGTH_GTE: Int
+  types_SHORTEST_LENGTH_LT: Int
+  types_SHORTEST_LENGTH_LTE: Int
+}
+
+type FoodsCheesesRelationship {
+  cursor: String!
+  node: Cheeses!
+}
+
+input FoodsCheesesUpdateConnectionInput {
+  node: CheesesUpdateInput
+}
+
+input FoodsCheesesUpdateFieldInput {
+  connect: [FoodsCheesesConnectFieldInput!]
+  create: [FoodsCheesesCreateFieldInput!]
+  delete: [FoodsCheesesDeleteFieldInput!]
+  disconnect: [FoodsCheesesDisconnectFieldInput!]
+  update: FoodsCheesesUpdateConnectionInput
+  where: FoodsCheesesConnectionWhere
+}
+
+input FoodsConnectInput {
+  cheeses: [FoodsCheesesConnectFieldInput!]
+  herbsAndSpices: [FoodsHerbsAndSpicesConnectFieldInput!]
+  meats: [FoodsMeatsConnectFieldInput!]
+  vegetables: [FoodsVegetablesConnectFieldInput!]
+}
+
+input FoodsConnectWhere {
+  node: FoodsWhere!
+}
+
+type FoodsConnection {
+  edges: [FoodsEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+input FoodsCreateInput {
+  cheeses: FoodsCheesesFieldInput
+  herbsAndSpices: FoodsHerbsAndSpicesFieldInput
+  id: BigInt!
+  meats: FoodsMeatsFieldInput
+  name: String!
+  vegetables: FoodsVegetablesFieldInput
+}
+
+input FoodsDeleteInput {
+  cheeses: [FoodsCheesesDeleteFieldInput!]
+  herbsAndSpices: [FoodsHerbsAndSpicesDeleteFieldInput!]
+  meats: [FoodsMeatsDeleteFieldInput!]
+  vegetables: [FoodsVegetablesDeleteFieldInput!]
+}
+
+input FoodsDisconnectInput {
+  cheeses: [FoodsCheesesDisconnectFieldInput!]
+  herbsAndSpices: [FoodsHerbsAndSpicesDisconnectFieldInput!]
+  meats: [FoodsMeatsDisconnectFieldInput!]
+  vegetables: [FoodsVegetablesDisconnectFieldInput!]
+}
+
+type FoodsEdge {
+  cursor: String!
+  node: Foods!
+}
+
+input FoodsHerbsAndSpicesAggregateInput {
+  AND: [FoodsHerbsAndSpicesAggregateInput!]
+  NOT: FoodsHerbsAndSpicesAggregateInput
+  OR: [FoodsHerbsAndSpicesAggregateInput!]
+  count: Int
+  count_GT: Int
+  count_GTE: Int
+  count_LT: Int
+  count_LTE: Int
+  node: FoodsHerbsAndSpicesNodeAggregationWhereInput
+}
+
+input FoodsHerbsAndSpicesConnectFieldInput {
+  connect: [Herbs_and_SpicesConnectInput!]
+  """
+  Whether or not to overwrite any matching relationship with the new properties.
+  """
+  overwrite: Boolean! = true
+  where: Herbs_and_SpicesConnectWhere
+}
+
+type FoodsHerbsAndSpicesConnection {
+  edges: [FoodsHerbsAndSpicesRelationship!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+input FoodsHerbsAndSpicesConnectionSort {
+  node: Herbs_and_SpicesSort
+}
+
+input FoodsHerbsAndSpicesConnectionWhere {
+  AND: [FoodsHerbsAndSpicesConnectionWhere!]
+  NOT: FoodsHerbsAndSpicesConnectionWhere
+  OR: [FoodsHerbsAndSpicesConnectionWhere!]
+  node: Herbs_and_SpicesWhere
+}
+
+input FoodsHerbsAndSpicesCreateFieldInput {
+  node: Herbs_and_SpicesCreateInput!
+}
+
+input FoodsHerbsAndSpicesDeleteFieldInput {
+  delete: Herbs_and_SpicesDeleteInput
+  where: FoodsHerbsAndSpicesConnectionWhere
+}
+
+input FoodsHerbsAndSpicesDisconnectFieldInput {
+  disconnect: Herbs_and_SpicesDisconnectInput
+  where: FoodsHerbsAndSpicesConnectionWhere
+}
+
+input FoodsHerbsAndSpicesFieldInput {
+  connect: [FoodsHerbsAndSpicesConnectFieldInput!]
+  create: [FoodsHerbsAndSpicesCreateFieldInput!]
+}
+
+input FoodsHerbsAndSpicesNodeAggregationWhereInput {
+  AND: [FoodsHerbsAndSpicesNodeAggregationWhereInput!]
+  NOT: FoodsHerbsAndSpicesNodeAggregationWhereInput
+  OR: [FoodsHerbsAndSpicesNodeAggregationWhereInput!]
+  id_AVERAGE_EQUAL: BigInt
+  id_AVERAGE_GT: BigInt
+  id_AVERAGE_GTE: BigInt
+  id_AVERAGE_LT: BigInt
+  id_AVERAGE_LTE: BigInt
+  id_MAX_EQUAL: BigInt
+  id_MAX_GT: BigInt
+  id_MAX_GTE: BigInt
+  id_MAX_LT: BigInt
+  id_MAX_LTE: BigInt
+  id_MIN_EQUAL: BigInt
+  id_MIN_GT: BigInt
+  id_MIN_GTE: BigInt
+  id_MIN_LT: BigInt
+  id_MIN_LTE: BigInt
+  id_SUM_EQUAL: BigInt
+  id_SUM_GT: BigInt
+  id_SUM_GTE: BigInt
+  id_SUM_LT: BigInt
+  id_SUM_LTE: BigInt
+  name_AVERAGE_LENGTH_EQUAL: Float
+  name_AVERAGE_LENGTH_GT: Float
+  name_AVERAGE_LENGTH_GTE: Float
+  name_AVERAGE_LENGTH_LT: Float
+  name_AVERAGE_LENGTH_LTE: Float
+  name_LONGEST_LENGTH_EQUAL: Int
+  name_LONGEST_LENGTH_GT: Int
+  name_LONGEST_LENGTH_GTE: Int
+  name_LONGEST_LENGTH_LT: Int
+  name_LONGEST_LENGTH_LTE: Int
+  name_SHORTEST_LENGTH_EQUAL: Int
+  name_SHORTEST_LENGTH_GT: Int
+  name_SHORTEST_LENGTH_GTE: Int
+  name_SHORTEST_LENGTH_LT: Int
+  name_SHORTEST_LENGTH_LTE: Int
+  types_AVERAGE_LENGTH_EQUAL: Float
+  types_AVERAGE_LENGTH_GT: Float
+  types_AVERAGE_LENGTH_GTE: Float
+  types_AVERAGE_LENGTH_LT: Float
+  types_AVERAGE_LENGTH_LTE: Float
+  types_LONGEST_LENGTH_EQUAL: Int
+  types_LONGEST_LENGTH_GT: Int
+  types_LONGEST_LENGTH_GTE: Int
+  types_LONGEST_LENGTH_LT: Int
+  types_LONGEST_LENGTH_LTE: Int
+  types_SHORTEST_LENGTH_EQUAL: Int
+  types_SHORTEST_LENGTH_GT: Int
+  types_SHORTEST_LENGTH_GTE: Int
+  types_SHORTEST_LENGTH_LT: Int
+  types_SHORTEST_LENGTH_LTE: Int
+}
+
+type FoodsHerbsAndSpicesRelationship {
+  cursor: String!
+  node: Herbs_and_Spices!
+}
+
+input FoodsHerbsAndSpicesUpdateConnectionInput {
+  node: Herbs_and_SpicesUpdateInput
+}
+
+input FoodsHerbsAndSpicesUpdateFieldInput {
+  connect: [FoodsHerbsAndSpicesConnectFieldInput!]
+  create: [FoodsHerbsAndSpicesCreateFieldInput!]
+  delete: [FoodsHerbsAndSpicesDeleteFieldInput!]
+  disconnect: [FoodsHerbsAndSpicesDisconnectFieldInput!]
+  update: FoodsHerbsAndSpicesUpdateConnectionInput
+  where: FoodsHerbsAndSpicesConnectionWhere
+}
+
+type FoodsHerbs_and_SpicesHerbsAndSpicesAggregationSelection {
+  count: Int!
+  node: FoodsHerbs_and_SpicesHerbsAndSpicesNodeAggregateSelection
+}
+
+type FoodsHerbs_and_SpicesHerbsAndSpicesNodeAggregateSelection {
+  id: BigIntAggregateSelection!
+  name: StringAggregateSelection!
+  types: StringAggregateSelection!
+}
+
+input FoodsMeatsAggregateInput {
+  AND: [FoodsMeatsAggregateInput!]
+  NOT: FoodsMeatsAggregateInput
+  OR: [FoodsMeatsAggregateInput!]
+  count: Int
+  count_GT: Int
+  count_GTE: Int
+  count_LT: Int
+  count_LTE: Int
+  node: FoodsMeatsNodeAggregationWhereInput
+}
+
+input FoodsMeatsConnectFieldInput {
+  connect: [MeatsConnectInput!]
+  """
+  Whether or not to overwrite any matching relationship with the new properties.
+  """
+  overwrite: Boolean! = true
+  where: MeatsConnectWhere
+}
+
+type FoodsMeatsConnection {
+  edges: [FoodsMeatsRelationship!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+input FoodsMeatsConnectionSort {
+  node: MeatsSort
+}
+
+input FoodsMeatsConnectionWhere {
+  AND: [FoodsMeatsConnectionWhere!]
+  NOT: FoodsMeatsConnectionWhere
+  OR: [FoodsMeatsConnectionWhere!]
+  node: MeatsWhere
+}
+
+input FoodsMeatsCreateFieldInput {
+  node: MeatsCreateInput!
+}
+
+input FoodsMeatsDeleteFieldInput {
+  delete: MeatsDeleteInput
+  where: FoodsMeatsConnectionWhere
+}
+
+input FoodsMeatsDisconnectFieldInput {
+  disconnect: MeatsDisconnectInput
+  where: FoodsMeatsConnectionWhere
+}
+
+input FoodsMeatsFieldInput {
+  connect: [FoodsMeatsConnectFieldInput!]
+  create: [FoodsMeatsCreateFieldInput!]
+}
+
+type FoodsMeatsMeatsAggregationSelection {
+  count: Int!
+  node: FoodsMeatsMeatsNodeAggregateSelection
+}
+
+type FoodsMeatsMeatsNodeAggregateSelection {
+  id: BigIntAggregateSelection!
+  name: StringAggregateSelection!
+  types: StringAggregateSelection!
+}
+
+input FoodsMeatsNodeAggregationWhereInput {
+  AND: [FoodsMeatsNodeAggregationWhereInput!]
+  NOT: FoodsMeatsNodeAggregationWhereInput
+  OR: [FoodsMeatsNodeAggregationWhereInput!]
+  id_AVERAGE_EQUAL: BigInt
+  id_AVERAGE_GT: BigInt
+  id_AVERAGE_GTE: BigInt
+  id_AVERAGE_LT: BigInt
+  id_AVERAGE_LTE: BigInt
+  id_MAX_EQUAL: BigInt
+  id_MAX_GT: BigInt
+  id_MAX_GTE: BigInt
+  id_MAX_LT: BigInt
+  id_MAX_LTE: BigInt
+  id_MIN_EQUAL: BigInt
+  id_MIN_GT: BigInt
+  id_MIN_GTE: BigInt
+  id_MIN_LT: BigInt
+  id_MIN_LTE: BigInt
+  id_SUM_EQUAL: BigInt
+  id_SUM_GT: BigInt
+  id_SUM_GTE: BigInt
+  id_SUM_LT: BigInt
+  id_SUM_LTE: BigInt
+  name_AVERAGE_LENGTH_EQUAL: Float
+  name_AVERAGE_LENGTH_GT: Float
+  name_AVERAGE_LENGTH_GTE: Float
+  name_AVERAGE_LENGTH_LT: Float
+  name_AVERAGE_LENGTH_LTE: Float
+  name_LONGEST_LENGTH_EQUAL: Int
+  name_LONGEST_LENGTH_GT: Int
+  name_LONGEST_LENGTH_GTE: Int
+  name_LONGEST_LENGTH_LT: Int
+  name_LONGEST_LENGTH_LTE: Int
+  name_SHORTEST_LENGTH_EQUAL: Int
+  name_SHORTEST_LENGTH_GT: Int
+  name_SHORTEST_LENGTH_GTE: Int
+  name_SHORTEST_LENGTH_LT: Int
+  name_SHORTEST_LENGTH_LTE: Int
+  types_AVERAGE_LENGTH_EQUAL: Float
+  types_AVERAGE_LENGTH_GT: Float
+  types_AVERAGE_LENGTH_GTE: Float
+  types_AVERAGE_LENGTH_LT: Float
+  types_AVERAGE_LENGTH_LTE: Float
+  types_LONGEST_LENGTH_EQUAL: Int
+  types_LONGEST_LENGTH_GT: Int
+  types_LONGEST_LENGTH_GTE: Int
+  types_LONGEST_LENGTH_LT: Int
+  types_LONGEST_LENGTH_LTE: Int
+  types_SHORTEST_LENGTH_EQUAL: Int
+  types_SHORTEST_LENGTH_GT: Int
+  types_SHORTEST_LENGTH_GTE: Int
+  types_SHORTEST_LENGTH_LT: Int
+  types_SHORTEST_LENGTH_LTE: Int
+}
+
+type FoodsMeatsRelationship {
+  cursor: String!
+  node: Meats!
+}
+
+input FoodsMeatsUpdateConnectionInput {
+  node: MeatsUpdateInput
+}
+
+input FoodsMeatsUpdateFieldInput {
+  connect: [FoodsMeatsConnectFieldInput!]
+  create: [FoodsMeatsCreateFieldInput!]
+  delete: [FoodsMeatsDeleteFieldInput!]
+  disconnect: [FoodsMeatsDisconnectFieldInput!]
+  update: FoodsMeatsUpdateConnectionInput
+  where: FoodsMeatsConnectionWhere
+}
+
+input FoodsOptions {
+  limit: Int
+  offset: Int
+  """
+  Specify one or more FoodsSort objects to sort Foods by. The sorts will be applied in the order in which they are arranged in the array.
+  """
+  sort: [FoodsSort!]
+}
+
+input FoodsRelationInput {
+  cheeses: [FoodsCheesesCreateFieldInput!]
+  herbsAndSpices: [FoodsHerbsAndSpicesCreateFieldInput!]
+  meats: [FoodsMeatsCreateFieldInput!]
+  vegetables: [FoodsVegetablesCreateFieldInput!]
+}
+
+"""
+Fields to sort Foods by. The order in which sorts are applied is not guaranteed when specifying many fields in one FoodsSort object.
+"""
+input FoodsSort {
+  id: SortDirection
+  name: SortDirection
+}
+
+input FoodsUpdateInput {
+  cheeses: [FoodsCheesesUpdateFieldInput!]
+  herbsAndSpices: [FoodsHerbsAndSpicesUpdateFieldInput!]
+  id: BigInt
+  id_DECREMENT: BigInt
+  id_INCREMENT: BigInt
+  meats: [FoodsMeatsUpdateFieldInput!]
+  name: String
+  vegetables: [FoodsVegetablesUpdateFieldInput!]
+}
+
+input FoodsVegetablesAggregateInput {
+  AND: [FoodsVegetablesAggregateInput!]
+  NOT: FoodsVegetablesAggregateInput
+  OR: [FoodsVegetablesAggregateInput!]
+  count: Int
+  count_GT: Int
+  count_GTE: Int
+  count_LT: Int
+  count_LTE: Int
+  node: FoodsVegetablesNodeAggregationWhereInput
+}
+
+input FoodsVegetablesConnectFieldInput {
+  connect: [VegetablesConnectInput!]
+  """
+  Whether or not to overwrite any matching relationship with the new properties.
+  """
+  overwrite: Boolean! = true
+  where: VegetablesConnectWhere
+}
+
+type FoodsVegetablesConnection {
+  edges: [FoodsVegetablesRelationship!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+input FoodsVegetablesConnectionSort {
+  node: VegetablesSort
+}
+
+input FoodsVegetablesConnectionWhere {
+  AND: [FoodsVegetablesConnectionWhere!]
+  NOT: FoodsVegetablesConnectionWhere
+  OR: [FoodsVegetablesConnectionWhere!]
+  node: VegetablesWhere
+}
+
+input FoodsVegetablesCreateFieldInput {
+  node: VegetablesCreateInput!
+}
+
+input FoodsVegetablesDeleteFieldInput {
+  delete: VegetablesDeleteInput
+  where: FoodsVegetablesConnectionWhere
+}
+
+input FoodsVegetablesDisconnectFieldInput {
+  disconnect: VegetablesDisconnectInput
+  where: FoodsVegetablesConnectionWhere
+}
+
+input FoodsVegetablesFieldInput {
+  connect: [FoodsVegetablesConnectFieldInput!]
+  create: [FoodsVegetablesCreateFieldInput!]
+}
+
+input FoodsVegetablesNodeAggregationWhereInput {
+  AND: [FoodsVegetablesNodeAggregationWhereInput!]
+  NOT: FoodsVegetablesNodeAggregationWhereInput
+  OR: [FoodsVegetablesNodeAggregationWhereInput!]
+  id_AVERAGE_EQUAL: BigInt
+  id_AVERAGE_GT: BigInt
+  id_AVERAGE_GTE: BigInt
+  id_AVERAGE_LT: BigInt
+  id_AVERAGE_LTE: BigInt
+  id_MAX_EQUAL: BigInt
+  id_MAX_GT: BigInt
+  id_MAX_GTE: BigInt
+  id_MAX_LT: BigInt
+  id_MAX_LTE: BigInt
+  id_MIN_EQUAL: BigInt
+  id_MIN_GT: BigInt
+  id_MIN_GTE: BigInt
+  id_MIN_LT: BigInt
+  id_MIN_LTE: BigInt
+  id_SUM_EQUAL: BigInt
+  id_SUM_GT: BigInt
+  id_SUM_GTE: BigInt
+  id_SUM_LT: BigInt
+  id_SUM_LTE: BigInt
+  name_AVERAGE_LENGTH_EQUAL: Float
+  name_AVERAGE_LENGTH_GT: Float
+  name_AVERAGE_LENGTH_GTE: Float
+  name_AVERAGE_LENGTH_LT: Float
+  name_AVERAGE_LENGTH_LTE: Float
+  name_LONGEST_LENGTH_EQUAL: Int
+  name_LONGEST_LENGTH_GT: Int
+  name_LONGEST_LENGTH_GTE: Int
+  name_LONGEST_LENGTH_LT: Int
+  name_LONGEST_LENGTH_LTE: Int
+  name_SHORTEST_LENGTH_EQUAL: Int
+  name_SHORTEST_LENGTH_GT: Int
+  name_SHORTEST_LENGTH_GTE: Int
+  name_SHORTEST_LENGTH_LT: Int
+  name_SHORTEST_LENGTH_LTE: Int
+  types_AVERAGE_LENGTH_EQUAL: Float
+  types_AVERAGE_LENGTH_GT: Float
+  types_AVERAGE_LENGTH_GTE: Float
+  types_AVERAGE_LENGTH_LT: Float
+  types_AVERAGE_LENGTH_LTE: Float
+  types_LONGEST_LENGTH_EQUAL: Int
+  types_LONGEST_LENGTH_GT: Int
+  types_LONGEST_LENGTH_GTE: Int
+  types_LONGEST_LENGTH_LT: Int
+  types_LONGEST_LENGTH_LTE: Int
+  types_SHORTEST_LENGTH_EQUAL: Int
+  types_SHORTEST_LENGTH_GT: Int
+  types_SHORTEST_LENGTH_GTE: Int
+  types_SHORTEST_LENGTH_LT: Int
+  types_SHORTEST_LENGTH_LTE: Int
+}
+
+type FoodsVegetablesRelationship {
+  cursor: String!
+  node: Vegetables!
+}
+
+input FoodsVegetablesUpdateConnectionInput {
+  node: VegetablesUpdateInput
+}
+
+input FoodsVegetablesUpdateFieldInput {
+  connect: [FoodsVegetablesConnectFieldInput!]
+  create: [FoodsVegetablesCreateFieldInput!]
+  delete: [FoodsVegetablesDeleteFieldInput!]
+  disconnect: [FoodsVegetablesDisconnectFieldInput!]
+  update: FoodsVegetablesUpdateConnectionInput
+  where: FoodsVegetablesConnectionWhere
+}
+
+type FoodsVegetablesVegetablesAggregationSelection {
+  count: Int!
+  node: FoodsVegetablesVegetablesNodeAggregateSelection
+}
+
+type FoodsVegetablesVegetablesNodeAggregateSelection {
+  id: BigIntAggregateSelection!
+  name: StringAggregateSelection!
+  types: StringAggregateSelection!
+}
+
+input FoodsWhere {
+  AND: [FoodsWhere!]
+  NOT: FoodsWhere
+  OR: [FoodsWhere!]
+  cheesesAggregate: FoodsCheesesAggregateInput
+  """
+  Return Foods where all of the related FoodsCheesesConnections match this filter
+  """
+  cheesesConnection_ALL: FoodsCheesesConnectionWhere
+  """
+  Return Foods where none of the related FoodsCheesesConnections match this filter
+  """
+  cheesesConnection_NONE: FoodsCheesesConnectionWhere
+  """
+  Return Foods where one of the related FoodsCheesesConnections match this filter
+  """
+  cheesesConnection_SINGLE: FoodsCheesesConnectionWhere
+  """
+  Return Foods where some of the related FoodsCheesesConnections match this filter
+  """
+  cheesesConnection_SOME: FoodsCheesesConnectionWhere
+  """Return Foods where all of the related Cheeses match this filter"""
+  cheeses_ALL: CheesesWhere
+  """Return Foods where none of the related Cheeses match this filter"""
+  cheeses_NONE: CheesesWhere
+  """Return Foods where one of the related Cheeses match this filter"""
+  cheeses_SINGLE: CheesesWhere
+  """Return Foods where some of the related Cheeses match this filter"""
+  cheeses_SOME: CheesesWhere
+  herbsAndSpicesAggregate: FoodsHerbsAndSpicesAggregateInput
+  """
+  Return Foods where all of the related FoodsHerbsAndSpicesConnections match this filter
+  """
+  herbsAndSpicesConnection_ALL: FoodsHerbsAndSpicesConnectionWhere
+  """
+  Return Foods where none of the related FoodsHerbsAndSpicesConnections match this filter
+  """
+  herbsAndSpicesConnection_NONE: FoodsHerbsAndSpicesConnectionWhere
+  """
+  Return Foods where one of the related FoodsHerbsAndSpicesConnections match this filter
+  """
+  herbsAndSpicesConnection_SINGLE: FoodsHerbsAndSpicesConnectionWhere
+  """
+  Return Foods where some of the related FoodsHerbsAndSpicesConnections match this filter
+  """
+  herbsAndSpicesConnection_SOME: FoodsHerbsAndSpicesConnectionWhere
+  """
+  Return Foods where all of the related Herbs_and_Spices match this filter
+  """
+  herbsAndSpices_ALL: Herbs_and_SpicesWhere
+  """
+  Return Foods where none of the related Herbs_and_Spices match this filter
+  """
+  herbsAndSpices_NONE: Herbs_and_SpicesWhere
+  """
+  Return Foods where one of the related Herbs_and_Spices match this filter
+  """
+  herbsAndSpices_SINGLE: Herbs_and_SpicesWhere
+  """
+  Return Foods where some of the related Herbs_and_Spices match this filter
+  """
+  herbsAndSpices_SOME: Herbs_and_SpicesWhere
+  id: BigInt
+  id_GT: BigInt
+  id_GTE: BigInt
+  id_IN: [BigInt!]
+  id_LT: BigInt
+  id_LTE: BigInt
+  meatsAggregate: FoodsMeatsAggregateInput
+  """
+  Return Foods where all of the related FoodsMeatsConnections match this filter
+  """
+  meatsConnection_ALL: FoodsMeatsConnectionWhere
+  """
+  Return Foods where none of the related FoodsMeatsConnections match this filter
+  """
+  meatsConnection_NONE: FoodsMeatsConnectionWhere
+  """
+  Return Foods where one of the related FoodsMeatsConnections match this filter
+  """
+  meatsConnection_SINGLE: FoodsMeatsConnectionWhere
+  """
+  Return Foods where some of the related FoodsMeatsConnections match this filter
+  """
+  meatsConnection_SOME: FoodsMeatsConnectionWhere
+  """Return Foods where all of the related Meats match this filter"""
+  meats_ALL: MeatsWhere
+  """Return Foods where none of the related Meats match this filter"""
+  meats_NONE: MeatsWhere
+  """Return Foods where one of the related Meats match this filter"""
+  meats_SINGLE: MeatsWhere
+  """Return Foods where some of the related Meats match this filter"""
+  meats_SOME: MeatsWhere
+  name: String
+  name_CONTAINS: String
+  name_ENDS_WITH: String
+  name_IN: [String!]
+  name_STARTS_WITH: String
+  vegetablesAggregate: FoodsVegetablesAggregateInput
+  """
+  Return Foods where all of the related FoodsVegetablesConnections match this filter
+  """
+  vegetablesConnection_ALL: FoodsVegetablesConnectionWhere
+  """
+  Return Foods where none of the related FoodsVegetablesConnections match this filter
+  """
+  vegetablesConnection_NONE: FoodsVegetablesConnectionWhere
+  """
+  Return Foods where one of the related FoodsVegetablesConnections match this filter
+  """
+  vegetablesConnection_SINGLE: FoodsVegetablesConnectionWhere
+  """
+  Return Foods where some of the related FoodsVegetablesConnections match this filter
+  """
+  vegetablesConnection_SOME: FoodsVegetablesConnectionWhere
+  """Return Foods where all of the related Vegetables match this filter"""
+  vegetables_ALL: VegetablesWhere
+  """Return Foods where none of the related Vegetables match this filter"""
+  vegetables_NONE: VegetablesWhere
+  """Return Foods where one of the related Vegetables match this filter"""
+  vegetables_SINGLE: VegetablesWhere
+  """Return Foods where some of the related Vegetables match this filter"""
+  vegetables_SOME: VegetablesWhere
+}
+
+type HerbsAndSpicesConnection {
+  edges: [Herbs_and_SpicesEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+type Herbs_and_Spices {
+  id: BigInt!
+  includes(directed: Boolean = true, options: FoodsOptions, where: FoodsWhere): [Foods!]!
+  includesAggregate(directed: Boolean = true, where: FoodsWhere): Herbs_and_SpicesFoodsIncludesAggregationSelection
+  includesConnection(after: String, directed: Boolean = true, first: Int, sort: [Herbs_and_SpicesIncludesConnectionSort!], where: Herbs_and_SpicesIncludesConnectionWhere): Herbs_and_SpicesIncludesConnection!
+  name: String!
+  stylesPairsWith(directed: Boolean = true, options: StylesOptions, where: StylesWhere): [Styles!]!
+  stylesPairsWithAggregate(directed: Boolean = true, where: StylesWhere): Herbs_and_SpicesStylesStylesPairsWithAggregationSelection
+  stylesPairsWithConnection(after: String, directed: Boolean = true, first: Int, sort: [Herbs_and_SpicesStylesPairsWithConnectionSort!], where: Herbs_and_SpicesStylesPairsWithConnectionWhere): Herbs_and_SpicesStylesPairsWithConnection!
+  types: String!
+}
+
+type Herbs_and_SpicesAggregateSelection {
+  count: Int!
+  id: BigIntAggregateSelection!
+  name: StringAggregateSelection!
+  types: StringAggregateSelection!
+}
+
+input Herbs_and_SpicesConnectInput {
+  includes: [Herbs_and_SpicesIncludesConnectFieldInput!]
+  stylesPairsWith: [Herbs_and_SpicesStylesPairsWithConnectFieldInput!]
+}
+
+input Herbs_and_SpicesConnectWhere {
+  node: Herbs_and_SpicesWhere!
+}
+
+input Herbs_and_SpicesCreateInput {
+  id: BigInt!
+  includes: Herbs_and_SpicesIncludesFieldInput
+  name: String!
+  stylesPairsWith: Herbs_and_SpicesStylesPairsWithFieldInput
+  types: String!
+}
+
+input Herbs_and_SpicesDeleteInput {
+  includes: [Herbs_and_SpicesIncludesDeleteFieldInput!]
+  stylesPairsWith: [Herbs_and_SpicesStylesPairsWithDeleteFieldInput!]
+}
+
+input Herbs_and_SpicesDisconnectInput {
+  includes: [Herbs_and_SpicesIncludesDisconnectFieldInput!]
+  stylesPairsWith: [Herbs_and_SpicesStylesPairsWithDisconnectFieldInput!]
+}
+
+type Herbs_and_SpicesEdge {
+  cursor: String!
+  node: Herbs_and_Spices!
+}
+
+type Herbs_and_SpicesFoodsIncludesAggregationSelection {
+  count: Int!
+  node: Herbs_and_SpicesFoodsIncludesNodeAggregateSelection
+}
+
+type Herbs_and_SpicesFoodsIncludesNodeAggregateSelection {
+  id: BigIntAggregateSelection!
+  name: StringAggregateSelection!
+}
+
+input Herbs_and_SpicesIncludesAggregateInput {
+  AND: [Herbs_and_SpicesIncludesAggregateInput!]
+  NOT: Herbs_and_SpicesIncludesAggregateInput
+  OR: [Herbs_and_SpicesIncludesAggregateInput!]
+  count: Int
+  count_GT: Int
+  count_GTE: Int
+  count_LT: Int
+  count_LTE: Int
+  node: Herbs_and_SpicesIncludesNodeAggregationWhereInput
+}
+
+input Herbs_and_SpicesIncludesConnectFieldInput {
+  connect: [FoodsConnectInput!]
+  """
+  Whether or not to overwrite any matching relationship with the new properties.
+  """
+  overwrite: Boolean! = true
+  where: FoodsConnectWhere
+}
+
+type Herbs_and_SpicesIncludesConnection {
+  edges: [Herbs_and_SpicesIncludesRelationship!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+input Herbs_and_SpicesIncludesConnectionSort {
+  node: FoodsSort
+}
+
+input Herbs_and_SpicesIncludesConnectionWhere {
+  AND: [Herbs_and_SpicesIncludesConnectionWhere!]
+  NOT: Herbs_and_SpicesIncludesConnectionWhere
+  OR: [Herbs_and_SpicesIncludesConnectionWhere!]
+  node: FoodsWhere
+}
+
+input Herbs_and_SpicesIncludesCreateFieldInput {
+  node: FoodsCreateInput!
+}
+
+input Herbs_and_SpicesIncludesDeleteFieldInput {
+  delete: FoodsDeleteInput
+  where: Herbs_and_SpicesIncludesConnectionWhere
+}
+
+input Herbs_and_SpicesIncludesDisconnectFieldInput {
+  disconnect: FoodsDisconnectInput
+  where: Herbs_and_SpicesIncludesConnectionWhere
+}
+
+input Herbs_and_SpicesIncludesFieldInput {
+  connect: [Herbs_and_SpicesIncludesConnectFieldInput!]
+  create: [Herbs_and_SpicesIncludesCreateFieldInput!]
+}
+
+input Herbs_and_SpicesIncludesNodeAggregationWhereInput {
+  AND: [Herbs_and_SpicesIncludesNodeAggregationWhereInput!]
+  NOT: Herbs_and_SpicesIncludesNodeAggregationWhereInput
+  OR: [Herbs_and_SpicesIncludesNodeAggregationWhereInput!]
+  id_AVERAGE_EQUAL: BigInt
+  id_AVERAGE_GT: BigInt
+  id_AVERAGE_GTE: BigInt
+  id_AVERAGE_LT: BigInt
+  id_AVERAGE_LTE: BigInt
+  id_MAX_EQUAL: BigInt
+  id_MAX_GT: BigInt
+  id_MAX_GTE: BigInt
+  id_MAX_LT: BigInt
+  id_MAX_LTE: BigInt
+  id_MIN_EQUAL: BigInt
+  id_MIN_GT: BigInt
+  id_MIN_GTE: BigInt
+  id_MIN_LT: BigInt
+  id_MIN_LTE: BigInt
+  id_SUM_EQUAL: BigInt
+  id_SUM_GT: BigInt
+  id_SUM_GTE: BigInt
+  id_SUM_LT: BigInt
+  id_SUM_LTE: BigInt
+  name_AVERAGE_LENGTH_EQUAL: Float
+  name_AVERAGE_LENGTH_GT: Float
+  name_AVERAGE_LENGTH_GTE: Float
+  name_AVERAGE_LENGTH_LT: Float
+  name_AVERAGE_LENGTH_LTE: Float
+  name_LONGEST_LENGTH_EQUAL: Int
+  name_LONGEST_LENGTH_GT: Int
+  name_LONGEST_LENGTH_GTE: Int
+  name_LONGEST_LENGTH_LT: Int
+  name_LONGEST_LENGTH_LTE: Int
+  name_SHORTEST_LENGTH_EQUAL: Int
+  name_SHORTEST_LENGTH_GT: Int
+  name_SHORTEST_LENGTH_GTE: Int
+  name_SHORTEST_LENGTH_LT: Int
+  name_SHORTEST_LENGTH_LTE: Int
+}
+
+type Herbs_and_SpicesIncludesRelationship {
+  cursor: String!
+  node: Foods!
+}
+
+input Herbs_and_SpicesIncludesUpdateConnectionInput {
+  node: FoodsUpdateInput
+}
+
+input Herbs_and_SpicesIncludesUpdateFieldInput {
+  connect: [Herbs_and_SpicesIncludesConnectFieldInput!]
+  create: [Herbs_and_SpicesIncludesCreateFieldInput!]
+  delete: [Herbs_and_SpicesIncludesDeleteFieldInput!]
+  disconnect: [Herbs_and_SpicesIncludesDisconnectFieldInput!]
+  update: Herbs_and_SpicesIncludesUpdateConnectionInput
+  where: Herbs_and_SpicesIncludesConnectionWhere
+}
+
+input Herbs_and_SpicesOptions {
+  limit: Int
+  offset: Int
+  """
+  Specify one or more Herbs_and_SpicesSort objects to sort HerbsAndSpices by. The sorts will be applied in the order in which they are arranged in the array.
+  """
+  sort: [Herbs_and_SpicesSort!]
+}
+
+input Herbs_and_SpicesRelationInput {
+  includes: [Herbs_and_SpicesIncludesCreateFieldInput!]
+  stylesPairsWith: [Herbs_and_SpicesStylesPairsWithCreateFieldInput!]
+}
+
+"""
+Fields to sort HerbsAndSpices by. The order in which sorts are applied is not guaranteed when specifying many fields in one Herbs_and_SpicesSort object.
+"""
+input Herbs_and_SpicesSort {
+  id: SortDirection
+  name: SortDirection
+  types: SortDirection
+}
+
+input Herbs_and_SpicesStylesPairsWithAggregateInput {
+  AND: [Herbs_and_SpicesStylesPairsWithAggregateInput!]
+  NOT: Herbs_and_SpicesStylesPairsWithAggregateInput
+  OR: [Herbs_and_SpicesStylesPairsWithAggregateInput!]
+  count: Int
+  count_GT: Int
+  count_GTE: Int
+  count_LT: Int
+  count_LTE: Int
+  node: Herbs_and_SpicesStylesPairsWithNodeAggregationWhereInput
+}
+
+input Herbs_and_SpicesStylesPairsWithConnectFieldInput {
+  connect: [StylesConnectInput!]
+  edge: PairsWithPropertiesCreateInput!
+  """
+  Whether or not to overwrite any matching relationship with the new properties.
+  """
+  overwrite: Boolean! = true
+  where: StylesConnectWhere
+}
+
+type Herbs_and_SpicesStylesPairsWithConnection {
+  edges: [Herbs_and_SpicesStylesPairsWithRelationship!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+input Herbs_and_SpicesStylesPairsWithConnectionSort {
+  edge: PairsWithPropertiesSort
+  node: StylesSort
+}
+
+input Herbs_and_SpicesStylesPairsWithConnectionWhere {
+  AND: [Herbs_and_SpicesStylesPairsWithConnectionWhere!]
+  NOT: Herbs_and_SpicesStylesPairsWithConnectionWhere
+  OR: [Herbs_and_SpicesStylesPairsWithConnectionWhere!]
+  edge: PairsWithPropertiesWhere
+  node: StylesWhere
+}
+
+input Herbs_and_SpicesStylesPairsWithCreateFieldInput {
+  edge: PairsWithPropertiesCreateInput!
+  node: StylesCreateInput!
+}
+
+input Herbs_and_SpicesStylesPairsWithDeleteFieldInput {
+  delete: StylesDeleteInput
+  where: Herbs_and_SpicesStylesPairsWithConnectionWhere
+}
+
+input Herbs_and_SpicesStylesPairsWithDisconnectFieldInput {
+  disconnect: StylesDisconnectInput
+  where: Herbs_and_SpicesStylesPairsWithConnectionWhere
+}
+
+input Herbs_and_SpicesStylesPairsWithFieldInput {
+  connect: [Herbs_and_SpicesStylesPairsWithConnectFieldInput!]
+  create: [Herbs_and_SpicesStylesPairsWithCreateFieldInput!]
+}
+
+input Herbs_and_SpicesStylesPairsWithNodeAggregationWhereInput {
+  AND: [Herbs_and_SpicesStylesPairsWithNodeAggregationWhereInput!]
+  NOT: Herbs_and_SpicesStylesPairsWithNodeAggregationWhereInput
+  OR: [Herbs_and_SpicesStylesPairsWithNodeAggregationWhereInput!]
+  description_AVERAGE_LENGTH_EQUAL: Float
+  description_AVERAGE_LENGTH_GT: Float
+  description_AVERAGE_LENGTH_GTE: Float
+  description_AVERAGE_LENGTH_LT: Float
+  description_AVERAGE_LENGTH_LTE: Float
+  description_LONGEST_LENGTH_EQUAL: Int
+  description_LONGEST_LENGTH_GT: Int
+  description_LONGEST_LENGTH_GTE: Int
+  description_LONGEST_LENGTH_LT: Int
+  description_LONGEST_LENGTH_LTE: Int
+  description_SHORTEST_LENGTH_EQUAL: Int
+  description_SHORTEST_LENGTH_GT: Int
+  description_SHORTEST_LENGTH_GTE: Int
+  description_SHORTEST_LENGTH_LT: Int
+  description_SHORTEST_LENGTH_LTE: Int
+  id_AVERAGE_EQUAL: BigInt
+  id_AVERAGE_GT: BigInt
+  id_AVERAGE_GTE: BigInt
+  id_AVERAGE_LT: BigInt
+  id_AVERAGE_LTE: BigInt
+  id_MAX_EQUAL: BigInt
+  id_MAX_GT: BigInt
+  id_MAX_GTE: BigInt
+  id_MAX_LT: BigInt
+  id_MAX_LTE: BigInt
+  id_MIN_EQUAL: BigInt
+  id_MIN_GT: BigInt
+  id_MIN_GTE: BigInt
+  id_MIN_LT: BigInt
+  id_MIN_LTE: BigInt
+  id_SUM_EQUAL: BigInt
+  id_SUM_GT: BigInt
+  id_SUM_GTE: BigInt
+  id_SUM_LT: BigInt
+  id_SUM_LTE: BigInt
+  name_AVERAGE_LENGTH_EQUAL: Float
+  name_AVERAGE_LENGTH_GT: Float
+  name_AVERAGE_LENGTH_GTE: Float
+  name_AVERAGE_LENGTH_LT: Float
+  name_AVERAGE_LENGTH_LTE: Float
+  name_LONGEST_LENGTH_EQUAL: Int
+  name_LONGEST_LENGTH_GT: Int
+  name_LONGEST_LENGTH_GTE: Int
+  name_LONGEST_LENGTH_LT: Int
+  name_LONGEST_LENGTH_LTE: Int
+  name_SHORTEST_LENGTH_EQUAL: Int
+  name_SHORTEST_LENGTH_GT: Int
+  name_SHORTEST_LENGTH_GTE: Int
+  name_SHORTEST_LENGTH_LT: Int
+  name_SHORTEST_LENGTH_LTE: Int
+  typeId_AVERAGE_EQUAL: BigInt
+  typeId_AVERAGE_GT: BigInt
+  typeId_AVERAGE_GTE: BigInt
+  typeId_AVERAGE_LT: BigInt
+  typeId_AVERAGE_LTE: BigInt
+  typeId_MAX_EQUAL: BigInt
+  typeId_MAX_GT: BigInt
+  typeId_MAX_GTE: BigInt
+  typeId_MAX_LT: BigInt
+  typeId_MAX_LTE: BigInt
+  typeId_MIN_EQUAL: BigInt
+  typeId_MIN_GT: BigInt
+  typeId_MIN_GTE: BigInt
+  typeId_MIN_LT: BigInt
+  typeId_MIN_LTE: BigInt
+  typeId_SUM_EQUAL: BigInt
+  typeId_SUM_GT: BigInt
+  typeId_SUM_GTE: BigInt
+  typeId_SUM_LT: BigInt
+  typeId_SUM_LTE: BigInt
+}
+
+type Herbs_and_SpicesStylesPairsWithRelationship {
+  cursor: String!
+  node: Styles!
+  properties: PairsWithProperties!
+}
+
+input Herbs_and_SpicesStylesPairsWithUpdateConnectionInput {
+  edge: PairsWithPropertiesUpdateInput
+  node: StylesUpdateInput
+}
+
+input Herbs_and_SpicesStylesPairsWithUpdateFieldInput {
+  connect: [Herbs_and_SpicesStylesPairsWithConnectFieldInput!]
+  create: [Herbs_and_SpicesStylesPairsWithCreateFieldInput!]
+  delete: [Herbs_and_SpicesStylesPairsWithDeleteFieldInput!]
+  disconnect: [Herbs_and_SpicesStylesPairsWithDisconnectFieldInput!]
+  update: Herbs_and_SpicesStylesPairsWithUpdateConnectionInput
+  where: Herbs_and_SpicesStylesPairsWithConnectionWhere
+}
+
+type Herbs_and_SpicesStylesStylesPairsWithAggregationSelection {
+  count: Int!
+  node: Herbs_and_SpicesStylesStylesPairsWithNodeAggregateSelection
+}
+
+type Herbs_and_SpicesStylesStylesPairsWithNodeAggregateSelection {
+  description: StringAggregateSelection!
+  id: BigIntAggregateSelection!
+  name: StringAggregateSelection!
+  typeId: BigIntAggregateSelection!
+}
+
+input Herbs_and_SpicesUpdateInput {
+  id: BigInt
+  id_DECREMENT: BigInt
+  id_INCREMENT: BigInt
+  includes: [Herbs_and_SpicesIncludesUpdateFieldInput!]
+  name: String
+  stylesPairsWith: [Herbs_and_SpicesStylesPairsWithUpdateFieldInput!]
+  types: String
+}
+
+input Herbs_and_SpicesWhere {
+  AND: [Herbs_and_SpicesWhere!]
+  NOT: Herbs_and_SpicesWhere
+  OR: [Herbs_and_SpicesWhere!]
+  id: BigInt
+  id_GT: BigInt
+  id_GTE: BigInt
+  id_IN: [BigInt!]
+  id_LT: BigInt
+  id_LTE: BigInt
+  includesAggregate: Herbs_and_SpicesIncludesAggregateInput
+  """
+  Return Herbs_and_Spices where all of the related Herbs_and_SpicesIncludesConnections match this filter
+  """
+  includesConnection_ALL: Herbs_and_SpicesIncludesConnectionWhere
+  """
+  Return Herbs_and_Spices where none of the related Herbs_and_SpicesIncludesConnections match this filter
+  """
+  includesConnection_NONE: Herbs_and_SpicesIncludesConnectionWhere
+  """
+  Return Herbs_and_Spices where one of the related Herbs_and_SpicesIncludesConnections match this filter
+  """
+  includesConnection_SINGLE: Herbs_and_SpicesIncludesConnectionWhere
+  """
+  Return Herbs_and_Spices where some of the related Herbs_and_SpicesIncludesConnections match this filter
+  """
+  includesConnection_SOME: Herbs_and_SpicesIncludesConnectionWhere
+  """
+  Return Herbs_and_Spices where all of the related Foods match this filter
+  """
+  includes_ALL: FoodsWhere
+  """
+  Return Herbs_and_Spices where none of the related Foods match this filter
+  """
+  includes_NONE: FoodsWhere
+  """
+  Return Herbs_and_Spices where one of the related Foods match this filter
+  """
+  includes_SINGLE: FoodsWhere
+  """
+  Return Herbs_and_Spices where some of the related Foods match this filter
+  """
+  includes_SOME: FoodsWhere
+  name: String
+  name_CONTAINS: String
+  name_ENDS_WITH: String
+  name_IN: [String!]
+  name_STARTS_WITH: String
+  stylesPairsWithAggregate: Herbs_and_SpicesStylesPairsWithAggregateInput
+  """
+  Return Herbs_and_Spices where all of the related Herbs_and_SpicesStylesPairsWithConnections match this filter
+  """
+  stylesPairsWithConnection_ALL: Herbs_and_SpicesStylesPairsWithConnectionWhere
+  """
+  Return Herbs_and_Spices where none of the related Herbs_and_SpicesStylesPairsWithConnections match this filter
+  """
+  stylesPairsWithConnection_NONE: Herbs_and_SpicesStylesPairsWithConnectionWhere
+  """
+  Return Herbs_and_Spices where one of the related Herbs_and_SpicesStylesPairsWithConnections match this filter
+  """
+  stylesPairsWithConnection_SINGLE: Herbs_and_SpicesStylesPairsWithConnectionWhere
+  """
+  Return Herbs_and_Spices where some of the related Herbs_and_SpicesStylesPairsWithConnections match this filter
+  """
+  stylesPairsWithConnection_SOME: Herbs_and_SpicesStylesPairsWithConnectionWhere
+  """
+  Return Herbs_and_Spices where all of the related Styles match this filter
+  """
+  stylesPairsWith_ALL: StylesWhere
+  """
+  Return Herbs_and_Spices where none of the related Styles match this filter
+  """
+  stylesPairsWith_NONE: StylesWhere
+  """
+  Return Herbs_and_Spices where one of the related Styles match this filter
+  """
+  stylesPairsWith_SINGLE: StylesWhere
+  """
+  Return Herbs_and_Spices where some of the related Styles match this filter
+  """
+  stylesPairsWith_SOME: StylesWhere
+  types: String
+  types_CONTAINS: String
+  types_ENDS_WITH: String
+  types_IN: [String!]
+  types_STARTS_WITH: String
+}
+
+type Meats {
+  id: BigInt!
+  includes(directed: Boolean = true, options: FoodsOptions, where: FoodsWhere): [Foods!]!
+  includesAggregate(directed: Boolean = true, where: FoodsWhere): MeatsFoodsIncludesAggregationSelection
+  includesConnection(after: String, directed: Boolean = true, first: Int, sort: [MeatsIncludesConnectionSort!], where: MeatsIncludesConnectionWhere): MeatsIncludesConnection!
+  name: String!
+  stylesPairsWith(directed: Boolean = true, options: StylesOptions, where: StylesWhere): [Styles!]!
+  stylesPairsWithAggregate(directed: Boolean = true, where: StylesWhere): MeatsStylesStylesPairsWithAggregationSelection
+  stylesPairsWithConnection(after: String, directed: Boolean = true, first: Int, sort: [MeatsStylesPairsWithConnectionSort!], where: MeatsStylesPairsWithConnectionWhere): MeatsStylesPairsWithConnection!
+  types: String!
+}
+
+type MeatsAggregateSelection {
+  count: Int!
+  id: BigIntAggregateSelection!
+  name: StringAggregateSelection!
+  types: StringAggregateSelection!
+}
+
+input MeatsConnectInput {
+  includes: [MeatsIncludesConnectFieldInput!]
+  stylesPairsWith: [MeatsStylesPairsWithConnectFieldInput!]
+}
+
+input MeatsConnectWhere {
+  node: MeatsWhere!
+}
+
+type MeatsConnection {
+  edges: [MeatsEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+input MeatsCreateInput {
+  id: BigInt!
+  includes: MeatsIncludesFieldInput
+  name: String!
+  stylesPairsWith: MeatsStylesPairsWithFieldInput
+  types: String!
+}
+
+input MeatsDeleteInput {
+  includes: [MeatsIncludesDeleteFieldInput!]
+  stylesPairsWith: [MeatsStylesPairsWithDeleteFieldInput!]
+}
+
+input MeatsDisconnectInput {
+  includes: [MeatsIncludesDisconnectFieldInput!]
+  stylesPairsWith: [MeatsStylesPairsWithDisconnectFieldInput!]
+}
+
+type MeatsEdge {
+  cursor: String!
+  node: Meats!
+}
+
+type MeatsFoodsIncludesAggregationSelection {
+  count: Int!
+  node: MeatsFoodsIncludesNodeAggregateSelection
+}
+
+type MeatsFoodsIncludesNodeAggregateSelection {
+  id: BigIntAggregateSelection!
+  name: StringAggregateSelection!
+}
+
+input MeatsIncludesAggregateInput {
+  AND: [MeatsIncludesAggregateInput!]
+  NOT: MeatsIncludesAggregateInput
+  OR: [MeatsIncludesAggregateInput!]
+  count: Int
+  count_GT: Int
+  count_GTE: Int
+  count_LT: Int
+  count_LTE: Int
+  node: MeatsIncludesNodeAggregationWhereInput
+}
+
+input MeatsIncludesConnectFieldInput {
+  connect: [FoodsConnectInput!]
+  """
+  Whether or not to overwrite any matching relationship with the new properties.
+  """
+  overwrite: Boolean! = true
+  where: FoodsConnectWhere
+}
+
+type MeatsIncludesConnection {
+  edges: [MeatsIncludesRelationship!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+input MeatsIncludesConnectionSort {
+  node: FoodsSort
+}
+
+input MeatsIncludesConnectionWhere {
+  AND: [MeatsIncludesConnectionWhere!]
+  NOT: MeatsIncludesConnectionWhere
+  OR: [MeatsIncludesConnectionWhere!]
+  node: FoodsWhere
+}
+
+input MeatsIncludesCreateFieldInput {
+  node: FoodsCreateInput!
+}
+
+input MeatsIncludesDeleteFieldInput {
+  delete: FoodsDeleteInput
+  where: MeatsIncludesConnectionWhere
+}
+
+input MeatsIncludesDisconnectFieldInput {
+  disconnect: FoodsDisconnectInput
+  where: MeatsIncludesConnectionWhere
+}
+
+input MeatsIncludesFieldInput {
+  connect: [MeatsIncludesConnectFieldInput!]
+  create: [MeatsIncludesCreateFieldInput!]
+}
+
+input MeatsIncludesNodeAggregationWhereInput {
+  AND: [MeatsIncludesNodeAggregationWhereInput!]
+  NOT: MeatsIncludesNodeAggregationWhereInput
+  OR: [MeatsIncludesNodeAggregationWhereInput!]
+  id_AVERAGE_EQUAL: BigInt
+  id_AVERAGE_GT: BigInt
+  id_AVERAGE_GTE: BigInt
+  id_AVERAGE_LT: BigInt
+  id_AVERAGE_LTE: BigInt
+  id_MAX_EQUAL: BigInt
+  id_MAX_GT: BigInt
+  id_MAX_GTE: BigInt
+  id_MAX_LT: BigInt
+  id_MAX_LTE: BigInt
+  id_MIN_EQUAL: BigInt
+  id_MIN_GT: BigInt
+  id_MIN_GTE: BigInt
+  id_MIN_LT: BigInt
+  id_MIN_LTE: BigInt
+  id_SUM_EQUAL: BigInt
+  id_SUM_GT: BigInt
+  id_SUM_GTE: BigInt
+  id_SUM_LT: BigInt
+  id_SUM_LTE: BigInt
+  name_AVERAGE_LENGTH_EQUAL: Float
+  name_AVERAGE_LENGTH_GT: Float
+  name_AVERAGE_LENGTH_GTE: Float
+  name_AVERAGE_LENGTH_LT: Float
+  name_AVERAGE_LENGTH_LTE: Float
+  name_LONGEST_LENGTH_EQUAL: Int
+  name_LONGEST_LENGTH_GT: Int
+  name_LONGEST_LENGTH_GTE: Int
+  name_LONGEST_LENGTH_LT: Int
+  name_LONGEST_LENGTH_LTE: Int
+  name_SHORTEST_LENGTH_EQUAL: Int
+  name_SHORTEST_LENGTH_GT: Int
+  name_SHORTEST_LENGTH_GTE: Int
+  name_SHORTEST_LENGTH_LT: Int
+  name_SHORTEST_LENGTH_LTE: Int
+}
+
+type MeatsIncludesRelationship {
+  cursor: String!
+  node: Foods!
+}
+
+input MeatsIncludesUpdateConnectionInput {
+  node: FoodsUpdateInput
+}
+
+input MeatsIncludesUpdateFieldInput {
+  connect: [MeatsIncludesConnectFieldInput!]
+  create: [MeatsIncludesCreateFieldInput!]
+  delete: [MeatsIncludesDeleteFieldInput!]
+  disconnect: [MeatsIncludesDisconnectFieldInput!]
+  update: MeatsIncludesUpdateConnectionInput
+  where: MeatsIncludesConnectionWhere
+}
+
+input MeatsOptions {
+  limit: Int
+  offset: Int
+  """
+  Specify one or more MeatsSort objects to sort Meats by. The sorts will be applied in the order in which they are arranged in the array.
+  """
+  sort: [MeatsSort!]
+}
+
+input MeatsRelationInput {
+  includes: [MeatsIncludesCreateFieldInput!]
+  stylesPairsWith: [MeatsStylesPairsWithCreateFieldInput!]
+}
+
+"""
+Fields to sort Meats by. The order in which sorts are applied is not guaranteed when specifying many fields in one MeatsSort object.
+"""
+input MeatsSort {
+  id: SortDirection
+  name: SortDirection
+  types: SortDirection
+}
+
+input MeatsStylesPairsWithAggregateInput {
+  AND: [MeatsStylesPairsWithAggregateInput!]
+  NOT: MeatsStylesPairsWithAggregateInput
+  OR: [MeatsStylesPairsWithAggregateInput!]
+  count: Int
+  count_GT: Int
+  count_GTE: Int
+  count_LT: Int
+  count_LTE: Int
+  node: MeatsStylesPairsWithNodeAggregationWhereInput
+}
+
+input MeatsStylesPairsWithConnectFieldInput {
+  connect: [StylesConnectInput!]
+  edge: PairsWithPropertiesCreateInput!
+  """
+  Whether or not to overwrite any matching relationship with the new properties.
+  """
+  overwrite: Boolean! = true
+  where: StylesConnectWhere
+}
+
+type MeatsStylesPairsWithConnection {
+  edges: [MeatsStylesPairsWithRelationship!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+input MeatsStylesPairsWithConnectionSort {
+  edge: PairsWithPropertiesSort
+  node: StylesSort
+}
+
+input MeatsStylesPairsWithConnectionWhere {
+  AND: [MeatsStylesPairsWithConnectionWhere!]
+  NOT: MeatsStylesPairsWithConnectionWhere
+  OR: [MeatsStylesPairsWithConnectionWhere!]
+  edge: PairsWithPropertiesWhere
+  node: StylesWhere
+}
+
+input MeatsStylesPairsWithCreateFieldInput {
+  edge: PairsWithPropertiesCreateInput!
+  node: StylesCreateInput!
+}
+
+input MeatsStylesPairsWithDeleteFieldInput {
+  delete: StylesDeleteInput
+  where: MeatsStylesPairsWithConnectionWhere
+}
+
+input MeatsStylesPairsWithDisconnectFieldInput {
+  disconnect: StylesDisconnectInput
+  where: MeatsStylesPairsWithConnectionWhere
+}
+
+input MeatsStylesPairsWithFieldInput {
+  connect: [MeatsStylesPairsWithConnectFieldInput!]
+  create: [MeatsStylesPairsWithCreateFieldInput!]
+}
+
+input MeatsStylesPairsWithNodeAggregationWhereInput {
+  AND: [MeatsStylesPairsWithNodeAggregationWhereInput!]
+  NOT: MeatsStylesPairsWithNodeAggregationWhereInput
+  OR: [MeatsStylesPairsWithNodeAggregationWhereInput!]
+  description_AVERAGE_LENGTH_EQUAL: Float
+  description_AVERAGE_LENGTH_GT: Float
+  description_AVERAGE_LENGTH_GTE: Float
+  description_AVERAGE_LENGTH_LT: Float
+  description_AVERAGE_LENGTH_LTE: Float
+  description_LONGEST_LENGTH_EQUAL: Int
+  description_LONGEST_LENGTH_GT: Int
+  description_LONGEST_LENGTH_GTE: Int
+  description_LONGEST_LENGTH_LT: Int
+  description_LONGEST_LENGTH_LTE: Int
+  description_SHORTEST_LENGTH_EQUAL: Int
+  description_SHORTEST_LENGTH_GT: Int
+  description_SHORTEST_LENGTH_GTE: Int
+  description_SHORTEST_LENGTH_LT: Int
+  description_SHORTEST_LENGTH_LTE: Int
+  id_AVERAGE_EQUAL: BigInt
+  id_AVERAGE_GT: BigInt
+  id_AVERAGE_GTE: BigInt
+  id_AVERAGE_LT: BigInt
+  id_AVERAGE_LTE: BigInt
+  id_MAX_EQUAL: BigInt
+  id_MAX_GT: BigInt
+  id_MAX_GTE: BigInt
+  id_MAX_LT: BigInt
+  id_MAX_LTE: BigInt
+  id_MIN_EQUAL: BigInt
+  id_MIN_GT: BigInt
+  id_MIN_GTE: BigInt
+  id_MIN_LT: BigInt
+  id_MIN_LTE: BigInt
+  id_SUM_EQUAL: BigInt
+  id_SUM_GT: BigInt
+  id_SUM_GTE: BigInt
+  id_SUM_LT: BigInt
+  id_SUM_LTE: BigInt
+  name_AVERAGE_LENGTH_EQUAL: Float
+  name_AVERAGE_LENGTH_GT: Float
+  name_AVERAGE_LENGTH_GTE: Float
+  name_AVERAGE_LENGTH_LT: Float
+  name_AVERAGE_LENGTH_LTE: Float
+  name_LONGEST_LENGTH_EQUAL: Int
+  name_LONGEST_LENGTH_GT: Int
+  name_LONGEST_LENGTH_GTE: Int
+  name_LONGEST_LENGTH_LT: Int
+  name_LONGEST_LENGTH_LTE: Int
+  name_SHORTEST_LENGTH_EQUAL: Int
+  name_SHORTEST_LENGTH_GT: Int
+  name_SHORTEST_LENGTH_GTE: Int
+  name_SHORTEST_LENGTH_LT: Int
+  name_SHORTEST_LENGTH_LTE: Int
+  typeId_AVERAGE_EQUAL: BigInt
+  typeId_AVERAGE_GT: BigInt
+  typeId_AVERAGE_GTE: BigInt
+  typeId_AVERAGE_LT: BigInt
+  typeId_AVERAGE_LTE: BigInt
+  typeId_MAX_EQUAL: BigInt
+  typeId_MAX_GT: BigInt
+  typeId_MAX_GTE: BigInt
+  typeId_MAX_LT: BigInt
+  typeId_MAX_LTE: BigInt
+  typeId_MIN_EQUAL: BigInt
+  typeId_MIN_GT: BigInt
+  typeId_MIN_GTE: BigInt
+  typeId_MIN_LT: BigInt
+  typeId_MIN_LTE: BigInt
+  typeId_SUM_EQUAL: BigInt
+  typeId_SUM_GT: BigInt
+  typeId_SUM_GTE: BigInt
+  typeId_SUM_LT: BigInt
+  typeId_SUM_LTE: BigInt
+}
+
+type MeatsStylesPairsWithRelationship {
+  cursor: String!
+  node: Styles!
+  properties: PairsWithProperties!
+}
+
+input MeatsStylesPairsWithUpdateConnectionInput {
+  edge: PairsWithPropertiesUpdateInput
+  node: StylesUpdateInput
+}
+
+input MeatsStylesPairsWithUpdateFieldInput {
+  connect: [MeatsStylesPairsWithConnectFieldInput!]
+  create: [MeatsStylesPairsWithCreateFieldInput!]
+  delete: [MeatsStylesPairsWithDeleteFieldInput!]
+  disconnect: [MeatsStylesPairsWithDisconnectFieldInput!]
+  update: MeatsStylesPairsWithUpdateConnectionInput
+  where: MeatsStylesPairsWithConnectionWhere
+}
+
+type MeatsStylesStylesPairsWithAggregationSelection {
+  count: Int!
+  node: MeatsStylesStylesPairsWithNodeAggregateSelection
+}
+
+type MeatsStylesStylesPairsWithNodeAggregateSelection {
+  description: StringAggregateSelection!
+  id: BigIntAggregateSelection!
+  name: StringAggregateSelection!
+  typeId: BigIntAggregateSelection!
+}
+
+input MeatsUpdateInput {
+  id: BigInt
+  id_DECREMENT: BigInt
+  id_INCREMENT: BigInt
+  includes: [MeatsIncludesUpdateFieldInput!]
+  name: String
+  stylesPairsWith: [MeatsStylesPairsWithUpdateFieldInput!]
+  types: String
+}
+
+input MeatsWhere {
+  AND: [MeatsWhere!]
+  NOT: MeatsWhere
+  OR: [MeatsWhere!]
+  id: BigInt
+  id_GT: BigInt
+  id_GTE: BigInt
+  id_IN: [BigInt!]
+  id_LT: BigInt
+  id_LTE: BigInt
+  includesAggregate: MeatsIncludesAggregateInput
+  """
+  Return Meats where all of the related MeatsIncludesConnections match this filter
+  """
+  includesConnection_ALL: MeatsIncludesConnectionWhere
+  """
+  Return Meats where none of the related MeatsIncludesConnections match this filter
+  """
+  includesConnection_NONE: MeatsIncludesConnectionWhere
+  """
+  Return Meats where one of the related MeatsIncludesConnections match this filter
+  """
+  includesConnection_SINGLE: MeatsIncludesConnectionWhere
+  """
+  Return Meats where some of the related MeatsIncludesConnections match this filter
+  """
+  includesConnection_SOME: MeatsIncludesConnectionWhere
+  """Return Meats where all of the related Foods match this filter"""
+  includes_ALL: FoodsWhere
+  """Return Meats where none of the related Foods match this filter"""
+  includes_NONE: FoodsWhere
+  """Return Meats where one of the related Foods match this filter"""
+  includes_SINGLE: FoodsWhere
+  """Return Meats where some of the related Foods match this filter"""
+  includes_SOME: FoodsWhere
+  name: String
+  name_CONTAINS: String
+  name_ENDS_WITH: String
+  name_IN: [String!]
+  name_STARTS_WITH: String
+  stylesPairsWithAggregate: MeatsStylesPairsWithAggregateInput
+  """
+  Return Meats where all of the related MeatsStylesPairsWithConnections match this filter
+  """
+  stylesPairsWithConnection_ALL: MeatsStylesPairsWithConnectionWhere
+  """
+  Return Meats where none of the related MeatsStylesPairsWithConnections match this filter
+  """
+  stylesPairsWithConnection_NONE: MeatsStylesPairsWithConnectionWhere
+  """
+  Return Meats where one of the related MeatsStylesPairsWithConnections match this filter
+  """
+  stylesPairsWithConnection_SINGLE: MeatsStylesPairsWithConnectionWhere
+  """
+  Return Meats where some of the related MeatsStylesPairsWithConnections match this filter
+  """
+  stylesPairsWithConnection_SOME: MeatsStylesPairsWithConnectionWhere
+  """Return Meats where all of the related Styles match this filter"""
+  stylesPairsWith_ALL: StylesWhere
+  """Return Meats where none of the related Styles match this filter"""
+  stylesPairsWith_NONE: StylesWhere
+  """Return Meats where one of the related Styles match this filter"""
+  stylesPairsWith_SINGLE: StylesWhere
+  """Return Meats where some of the related Styles match this filter"""
+  stylesPairsWith_SOME: StylesWhere
+  types: String
+  types_CONTAINS: String
+  types_ENDS_WITH: String
+  types_IN: [String!]
+  types_STARTS_WITH: String
+}
+
+type Mutation {
+  createCheeses(input: [CheesesCreateInput!]!): CreateCheesesMutationResponse!
+  createFlavors(input: [FlavorsCreateInput!]!): CreateFlavorsMutationResponse!
+  createFoods(input: [FoodsCreateInput!]!): CreateFoodsMutationResponse!
+  createHerbsAndSpices(input: [Herbs_and_SpicesCreateInput!]!): CreateHerbsAndSpicesMutationResponse!
+  createMeats(input: [MeatsCreateInput!]!): CreateMeatsMutationResponse!
+  createStyles(input: [StylesCreateInput!]!): CreateStylesMutationResponse!
+  createTypes(input: [TypesCreateInput!]!): CreateTypesMutationResponse!
+  createVarietals(input: [VarietalsCreateInput!]!): CreateVarietalsMutationResponse!
+  createVegetables(input: [VegetablesCreateInput!]!): CreateVegetablesMutationResponse!
+  deleteCheeses(delete: CheesesDeleteInput, where: CheesesWhere): DeleteInfo!
+  deleteFlavors(delete: FlavorsDeleteInput, where: FlavorsWhere): DeleteInfo!
+  deleteFoods(delete: FoodsDeleteInput, where: FoodsWhere): DeleteInfo!
+  deleteHerbsAndSpices(delete: Herbs_and_SpicesDeleteInput, where: Herbs_and_SpicesWhere): DeleteInfo!
+  deleteMeats(delete: MeatsDeleteInput, where: MeatsWhere): DeleteInfo!
+  deleteStyles(delete: StylesDeleteInput, where: StylesWhere): DeleteInfo!
+  deleteTypes(delete: TypesDeleteInput, where: TypesWhere): DeleteInfo!
+  deleteVarietals(delete: VarietalsDeleteInput, where: VarietalsWhere): DeleteInfo!
+  deleteVegetables(delete: VegetablesDeleteInput, where: VegetablesWhere): DeleteInfo!
+  updateCheeses(connect: CheesesConnectInput, create: CheesesRelationInput, delete: CheesesDeleteInput, disconnect: CheesesDisconnectInput, update: CheesesUpdateInput, where: CheesesWhere): UpdateCheesesMutationResponse!
+  updateFlavors(connect: FlavorsConnectInput, create: FlavorsRelationInput, delete: FlavorsDeleteInput, disconnect: FlavorsDisconnectInput, update: FlavorsUpdateInput, where: FlavorsWhere): UpdateFlavorsMutationResponse!
+  updateFoods(connect: FoodsConnectInput, create: FoodsRelationInput, delete: FoodsDeleteInput, disconnect: FoodsDisconnectInput, update: FoodsUpdateInput, where: FoodsWhere): UpdateFoodsMutationResponse!
+  updateHerbsAndSpices(connect: Herbs_and_SpicesConnectInput, create: Herbs_and_SpicesRelationInput, delete: Herbs_and_SpicesDeleteInput, disconnect: Herbs_and_SpicesDisconnectInput, update: Herbs_and_SpicesUpdateInput, where: Herbs_and_SpicesWhere): UpdateHerbsAndSpicesMutationResponse!
+  updateMeats(connect: MeatsConnectInput, create: MeatsRelationInput, delete: MeatsDeleteInput, disconnect: MeatsDisconnectInput, update: MeatsUpdateInput, where: MeatsWhere): UpdateMeatsMutationResponse!
+  updateStyles(connect: StylesConnectInput, create: StylesRelationInput, delete: StylesDeleteInput, disconnect: StylesDisconnectInput, update: StylesUpdateInput, where: StylesWhere): UpdateStylesMutationResponse!
+  updateTypes(connect: TypesConnectInput, create: TypesRelationInput, delete: TypesDeleteInput, disconnect: TypesDisconnectInput, update: TypesUpdateInput, where: TypesWhere): UpdateTypesMutationResponse!
+  updateVarietals(connect: VarietalsConnectInput, create: VarietalsRelationInput, delete: VarietalsDeleteInput, disconnect: VarietalsDisconnectInput, update: VarietalsUpdateInput, where: VarietalsWhere): UpdateVarietalsMutationResponse!
+  updateVegetables(connect: VegetablesConnectInput, create: VegetablesRelationInput, delete: VegetablesDeleteInput, disconnect: VegetablesDisconnectInput, update: VegetablesUpdateInput, where: VegetablesWhere): UpdateVegetablesMutationResponse!
+}
+
+"""Pagination information (Relay)"""
+type PageInfo {
+  endCursor: String
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: String
+}
+
+"""
+The edge properties for the following fields:
+* Cheeses.stylesPairsWith
+* Herbs_and_Spices.stylesPairsWith
+* Meats.stylesPairsWith
+* Styles.pairsWithCheeses
+* Styles.pairsWithHerbsAndSpices
+* Styles.pairsWithMeats
+* Styles.pairsWithVegetables
+* Vegetables.stylesPairsWith
+"""
+type PairsWithProperties {
+  isExcellent: Boolean!
+}
+
+input PairsWithPropertiesCreateInput {
+  isExcellent: Boolean!
+}
+
+input PairsWithPropertiesSort {
+  isExcellent: SortDirection
+}
+
+input PairsWithPropertiesUpdateInput {
+  isExcellent: Boolean
+}
+
+input PairsWithPropertiesWhere {
+  AND: [PairsWithPropertiesWhere!]
+  NOT: PairsWithPropertiesWhere
+  OR: [PairsWithPropertiesWhere!]
+  isExcellent: Boolean
+}
+
+type Query {
+  cheeses(options: CheesesOptions, where: CheesesWhere): [Cheeses!]!
+  cheesesAggregate(where: CheesesWhere): CheesesAggregateSelection!
+  cheesesConnection(after: String, first: Int, sort: [CheesesSort], where: CheesesWhere): CheesesConnection!
+  flavors(options: FlavorsOptions, where: FlavorsWhere): [Flavors!]!
+  flavorsAggregate(where: FlavorsWhere): FlavorsAggregateSelection!
+  flavorsConnection(after: String, first: Int, sort: [FlavorsSort], where: FlavorsWhere): FlavorsConnection!
+  foods(options: FoodsOptions, where: FoodsWhere): [Foods!]!
+  foodsAggregate(where: FoodsWhere): FoodsAggregateSelection!
+  foodsConnection(after: String, first: Int, sort: [FoodsSort], where: FoodsWhere): FoodsConnection!
+  herbsAndSpices(options: Herbs_and_SpicesOptions, where: Herbs_and_SpicesWhere): [Herbs_and_Spices!]!
+  herbsAndSpicesAggregate(where: Herbs_and_SpicesWhere): Herbs_and_SpicesAggregateSelection!
+  herbsAndSpicesConnection(after: String, first: Int, sort: [Herbs_and_SpicesSort], where: Herbs_and_SpicesWhere): HerbsAndSpicesConnection!
+  meats(options: MeatsOptions, where: MeatsWhere): [Meats!]!
+  meatsAggregate(where: MeatsWhere): MeatsAggregateSelection!
+  meatsConnection(after: String, first: Int, sort: [MeatsSort], where: MeatsWhere): MeatsConnection!
+  styles(options: StylesOptions, where: StylesWhere): [Styles!]!
+  stylesAggregate(where: StylesWhere): StylesAggregateSelection!
+  stylesConnection(after: String, first: Int, sort: [StylesSort], where: StylesWhere): StylesConnection!
+  types(options: TypesOptions, where: TypesWhere): [Types!]!
+  typesAggregate(where: TypesWhere): TypesAggregateSelection!
+  typesConnection(after: String, first: Int, sort: [TypesSort], where: TypesWhere): TypesConnection!
+  varietals(options: VarietalsOptions, where: VarietalsWhere): [Varietals!]!
+  varietalsAggregate(where: VarietalsWhere): VarietalsAggregateSelection!
+  varietalsConnection(after: String, first: Int, sort: [VarietalsSort], where: VarietalsWhere): VarietalsConnection!
+  vegetables(options: VegetablesOptions, where: VegetablesWhere): [Vegetables!]!
+  vegetablesAggregate(where: VegetablesWhere): VegetablesAggregateSelection!
+  vegetablesConnection(after: String, first: Int, sort: [VegetablesSort], where: VegetablesWhere): VegetablesConnection!
+}
+
+"""An enum for sorting in either ascending or descending order."""
+enum SortDirection {
+  """Sort by field values in ascending order."""
+  ASC
+  """Sort by field values in descending order."""
+  DESC
+}
+
+type StringAggregateSelection {
+  longest: String
+  shortest: String
+}
+
+type Styles {
+  description: String!
+  id: BigInt!
+  includes(directed: Boolean = true, options: TypesOptions, where: TypesWhere): [Types!]!
+  includesAggregate(directed: Boolean = true, where: TypesWhere): StylesTypesIncludesAggregationSelection
+  includesConnection(after: String, directed: Boolean = true, first: Int, sort: [StylesIncludesConnectionSort!], where: StylesIncludesConnectionWhere): StylesIncludesConnection!
+  name: String!
+  pairsWithCheeses(directed: Boolean = true, options: CheesesOptions, where: CheesesWhere): [Cheeses!]!
+  pairsWithCheesesAggregate(directed: Boolean = true, where: CheesesWhere): StylesCheesesPairsWithCheesesAggregationSelection
+  pairsWithCheesesConnection(after: String, directed: Boolean = true, first: Int, sort: [StylesPairsWithCheesesConnectionSort!], where: StylesPairsWithCheesesConnectionWhere): StylesPairsWithCheesesConnection!
+  pairsWithHerbsAndSpices(directed: Boolean = true, options: Herbs_and_SpicesOptions, where: Herbs_and_SpicesWhere): [Herbs_and_Spices!]!
+  pairsWithHerbsAndSpicesAggregate(directed: Boolean = true, where: Herbs_and_SpicesWhere): StylesHerbs_and_SpicesPairsWithHerbsAndSpicesAggregationSelection
+  pairsWithHerbsAndSpicesConnection(after: String, directed: Boolean = true, first: Int, sort: [StylesPairsWithHerbsAndSpicesConnectionSort!], where: StylesPairsWithHerbsAndSpicesConnectionWhere): StylesPairsWithHerbsAndSpicesConnection!
+  pairsWithMeats(directed: Boolean = true, options: MeatsOptions, where: MeatsWhere): [Meats!]!
+  pairsWithMeatsAggregate(directed: Boolean = true, where: MeatsWhere): StylesMeatsPairsWithMeatsAggregationSelection
+  pairsWithMeatsConnection(after: String, directed: Boolean = true, first: Int, sort: [StylesPairsWithMeatsConnectionSort!], where: StylesPairsWithMeatsConnectionWhere): StylesPairsWithMeatsConnection!
+  pairsWithVegetables(directed: Boolean = true, options: VegetablesOptions, where: VegetablesWhere): [Vegetables!]!
+  pairsWithVegetablesAggregate(directed: Boolean = true, where: VegetablesWhere): StylesVegetablesPairsWithVegetablesAggregationSelection
+  pairsWithVegetablesConnection(after: String, directed: Boolean = true, first: Int, sort: [StylesPairsWithVegetablesConnectionSort!], where: StylesPairsWithVegetablesConnectionWhere): StylesPairsWithVegetablesConnection!
+  typeId: BigInt!
+  varietals(directed: Boolean = true, options: VarietalsOptions, where: VarietalsWhere): [Varietals!]!
+  varietalsAggregate(directed: Boolean = true, where: VarietalsWhere): StylesVarietalsVarietalsAggregationSelection
+  varietalsConnection(after: String, directed: Boolean = true, first: Int, sort: [StylesVarietalsConnectionSort!], where: StylesVarietalsConnectionWhere): StylesVarietalsConnection!
+}
+
+type StylesAggregateSelection {
+  count: Int!
+  description: StringAggregateSelection!
+  id: BigIntAggregateSelection!
+  name: StringAggregateSelection!
+  typeId: BigIntAggregateSelection!
+}
+
+type StylesCheesesPairsWithCheesesAggregationSelection {
+  count: Int!
+  node: StylesCheesesPairsWithCheesesNodeAggregateSelection
+}
+
+type StylesCheesesPairsWithCheesesNodeAggregateSelection {
+  id: BigIntAggregateSelection!
+  name: StringAggregateSelection!
+  types: StringAggregateSelection!
+}
+
+input StylesConnectInput {
+  includes: [StylesIncludesConnectFieldInput!]
+  pairsWithCheeses: [StylesPairsWithCheesesConnectFieldInput!]
+  pairsWithHerbsAndSpices: [StylesPairsWithHerbsAndSpicesConnectFieldInput!]
+  pairsWithMeats: [StylesPairsWithMeatsConnectFieldInput!]
+  pairsWithVegetables: [StylesPairsWithVegetablesConnectFieldInput!]
+  varietals: [StylesVarietalsConnectFieldInput!]
+}
+
+input StylesConnectWhere {
+  node: StylesWhere!
+}
+
+type StylesConnection {
+  edges: [StylesEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+input StylesCreateInput {
+  description: String!
+  id: BigInt!
+  includes: StylesIncludesFieldInput
+  name: String!
+  pairsWithCheeses: StylesPairsWithCheesesFieldInput
+  pairsWithHerbsAndSpices: StylesPairsWithHerbsAndSpicesFieldInput
+  pairsWithMeats: StylesPairsWithMeatsFieldInput
+  pairsWithVegetables: StylesPairsWithVegetablesFieldInput
+  typeId: BigInt!
+  varietals: StylesVarietalsFieldInput
+}
+
+input StylesDeleteInput {
+  includes: [StylesIncludesDeleteFieldInput!]
+  pairsWithCheeses: [StylesPairsWithCheesesDeleteFieldInput!]
+  pairsWithHerbsAndSpices: [StylesPairsWithHerbsAndSpicesDeleteFieldInput!]
+  pairsWithMeats: [StylesPairsWithMeatsDeleteFieldInput!]
+  pairsWithVegetables: [StylesPairsWithVegetablesDeleteFieldInput!]
+  varietals: [StylesVarietalsDeleteFieldInput!]
+}
+
+input StylesDisconnectInput {
+  includes: [StylesIncludesDisconnectFieldInput!]
+  pairsWithCheeses: [StylesPairsWithCheesesDisconnectFieldInput!]
+  pairsWithHerbsAndSpices: [StylesPairsWithHerbsAndSpicesDisconnectFieldInput!]
+  pairsWithMeats: [StylesPairsWithMeatsDisconnectFieldInput!]
+  pairsWithVegetables: [StylesPairsWithVegetablesDisconnectFieldInput!]
+  varietals: [StylesVarietalsDisconnectFieldInput!]
+}
+
+type StylesEdge {
+  cursor: String!
+  node: Styles!
+}
+
+type StylesHerbs_and_SpicesPairsWithHerbsAndSpicesAggregationSelection {
+  count: Int!
+  node: StylesHerbs_and_SpicesPairsWithHerbsAndSpicesNodeAggregateSelection
+}
+
+type StylesHerbs_and_SpicesPairsWithHerbsAndSpicesNodeAggregateSelection {
+  id: BigIntAggregateSelection!
+  name: StringAggregateSelection!
+  types: StringAggregateSelection!
+}
+
+input StylesIncludesAggregateInput {
+  AND: [StylesIncludesAggregateInput!]
+  NOT: StylesIncludesAggregateInput
+  OR: [StylesIncludesAggregateInput!]
+  count: Int
+  count_GT: Int
+  count_GTE: Int
+  count_LT: Int
+  count_LTE: Int
+  node: StylesIncludesNodeAggregationWhereInput
+}
+
+input StylesIncludesConnectFieldInput {
+  connect: [TypesConnectInput!]
+  """
+  Whether or not to overwrite any matching relationship with the new properties.
+  """
+  overwrite: Boolean! = true
+  where: TypesConnectWhere
+}
+
+type StylesIncludesConnection {
+  edges: [StylesIncludesRelationship!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+input StylesIncludesConnectionSort {
+  node: TypesSort
+}
+
+input StylesIncludesConnectionWhere {
+  AND: [StylesIncludesConnectionWhere!]
+  NOT: StylesIncludesConnectionWhere
+  OR: [StylesIncludesConnectionWhere!]
+  node: TypesWhere
+}
+
+input StylesIncludesCreateFieldInput {
+  node: TypesCreateInput!
+}
+
+input StylesIncludesDeleteFieldInput {
+  delete: TypesDeleteInput
+  where: StylesIncludesConnectionWhere
+}
+
+input StylesIncludesDisconnectFieldInput {
+  disconnect: TypesDisconnectInput
+  where: StylesIncludesConnectionWhere
+}
+
+input StylesIncludesFieldInput {
+  connect: [StylesIncludesConnectFieldInput!]
+  create: [StylesIncludesCreateFieldInput!]
+}
+
+input StylesIncludesNodeAggregationWhereInput {
+  AND: [StylesIncludesNodeAggregationWhereInput!]
+  NOT: StylesIncludesNodeAggregationWhereInput
+  OR: [StylesIncludesNodeAggregationWhereInput!]
+  id_AVERAGE_EQUAL: BigInt
+  id_AVERAGE_GT: BigInt
+  id_AVERAGE_GTE: BigInt
+  id_AVERAGE_LT: BigInt
+  id_AVERAGE_LTE: BigInt
+  id_MAX_EQUAL: BigInt
+  id_MAX_GT: BigInt
+  id_MAX_GTE: BigInt
+  id_MAX_LT: BigInt
+  id_MAX_LTE: BigInt
+  id_MIN_EQUAL: BigInt
+  id_MIN_GT: BigInt
+  id_MIN_GTE: BigInt
+  id_MIN_LT: BigInt
+  id_MIN_LTE: BigInt
+  id_SUM_EQUAL: BigInt
+  id_SUM_GT: BigInt
+  id_SUM_GTE: BigInt
+  id_SUM_LT: BigInt
+  id_SUM_LTE: BigInt
+  name_AVERAGE_LENGTH_EQUAL: Float
+  name_AVERAGE_LENGTH_GT: Float
+  name_AVERAGE_LENGTH_GTE: Float
+  name_AVERAGE_LENGTH_LT: Float
+  name_AVERAGE_LENGTH_LTE: Float
+  name_LONGEST_LENGTH_EQUAL: Int
+  name_LONGEST_LENGTH_GT: Int
+  name_LONGEST_LENGTH_GTE: Int
+  name_LONGEST_LENGTH_LT: Int
+  name_LONGEST_LENGTH_LTE: Int
+  name_SHORTEST_LENGTH_EQUAL: Int
+  name_SHORTEST_LENGTH_GT: Int
+  name_SHORTEST_LENGTH_GTE: Int
+  name_SHORTEST_LENGTH_LT: Int
+  name_SHORTEST_LENGTH_LTE: Int
+}
+
+type StylesIncludesRelationship {
+  cursor: String!
+  node: Types!
+}
+
+input StylesIncludesUpdateConnectionInput {
+  node: TypesUpdateInput
+}
+
+input StylesIncludesUpdateFieldInput {
+  connect: [StylesIncludesConnectFieldInput!]
+  create: [StylesIncludesCreateFieldInput!]
+  delete: [StylesIncludesDeleteFieldInput!]
+  disconnect: [StylesIncludesDisconnectFieldInput!]
+  update: StylesIncludesUpdateConnectionInput
+  where: StylesIncludesConnectionWhere
+}
+
+type StylesMeatsPairsWithMeatsAggregationSelection {
+  count: Int!
+  node: StylesMeatsPairsWithMeatsNodeAggregateSelection
+}
+
+type StylesMeatsPairsWithMeatsNodeAggregateSelection {
+  id: BigIntAggregateSelection!
+  name: StringAggregateSelection!
+  types: StringAggregateSelection!
+}
+
+input StylesOptions {
+  limit: Int
+  offset: Int
+  """
+  Specify one or more StylesSort objects to sort Styles by. The sorts will be applied in the order in which they are arranged in the array.
+  """
+  sort: [StylesSort!]
+}
+
+input StylesPairsWithCheesesAggregateInput {
+  AND: [StylesPairsWithCheesesAggregateInput!]
+  NOT: StylesPairsWithCheesesAggregateInput
+  OR: [StylesPairsWithCheesesAggregateInput!]
+  count: Int
+  count_GT: Int
+  count_GTE: Int
+  count_LT: Int
+  count_LTE: Int
+  node: StylesPairsWithCheesesNodeAggregationWhereInput
+}
+
+input StylesPairsWithCheesesConnectFieldInput {
+  connect: [CheesesConnectInput!]
+  edge: PairsWithPropertiesCreateInput!
+  """
+  Whether or not to overwrite any matching relationship with the new properties.
+  """
+  overwrite: Boolean! = true
+  where: CheesesConnectWhere
+}
+
+type StylesPairsWithCheesesConnection {
+  edges: [StylesPairsWithCheesesRelationship!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+input StylesPairsWithCheesesConnectionSort {
+  edge: PairsWithPropertiesSort
+  node: CheesesSort
+}
+
+input StylesPairsWithCheesesConnectionWhere {
+  AND: [StylesPairsWithCheesesConnectionWhere!]
+  NOT: StylesPairsWithCheesesConnectionWhere
+  OR: [StylesPairsWithCheesesConnectionWhere!]
+  edge: PairsWithPropertiesWhere
+  node: CheesesWhere
+}
+
+input StylesPairsWithCheesesCreateFieldInput {
+  edge: PairsWithPropertiesCreateInput!
+  node: CheesesCreateInput!
+}
+
+input StylesPairsWithCheesesDeleteFieldInput {
+  delete: CheesesDeleteInput
+  where: StylesPairsWithCheesesConnectionWhere
+}
+
+input StylesPairsWithCheesesDisconnectFieldInput {
+  disconnect: CheesesDisconnectInput
+  where: StylesPairsWithCheesesConnectionWhere
+}
+
+input StylesPairsWithCheesesFieldInput {
+  connect: [StylesPairsWithCheesesConnectFieldInput!]
+  create: [StylesPairsWithCheesesCreateFieldInput!]
+}
+
+input StylesPairsWithCheesesNodeAggregationWhereInput {
+  AND: [StylesPairsWithCheesesNodeAggregationWhereInput!]
+  NOT: StylesPairsWithCheesesNodeAggregationWhereInput
+  OR: [StylesPairsWithCheesesNodeAggregationWhereInput!]
+  id_AVERAGE_EQUAL: BigInt
+  id_AVERAGE_GT: BigInt
+  id_AVERAGE_GTE: BigInt
+  id_AVERAGE_LT: BigInt
+  id_AVERAGE_LTE: BigInt
+  id_MAX_EQUAL: BigInt
+  id_MAX_GT: BigInt
+  id_MAX_GTE: BigInt
+  id_MAX_LT: BigInt
+  id_MAX_LTE: BigInt
+  id_MIN_EQUAL: BigInt
+  id_MIN_GT: BigInt
+  id_MIN_GTE: BigInt
+  id_MIN_LT: BigInt
+  id_MIN_LTE: BigInt
+  id_SUM_EQUAL: BigInt
+  id_SUM_GT: BigInt
+  id_SUM_GTE: BigInt
+  id_SUM_LT: BigInt
+  id_SUM_LTE: BigInt
+  name_AVERAGE_LENGTH_EQUAL: Float
+  name_AVERAGE_LENGTH_GT: Float
+  name_AVERAGE_LENGTH_GTE: Float
+  name_AVERAGE_LENGTH_LT: Float
+  name_AVERAGE_LENGTH_LTE: Float
+  name_LONGEST_LENGTH_EQUAL: Int
+  name_LONGEST_LENGTH_GT: Int
+  name_LONGEST_LENGTH_GTE: Int
+  name_LONGEST_LENGTH_LT: Int
+  name_LONGEST_LENGTH_LTE: Int
+  name_SHORTEST_LENGTH_EQUAL: Int
+  name_SHORTEST_LENGTH_GT: Int
+  name_SHORTEST_LENGTH_GTE: Int
+  name_SHORTEST_LENGTH_LT: Int
+  name_SHORTEST_LENGTH_LTE: Int
+  types_AVERAGE_LENGTH_EQUAL: Float
+  types_AVERAGE_LENGTH_GT: Float
+  types_AVERAGE_LENGTH_GTE: Float
+  types_AVERAGE_LENGTH_LT: Float
+  types_AVERAGE_LENGTH_LTE: Float
+  types_LONGEST_LENGTH_EQUAL: Int
+  types_LONGEST_LENGTH_GT: Int
+  types_LONGEST_LENGTH_GTE: Int
+  types_LONGEST_LENGTH_LT: Int
+  types_LONGEST_LENGTH_LTE: Int
+  types_SHORTEST_LENGTH_EQUAL: Int
+  types_SHORTEST_LENGTH_GT: Int
+  types_SHORTEST_LENGTH_GTE: Int
+  types_SHORTEST_LENGTH_LT: Int
+  types_SHORTEST_LENGTH_LTE: Int
+}
+
+type StylesPairsWithCheesesRelationship {
+  cursor: String!
+  node: Cheeses!
+  properties: PairsWithProperties!
+}
+
+input StylesPairsWithCheesesUpdateConnectionInput {
+  edge: PairsWithPropertiesUpdateInput
+  node: CheesesUpdateInput
+}
+
+input StylesPairsWithCheesesUpdateFieldInput {
+  connect: [StylesPairsWithCheesesConnectFieldInput!]
+  create: [StylesPairsWithCheesesCreateFieldInput!]
+  delete: [StylesPairsWithCheesesDeleteFieldInput!]
+  disconnect: [StylesPairsWithCheesesDisconnectFieldInput!]
+  update: StylesPairsWithCheesesUpdateConnectionInput
+  where: StylesPairsWithCheesesConnectionWhere
+}
+
+input StylesPairsWithHerbsAndSpicesAggregateInput {
+  AND: [StylesPairsWithHerbsAndSpicesAggregateInput!]
+  NOT: StylesPairsWithHerbsAndSpicesAggregateInput
+  OR: [StylesPairsWithHerbsAndSpicesAggregateInput!]
+  count: Int
+  count_GT: Int
+  count_GTE: Int
+  count_LT: Int
+  count_LTE: Int
+  node: StylesPairsWithHerbsAndSpicesNodeAggregationWhereInput
+}
+
+input StylesPairsWithHerbsAndSpicesConnectFieldInput {
+  connect: [Herbs_and_SpicesConnectInput!]
+  edge: PairsWithPropertiesCreateInput!
+  """
+  Whether or not to overwrite any matching relationship with the new properties.
+  """
+  overwrite: Boolean! = true
+  where: Herbs_and_SpicesConnectWhere
+}
+
+type StylesPairsWithHerbsAndSpicesConnection {
+  edges: [StylesPairsWithHerbsAndSpicesRelationship!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+input StylesPairsWithHerbsAndSpicesConnectionSort {
+  edge: PairsWithPropertiesSort
+  node: Herbs_and_SpicesSort
+}
+
+input StylesPairsWithHerbsAndSpicesConnectionWhere {
+  AND: [StylesPairsWithHerbsAndSpicesConnectionWhere!]
+  NOT: StylesPairsWithHerbsAndSpicesConnectionWhere
+  OR: [StylesPairsWithHerbsAndSpicesConnectionWhere!]
+  edge: PairsWithPropertiesWhere
+  node: Herbs_and_SpicesWhere
+}
+
+input StylesPairsWithHerbsAndSpicesCreateFieldInput {
+  edge: PairsWithPropertiesCreateInput!
+  node: Herbs_and_SpicesCreateInput!
+}
+
+input StylesPairsWithHerbsAndSpicesDeleteFieldInput {
+  delete: Herbs_and_SpicesDeleteInput
+  where: StylesPairsWithHerbsAndSpicesConnectionWhere
+}
+
+input StylesPairsWithHerbsAndSpicesDisconnectFieldInput {
+  disconnect: Herbs_and_SpicesDisconnectInput
+  where: StylesPairsWithHerbsAndSpicesConnectionWhere
+}
+
+input StylesPairsWithHerbsAndSpicesFieldInput {
+  connect: [StylesPairsWithHerbsAndSpicesConnectFieldInput!]
+  create: [StylesPairsWithHerbsAndSpicesCreateFieldInput!]
+}
+
+input StylesPairsWithHerbsAndSpicesNodeAggregationWhereInput {
+  AND: [StylesPairsWithHerbsAndSpicesNodeAggregationWhereInput!]
+  NOT: StylesPairsWithHerbsAndSpicesNodeAggregationWhereInput
+  OR: [StylesPairsWithHerbsAndSpicesNodeAggregationWhereInput!]
+  id_AVERAGE_EQUAL: BigInt
+  id_AVERAGE_GT: BigInt
+  id_AVERAGE_GTE: BigInt
+  id_AVERAGE_LT: BigInt
+  id_AVERAGE_LTE: BigInt
+  id_MAX_EQUAL: BigInt
+  id_MAX_GT: BigInt
+  id_MAX_GTE: BigInt
+  id_MAX_LT: BigInt
+  id_MAX_LTE: BigInt
+  id_MIN_EQUAL: BigInt
+  id_MIN_GT: BigInt
+  id_MIN_GTE: BigInt
+  id_MIN_LT: BigInt
+  id_MIN_LTE: BigInt
+  id_SUM_EQUAL: BigInt
+  id_SUM_GT: BigInt
+  id_SUM_GTE: BigInt
+  id_SUM_LT: BigInt
+  id_SUM_LTE: BigInt
+  name_AVERAGE_LENGTH_EQUAL: Float
+  name_AVERAGE_LENGTH_GT: Float
+  name_AVERAGE_LENGTH_GTE: Float
+  name_AVERAGE_LENGTH_LT: Float
+  name_AVERAGE_LENGTH_LTE: Float
+  name_LONGEST_LENGTH_EQUAL: Int
+  name_LONGEST_LENGTH_GT: Int
+  name_LONGEST_LENGTH_GTE: Int
+  name_LONGEST_LENGTH_LT: Int
+  name_LONGEST_LENGTH_LTE: Int
+  name_SHORTEST_LENGTH_EQUAL: Int
+  name_SHORTEST_LENGTH_GT: Int
+  name_SHORTEST_LENGTH_GTE: Int
+  name_SHORTEST_LENGTH_LT: Int
+  name_SHORTEST_LENGTH_LTE: Int
+  types_AVERAGE_LENGTH_EQUAL: Float
+  types_AVERAGE_LENGTH_GT: Float
+  types_AVERAGE_LENGTH_GTE: Float
+  types_AVERAGE_LENGTH_LT: Float
+  types_AVERAGE_LENGTH_LTE: Float
+  types_LONGEST_LENGTH_EQUAL: Int
+  types_LONGEST_LENGTH_GT: Int
+  types_LONGEST_LENGTH_GTE: Int
+  types_LONGEST_LENGTH_LT: Int
+  types_LONGEST_LENGTH_LTE: Int
+  types_SHORTEST_LENGTH_EQUAL: Int
+  types_SHORTEST_LENGTH_GT: Int
+  types_SHORTEST_LENGTH_GTE: Int
+  types_SHORTEST_LENGTH_LT: Int
+  types_SHORTEST_LENGTH_LTE: Int
+}
+
+type StylesPairsWithHerbsAndSpicesRelationship {
+  cursor: String!
+  node: Herbs_and_Spices!
+  properties: PairsWithProperties!
+}
+
+input StylesPairsWithHerbsAndSpicesUpdateConnectionInput {
+  edge: PairsWithPropertiesUpdateInput
+  node: Herbs_and_SpicesUpdateInput
+}
+
+input StylesPairsWithHerbsAndSpicesUpdateFieldInput {
+  connect: [StylesPairsWithHerbsAndSpicesConnectFieldInput!]
+  create: [StylesPairsWithHerbsAndSpicesCreateFieldInput!]
+  delete: [StylesPairsWithHerbsAndSpicesDeleteFieldInput!]
+  disconnect: [StylesPairsWithHerbsAndSpicesDisconnectFieldInput!]
+  update: StylesPairsWithHerbsAndSpicesUpdateConnectionInput
+  where: StylesPairsWithHerbsAndSpicesConnectionWhere
+}
+
+input StylesPairsWithMeatsAggregateInput {
+  AND: [StylesPairsWithMeatsAggregateInput!]
+  NOT: StylesPairsWithMeatsAggregateInput
+  OR: [StylesPairsWithMeatsAggregateInput!]
+  count: Int
+  count_GT: Int
+  count_GTE: Int
+  count_LT: Int
+  count_LTE: Int
+  node: StylesPairsWithMeatsNodeAggregationWhereInput
+}
+
+input StylesPairsWithMeatsConnectFieldInput {
+  connect: [MeatsConnectInput!]
+  edge: PairsWithPropertiesCreateInput!
+  """
+  Whether or not to overwrite any matching relationship with the new properties.
+  """
+  overwrite: Boolean! = true
+  where: MeatsConnectWhere
+}
+
+type StylesPairsWithMeatsConnection {
+  edges: [StylesPairsWithMeatsRelationship!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+input StylesPairsWithMeatsConnectionSort {
+  edge: PairsWithPropertiesSort
+  node: MeatsSort
+}
+
+input StylesPairsWithMeatsConnectionWhere {
+  AND: [StylesPairsWithMeatsConnectionWhere!]
+  NOT: StylesPairsWithMeatsConnectionWhere
+  OR: [StylesPairsWithMeatsConnectionWhere!]
+  edge: PairsWithPropertiesWhere
+  node: MeatsWhere
+}
+
+input StylesPairsWithMeatsCreateFieldInput {
+  edge: PairsWithPropertiesCreateInput!
+  node: MeatsCreateInput!
+}
+
+input StylesPairsWithMeatsDeleteFieldInput {
+  delete: MeatsDeleteInput
+  where: StylesPairsWithMeatsConnectionWhere
+}
+
+input StylesPairsWithMeatsDisconnectFieldInput {
+  disconnect: MeatsDisconnectInput
+  where: StylesPairsWithMeatsConnectionWhere
+}
+
+input StylesPairsWithMeatsFieldInput {
+  connect: [StylesPairsWithMeatsConnectFieldInput!]
+  create: [StylesPairsWithMeatsCreateFieldInput!]
+}
+
+input StylesPairsWithMeatsNodeAggregationWhereInput {
+  AND: [StylesPairsWithMeatsNodeAggregationWhereInput!]
+  NOT: StylesPairsWithMeatsNodeAggregationWhereInput
+  OR: [StylesPairsWithMeatsNodeAggregationWhereInput!]
+  id_AVERAGE_EQUAL: BigInt
+  id_AVERAGE_GT: BigInt
+  id_AVERAGE_GTE: BigInt
+  id_AVERAGE_LT: BigInt
+  id_AVERAGE_LTE: BigInt
+  id_MAX_EQUAL: BigInt
+  id_MAX_GT: BigInt
+  id_MAX_GTE: BigInt
+  id_MAX_LT: BigInt
+  id_MAX_LTE: BigInt
+  id_MIN_EQUAL: BigInt
+  id_MIN_GT: BigInt
+  id_MIN_GTE: BigInt
+  id_MIN_LT: BigInt
+  id_MIN_LTE: BigInt
+  id_SUM_EQUAL: BigInt
+  id_SUM_GT: BigInt
+  id_SUM_GTE: BigInt
+  id_SUM_LT: BigInt
+  id_SUM_LTE: BigInt
+  name_AVERAGE_LENGTH_EQUAL: Float
+  name_AVERAGE_LENGTH_GT: Float
+  name_AVERAGE_LENGTH_GTE: Float
+  name_AVERAGE_LENGTH_LT: Float
+  name_AVERAGE_LENGTH_LTE: Float
+  name_LONGEST_LENGTH_EQUAL: Int
+  name_LONGEST_LENGTH_GT: Int
+  name_LONGEST_LENGTH_GTE: Int
+  name_LONGEST_LENGTH_LT: Int
+  name_LONGEST_LENGTH_LTE: Int
+  name_SHORTEST_LENGTH_EQUAL: Int
+  name_SHORTEST_LENGTH_GT: Int
+  name_SHORTEST_LENGTH_GTE: Int
+  name_SHORTEST_LENGTH_LT: Int
+  name_SHORTEST_LENGTH_LTE: Int
+  types_AVERAGE_LENGTH_EQUAL: Float
+  types_AVERAGE_LENGTH_GT: Float
+  types_AVERAGE_LENGTH_GTE: Float
+  types_AVERAGE_LENGTH_LT: Float
+  types_AVERAGE_LENGTH_LTE: Float
+  types_LONGEST_LENGTH_EQUAL: Int
+  types_LONGEST_LENGTH_GT: Int
+  types_LONGEST_LENGTH_GTE: Int
+  types_LONGEST_LENGTH_LT: Int
+  types_LONGEST_LENGTH_LTE: Int
+  types_SHORTEST_LENGTH_EQUAL: Int
+  types_SHORTEST_LENGTH_GT: Int
+  types_SHORTEST_LENGTH_GTE: Int
+  types_SHORTEST_LENGTH_LT: Int
+  types_SHORTEST_LENGTH_LTE: Int
+}
+
+type StylesPairsWithMeatsRelationship {
+  cursor: String!
+  node: Meats!
+  properties: PairsWithProperties!
+}
+
+input StylesPairsWithMeatsUpdateConnectionInput {
+  edge: PairsWithPropertiesUpdateInput
+  node: MeatsUpdateInput
+}
+
+input StylesPairsWithMeatsUpdateFieldInput {
+  connect: [StylesPairsWithMeatsConnectFieldInput!]
+  create: [StylesPairsWithMeatsCreateFieldInput!]
+  delete: [StylesPairsWithMeatsDeleteFieldInput!]
+  disconnect: [StylesPairsWithMeatsDisconnectFieldInput!]
+  update: StylesPairsWithMeatsUpdateConnectionInput
+  where: StylesPairsWithMeatsConnectionWhere
+}
+
+input StylesPairsWithVegetablesAggregateInput {
+  AND: [StylesPairsWithVegetablesAggregateInput!]
+  NOT: StylesPairsWithVegetablesAggregateInput
+  OR: [StylesPairsWithVegetablesAggregateInput!]
+  count: Int
+  count_GT: Int
+  count_GTE: Int
+  count_LT: Int
+  count_LTE: Int
+  node: StylesPairsWithVegetablesNodeAggregationWhereInput
+}
+
+input StylesPairsWithVegetablesConnectFieldInput {
+  connect: [VegetablesConnectInput!]
+  edge: PairsWithPropertiesCreateInput!
+  """
+  Whether or not to overwrite any matching relationship with the new properties.
+  """
+  overwrite: Boolean! = true
+  where: VegetablesConnectWhere
+}
+
+type StylesPairsWithVegetablesConnection {
+  edges: [StylesPairsWithVegetablesRelationship!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+input StylesPairsWithVegetablesConnectionSort {
+  edge: PairsWithPropertiesSort
+  node: VegetablesSort
+}
+
+input StylesPairsWithVegetablesConnectionWhere {
+  AND: [StylesPairsWithVegetablesConnectionWhere!]
+  NOT: StylesPairsWithVegetablesConnectionWhere
+  OR: [StylesPairsWithVegetablesConnectionWhere!]
+  edge: PairsWithPropertiesWhere
+  node: VegetablesWhere
+}
+
+input StylesPairsWithVegetablesCreateFieldInput {
+  edge: PairsWithPropertiesCreateInput!
+  node: VegetablesCreateInput!
+}
+
+input StylesPairsWithVegetablesDeleteFieldInput {
+  delete: VegetablesDeleteInput
+  where: StylesPairsWithVegetablesConnectionWhere
+}
+
+input StylesPairsWithVegetablesDisconnectFieldInput {
+  disconnect: VegetablesDisconnectInput
+  where: StylesPairsWithVegetablesConnectionWhere
+}
+
+input StylesPairsWithVegetablesFieldInput {
+  connect: [StylesPairsWithVegetablesConnectFieldInput!]
+  create: [StylesPairsWithVegetablesCreateFieldInput!]
+}
+
+input StylesPairsWithVegetablesNodeAggregationWhereInput {
+  AND: [StylesPairsWithVegetablesNodeAggregationWhereInput!]
+  NOT: StylesPairsWithVegetablesNodeAggregationWhereInput
+  OR: [StylesPairsWithVegetablesNodeAggregationWhereInput!]
+  id_AVERAGE_EQUAL: BigInt
+  id_AVERAGE_GT: BigInt
+  id_AVERAGE_GTE: BigInt
+  id_AVERAGE_LT: BigInt
+  id_AVERAGE_LTE: BigInt
+  id_MAX_EQUAL: BigInt
+  id_MAX_GT: BigInt
+  id_MAX_GTE: BigInt
+  id_MAX_LT: BigInt
+  id_MAX_LTE: BigInt
+  id_MIN_EQUAL: BigInt
+  id_MIN_GT: BigInt
+  id_MIN_GTE: BigInt
+  id_MIN_LT: BigInt
+  id_MIN_LTE: BigInt
+  id_SUM_EQUAL: BigInt
+  id_SUM_GT: BigInt
+  id_SUM_GTE: BigInt
+  id_SUM_LT: BigInt
+  id_SUM_LTE: BigInt
+  name_AVERAGE_LENGTH_EQUAL: Float
+  name_AVERAGE_LENGTH_GT: Float
+  name_AVERAGE_LENGTH_GTE: Float
+  name_AVERAGE_LENGTH_LT: Float
+  name_AVERAGE_LENGTH_LTE: Float
+  name_LONGEST_LENGTH_EQUAL: Int
+  name_LONGEST_LENGTH_GT: Int
+  name_LONGEST_LENGTH_GTE: Int
+  name_LONGEST_LENGTH_LT: Int
+  name_LONGEST_LENGTH_LTE: Int
+  name_SHORTEST_LENGTH_EQUAL: Int
+  name_SHORTEST_LENGTH_GT: Int
+  name_SHORTEST_LENGTH_GTE: Int
+  name_SHORTEST_LENGTH_LT: Int
+  name_SHORTEST_LENGTH_LTE: Int
+  types_AVERAGE_LENGTH_EQUAL: Float
+  types_AVERAGE_LENGTH_GT: Float
+  types_AVERAGE_LENGTH_GTE: Float
+  types_AVERAGE_LENGTH_LT: Float
+  types_AVERAGE_LENGTH_LTE: Float
+  types_LONGEST_LENGTH_EQUAL: Int
+  types_LONGEST_LENGTH_GT: Int
+  types_LONGEST_LENGTH_GTE: Int
+  types_LONGEST_LENGTH_LT: Int
+  types_LONGEST_LENGTH_LTE: Int
+  types_SHORTEST_LENGTH_EQUAL: Int
+  types_SHORTEST_LENGTH_GT: Int
+  types_SHORTEST_LENGTH_GTE: Int
+  types_SHORTEST_LENGTH_LT: Int
+  types_SHORTEST_LENGTH_LTE: Int
+}
+
+type StylesPairsWithVegetablesRelationship {
+  cursor: String!
+  node: Vegetables!
+  properties: PairsWithProperties!
+}
+
+input StylesPairsWithVegetablesUpdateConnectionInput {
+  edge: PairsWithPropertiesUpdateInput
+  node: VegetablesUpdateInput
+}
+
+input StylesPairsWithVegetablesUpdateFieldInput {
+  connect: [StylesPairsWithVegetablesConnectFieldInput!]
+  create: [StylesPairsWithVegetablesCreateFieldInput!]
+  delete: [StylesPairsWithVegetablesDeleteFieldInput!]
+  disconnect: [StylesPairsWithVegetablesDisconnectFieldInput!]
+  update: StylesPairsWithVegetablesUpdateConnectionInput
+  where: StylesPairsWithVegetablesConnectionWhere
+}
+
+input StylesRelationInput {
+  includes: [StylesIncludesCreateFieldInput!]
+  pairsWithCheeses: [StylesPairsWithCheesesCreateFieldInput!]
+  pairsWithHerbsAndSpices: [StylesPairsWithHerbsAndSpicesCreateFieldInput!]
+  pairsWithMeats: [StylesPairsWithMeatsCreateFieldInput!]
+  pairsWithVegetables: [StylesPairsWithVegetablesCreateFieldInput!]
+  varietals: [StylesVarietalsCreateFieldInput!]
+}
+
+"""
+Fields to sort Styles by. The order in which sorts are applied is not guaranteed when specifying many fields in one StylesSort object.
+"""
+input StylesSort {
+  description: SortDirection
+  id: SortDirection
+  name: SortDirection
+  typeId: SortDirection
+}
+
+type StylesTypesIncludesAggregationSelection {
+  count: Int!
+  node: StylesTypesIncludesNodeAggregateSelection
+}
+
+type StylesTypesIncludesNodeAggregateSelection {
+  id: BigIntAggregateSelection!
+  name: StringAggregateSelection!
+}
+
+input StylesUpdateInput {
+  description: String
+  id: BigInt
+  id_DECREMENT: BigInt
+  id_INCREMENT: BigInt
+  includes: [StylesIncludesUpdateFieldInput!]
+  name: String
+  pairsWithCheeses: [StylesPairsWithCheesesUpdateFieldInput!]
+  pairsWithHerbsAndSpices: [StylesPairsWithHerbsAndSpicesUpdateFieldInput!]
+  pairsWithMeats: [StylesPairsWithMeatsUpdateFieldInput!]
+  pairsWithVegetables: [StylesPairsWithVegetablesUpdateFieldInput!]
+  typeId: BigInt
+  typeId_DECREMENT: BigInt
+  typeId_INCREMENT: BigInt
+  varietals: [StylesVarietalsUpdateFieldInput!]
+}
+
+input StylesVarietalsAggregateInput {
+  AND: [StylesVarietalsAggregateInput!]
+  NOT: StylesVarietalsAggregateInput
+  OR: [StylesVarietalsAggregateInput!]
+  count: Int
+  count_GT: Int
+  count_GTE: Int
+  count_LT: Int
+  count_LTE: Int
+  node: StylesVarietalsNodeAggregationWhereInput
+}
+
+input StylesVarietalsConnectFieldInput {
+  connect: [VarietalsConnectInput!]
+  """
+  Whether or not to overwrite any matching relationship with the new properties.
+  """
+  overwrite: Boolean! = true
+  where: VarietalsConnectWhere
+}
+
+type StylesVarietalsConnection {
+  edges: [StylesVarietalsRelationship!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+input StylesVarietalsConnectionSort {
+  node: VarietalsSort
+}
+
+input StylesVarietalsConnectionWhere {
+  AND: [StylesVarietalsConnectionWhere!]
+  NOT: StylesVarietalsConnectionWhere
+  OR: [StylesVarietalsConnectionWhere!]
+  node: VarietalsWhere
+}
+
+input StylesVarietalsCreateFieldInput {
+  node: VarietalsCreateInput!
+}
+
+input StylesVarietalsDeleteFieldInput {
+  delete: VarietalsDeleteInput
+  where: StylesVarietalsConnectionWhere
+}
+
+input StylesVarietalsDisconnectFieldInput {
+  disconnect: VarietalsDisconnectInput
+  where: StylesVarietalsConnectionWhere
+}
+
+input StylesVarietalsFieldInput {
+  connect: [StylesVarietalsConnectFieldInput!]
+  create: [StylesVarietalsCreateFieldInput!]
+}
+
+input StylesVarietalsNodeAggregationWhereInput {
+  AND: [StylesVarietalsNodeAggregationWhereInput!]
+  NOT: StylesVarietalsNodeAggregationWhereInput
+  OR: [StylesVarietalsNodeAggregationWhereInput!]
+  aka_AVERAGE_LENGTH_EQUAL: Float
+  aka_AVERAGE_LENGTH_GT: Float
+  aka_AVERAGE_LENGTH_GTE: Float
+  aka_AVERAGE_LENGTH_LT: Float
+  aka_AVERAGE_LENGTH_LTE: Float
+  aka_LONGEST_LENGTH_EQUAL: Int
+  aka_LONGEST_LENGTH_GT: Int
+  aka_LONGEST_LENGTH_GTE: Int
+  aka_LONGEST_LENGTH_LT: Int
+  aka_LONGEST_LENGTH_LTE: Int
+  aka_SHORTEST_LENGTH_EQUAL: Int
+  aka_SHORTEST_LENGTH_GT: Int
+  aka_SHORTEST_LENGTH_GTE: Int
+  aka_SHORTEST_LENGTH_LT: Int
+  aka_SHORTEST_LENGTH_LTE: Int
+  altGlass_AVERAGE_LENGTH_EQUAL: Float
+  altGlass_AVERAGE_LENGTH_GT: Float
+  altGlass_AVERAGE_LENGTH_GTE: Float
+  altGlass_AVERAGE_LENGTH_LT: Float
+  altGlass_AVERAGE_LENGTH_LTE: Float
+  altGlass_LONGEST_LENGTH_EQUAL: Int
+  altGlass_LONGEST_LENGTH_GT: Int
+  altGlass_LONGEST_LENGTH_GTE: Int
+  altGlass_LONGEST_LENGTH_LT: Int
+  altGlass_LONGEST_LENGTH_LTE: Int
+  altGlass_SHORTEST_LENGTH_EQUAL: Int
+  altGlass_SHORTEST_LENGTH_GT: Int
+  altGlass_SHORTEST_LENGTH_GTE: Int
+  altGlass_SHORTEST_LENGTH_LT: Int
+  altGlass_SHORTEST_LENGTH_LTE: Int
+  drinkByDateYears_AVERAGE_EQUAL: BigInt
+  drinkByDateYears_AVERAGE_GT: BigInt
+  drinkByDateYears_AVERAGE_GTE: BigInt
+  drinkByDateYears_AVERAGE_LT: BigInt
+  drinkByDateYears_AVERAGE_LTE: BigInt
+  drinkByDateYears_MAX_EQUAL: BigInt
+  drinkByDateYears_MAX_GT: BigInt
+  drinkByDateYears_MAX_GTE: BigInt
+  drinkByDateYears_MAX_LT: BigInt
+  drinkByDateYears_MAX_LTE: BigInt
+  drinkByDateYears_MIN_EQUAL: BigInt
+  drinkByDateYears_MIN_GT: BigInt
+  drinkByDateYears_MIN_GTE: BigInt
+  drinkByDateYears_MIN_LT: BigInt
+  drinkByDateYears_MIN_LTE: BigInt
+  drinkByDateYears_SUM_EQUAL: BigInt
+  drinkByDateYears_SUM_GT: BigInt
+  drinkByDateYears_SUM_GTE: BigInt
+  drinkByDateYears_SUM_LT: BigInt
+  drinkByDateYears_SUM_LTE: BigInt
+  glass_AVERAGE_LENGTH_EQUAL: Float
+  glass_AVERAGE_LENGTH_GT: Float
+  glass_AVERAGE_LENGTH_GTE: Float
+  glass_AVERAGE_LENGTH_LT: Float
+  glass_AVERAGE_LENGTH_LTE: Float
+  glass_LONGEST_LENGTH_EQUAL: Int
+  glass_LONGEST_LENGTH_GT: Int
+  glass_LONGEST_LENGTH_GTE: Int
+  glass_LONGEST_LENGTH_LT: Int
+  glass_LONGEST_LENGTH_LTE: Int
+  glass_SHORTEST_LENGTH_EQUAL: Int
+  glass_SHORTEST_LENGTH_GT: Int
+  glass_SHORTEST_LENGTH_GTE: Int
+  glass_SHORTEST_LENGTH_LT: Int
+  glass_SHORTEST_LENGTH_LTE: Int
+  id_AVERAGE_EQUAL: BigInt
+  id_AVERAGE_GT: BigInt
+  id_AVERAGE_GTE: BigInt
+  id_AVERAGE_LT: BigInt
+  id_AVERAGE_LTE: BigInt
+  id_MAX_EQUAL: BigInt
+  id_MAX_GT: BigInt
+  id_MAX_GTE: BigInt
+  id_MAX_LT: BigInt
+  id_MAX_LTE: BigInt
+  id_MIN_EQUAL: BigInt
+  id_MIN_GT: BigInt
+  id_MIN_GTE: BigInt
+  id_MIN_LT: BigInt
+  id_MIN_LTE: BigInt
+  id_SUM_EQUAL: BigInt
+  id_SUM_GT: BigInt
+  id_SUM_GTE: BigInt
+  id_SUM_LT: BigInt
+  id_SUM_LTE: BigInt
+  name_AVERAGE_LENGTH_EQUAL: Float
+  name_AVERAGE_LENGTH_GT: Float
+  name_AVERAGE_LENGTH_GTE: Float
+  name_AVERAGE_LENGTH_LT: Float
+  name_AVERAGE_LENGTH_LTE: Float
+  name_LONGEST_LENGTH_EQUAL: Int
+  name_LONGEST_LENGTH_GT: Int
+  name_LONGEST_LENGTH_GTE: Int
+  name_LONGEST_LENGTH_LT: Int
+  name_LONGEST_LENGTH_LTE: Int
+  name_SHORTEST_LENGTH_EQUAL: Int
+  name_SHORTEST_LENGTH_GT: Int
+  name_SHORTEST_LENGTH_GTE: Int
+  name_SHORTEST_LENGTH_LT: Int
+  name_SHORTEST_LENGTH_LTE: Int
+  origin_AVERAGE_LENGTH_EQUAL: Float
+  origin_AVERAGE_LENGTH_GT: Float
+  origin_AVERAGE_LENGTH_GTE: Float
+  origin_AVERAGE_LENGTH_LT: Float
+  origin_AVERAGE_LENGTH_LTE: Float
+  origin_LONGEST_LENGTH_EQUAL: Int
+  origin_LONGEST_LENGTH_GT: Int
+  origin_LONGEST_LENGTH_GTE: Int
+  origin_LONGEST_LENGTH_LT: Int
+  origin_LONGEST_LENGTH_LTE: Int
+  origin_SHORTEST_LENGTH_EQUAL: Int
+  origin_SHORTEST_LENGTH_GT: Int
+  origin_SHORTEST_LENGTH_GTE: Int
+  origin_SHORTEST_LENGTH_LT: Int
+  origin_SHORTEST_LENGTH_LTE: Int
+  servingTemp_AVERAGE_LENGTH_EQUAL: Float
+  servingTemp_AVERAGE_LENGTH_GT: Float
+  servingTemp_AVERAGE_LENGTH_GTE: Float
+  servingTemp_AVERAGE_LENGTH_LT: Float
+  servingTemp_AVERAGE_LENGTH_LTE: Float
+  servingTemp_LONGEST_LENGTH_EQUAL: Int
+  servingTemp_LONGEST_LENGTH_GT: Int
+  servingTemp_LONGEST_LENGTH_GTE: Int
+  servingTemp_LONGEST_LENGTH_LT: Int
+  servingTemp_LONGEST_LENGTH_LTE: Int
+  servingTemp_SHORTEST_LENGTH_EQUAL: Int
+  servingTemp_SHORTEST_LENGTH_GT: Int
+  servingTemp_SHORTEST_LENGTH_GTE: Int
+  servingTemp_SHORTEST_LENGTH_LT: Int
+  servingTemp_SHORTEST_LENGTH_LTE: Int
+}
+
+type StylesVarietalsRelationship {
+  cursor: String!
+  node: Varietals!
+}
+
+input StylesVarietalsUpdateConnectionInput {
+  node: VarietalsUpdateInput
+}
+
+input StylesVarietalsUpdateFieldInput {
+  connect: [StylesVarietalsConnectFieldInput!]
+  create: [StylesVarietalsCreateFieldInput!]
+  delete: [StylesVarietalsDeleteFieldInput!]
+  disconnect: [StylesVarietalsDisconnectFieldInput!]
+  update: StylesVarietalsUpdateConnectionInput
+  where: StylesVarietalsConnectionWhere
+}
+
+type StylesVarietalsVarietalsAggregationSelection {
+  count: Int!
+  node: StylesVarietalsVarietalsNodeAggregateSelection
+}
+
+type StylesVarietalsVarietalsNodeAggregateSelection {
+  aka: StringAggregateSelection!
+  altGlass: StringAggregateSelection!
+  drinkByDateYears: BigIntAggregateSelection!
+  glass: StringAggregateSelection!
+  id: BigIntAggregateSelection!
+  name: StringAggregateSelection!
+  origin: StringAggregateSelection!
+  servingTemp: StringAggregateSelection!
+}
+
+type StylesVegetablesPairsWithVegetablesAggregationSelection {
+  count: Int!
+  node: StylesVegetablesPairsWithVegetablesNodeAggregateSelection
+}
+
+type StylesVegetablesPairsWithVegetablesNodeAggregateSelection {
+  id: BigIntAggregateSelection!
+  name: StringAggregateSelection!
+  types: StringAggregateSelection!
+}
+
+input StylesWhere {
+  AND: [StylesWhere!]
+  NOT: StylesWhere
+  OR: [StylesWhere!]
+  description: String
+  description_CONTAINS: String
+  description_ENDS_WITH: String
+  description_IN: [String!]
+  description_STARTS_WITH: String
+  id: BigInt
+  id_GT: BigInt
+  id_GTE: BigInt
+  id_IN: [BigInt!]
+  id_LT: BigInt
+  id_LTE: BigInt
+  includesAggregate: StylesIncludesAggregateInput
+  """
+  Return Styles where all of the related StylesIncludesConnections match this filter
+  """
+  includesConnection_ALL: StylesIncludesConnectionWhere
+  """
+  Return Styles where none of the related StylesIncludesConnections match this filter
+  """
+  includesConnection_NONE: StylesIncludesConnectionWhere
+  """
+  Return Styles where one of the related StylesIncludesConnections match this filter
+  """
+  includesConnection_SINGLE: StylesIncludesConnectionWhere
+  """
+  Return Styles where some of the related StylesIncludesConnections match this filter
+  """
+  includesConnection_SOME: StylesIncludesConnectionWhere
+  """Return Styles where all of the related Types match this filter"""
+  includes_ALL: TypesWhere
+  """Return Styles where none of the related Types match this filter"""
+  includes_NONE: TypesWhere
+  """Return Styles where one of the related Types match this filter"""
+  includes_SINGLE: TypesWhere
+  """Return Styles where some of the related Types match this filter"""
+  includes_SOME: TypesWhere
+  name: String
+  name_CONTAINS: String
+  name_ENDS_WITH: String
+  name_IN: [String!]
+  name_STARTS_WITH: String
+  pairsWithCheesesAggregate: StylesPairsWithCheesesAggregateInput
+  """
+  Return Styles where all of the related StylesPairsWithCheesesConnections match this filter
+  """
+  pairsWithCheesesConnection_ALL: StylesPairsWithCheesesConnectionWhere
+  """
+  Return Styles where none of the related StylesPairsWithCheesesConnections match this filter
+  """
+  pairsWithCheesesConnection_NONE: StylesPairsWithCheesesConnectionWhere
+  """
+  Return Styles where one of the related StylesPairsWithCheesesConnections match this filter
+  """
+  pairsWithCheesesConnection_SINGLE: StylesPairsWithCheesesConnectionWhere
+  """
+  Return Styles where some of the related StylesPairsWithCheesesConnections match this filter
+  """
+  pairsWithCheesesConnection_SOME: StylesPairsWithCheesesConnectionWhere
+  """Return Styles where all of the related Cheeses match this filter"""
+  pairsWithCheeses_ALL: CheesesWhere
+  """Return Styles where none of the related Cheeses match this filter"""
+  pairsWithCheeses_NONE: CheesesWhere
+  """Return Styles where one of the related Cheeses match this filter"""
+  pairsWithCheeses_SINGLE: CheesesWhere
+  """Return Styles where some of the related Cheeses match this filter"""
+  pairsWithCheeses_SOME: CheesesWhere
+  pairsWithHerbsAndSpicesAggregate: StylesPairsWithHerbsAndSpicesAggregateInput
+  """
+  Return Styles where all of the related StylesPairsWithHerbsAndSpicesConnections match this filter
+  """
+  pairsWithHerbsAndSpicesConnection_ALL: StylesPairsWithHerbsAndSpicesConnectionWhere
+  """
+  Return Styles where none of the related StylesPairsWithHerbsAndSpicesConnections match this filter
+  """
+  pairsWithHerbsAndSpicesConnection_NONE: StylesPairsWithHerbsAndSpicesConnectionWhere
+  """
+  Return Styles where one of the related StylesPairsWithHerbsAndSpicesConnections match this filter
+  """
+  pairsWithHerbsAndSpicesConnection_SINGLE: StylesPairsWithHerbsAndSpicesConnectionWhere
+  """
+  Return Styles where some of the related StylesPairsWithHerbsAndSpicesConnections match this filter
+  """
+  pairsWithHerbsAndSpicesConnection_SOME: StylesPairsWithHerbsAndSpicesConnectionWhere
+  """
+  Return Styles where all of the related Herbs_and_Spices match this filter
+  """
+  pairsWithHerbsAndSpices_ALL: Herbs_and_SpicesWhere
+  """
+  Return Styles where none of the related Herbs_and_Spices match this filter
+  """
+  pairsWithHerbsAndSpices_NONE: Herbs_and_SpicesWhere
+  """
+  Return Styles where one of the related Herbs_and_Spices match this filter
+  """
+  pairsWithHerbsAndSpices_SINGLE: Herbs_and_SpicesWhere
+  """
+  Return Styles where some of the related Herbs_and_Spices match this filter
+  """
+  pairsWithHerbsAndSpices_SOME: Herbs_and_SpicesWhere
+  pairsWithMeatsAggregate: StylesPairsWithMeatsAggregateInput
+  """
+  Return Styles where all of the related StylesPairsWithMeatsConnections match this filter
+  """
+  pairsWithMeatsConnection_ALL: StylesPairsWithMeatsConnectionWhere
+  """
+  Return Styles where none of the related StylesPairsWithMeatsConnections match this filter
+  """
+  pairsWithMeatsConnection_NONE: StylesPairsWithMeatsConnectionWhere
+  """
+  Return Styles where one of the related StylesPairsWithMeatsConnections match this filter
+  """
+  pairsWithMeatsConnection_SINGLE: StylesPairsWithMeatsConnectionWhere
+  """
+  Return Styles where some of the related StylesPairsWithMeatsConnections match this filter
+  """
+  pairsWithMeatsConnection_SOME: StylesPairsWithMeatsConnectionWhere
+  """Return Styles where all of the related Meats match this filter"""
+  pairsWithMeats_ALL: MeatsWhere
+  """Return Styles where none of the related Meats match this filter"""
+  pairsWithMeats_NONE: MeatsWhere
+  """Return Styles where one of the related Meats match this filter"""
+  pairsWithMeats_SINGLE: MeatsWhere
+  """Return Styles where some of the related Meats match this filter"""
+  pairsWithMeats_SOME: MeatsWhere
+  pairsWithVegetablesAggregate: StylesPairsWithVegetablesAggregateInput
+  """
+  Return Styles where all of the related StylesPairsWithVegetablesConnections match this filter
+  """
+  pairsWithVegetablesConnection_ALL: StylesPairsWithVegetablesConnectionWhere
+  """
+  Return Styles where none of the related StylesPairsWithVegetablesConnections match this filter
+  """
+  pairsWithVegetablesConnection_NONE: StylesPairsWithVegetablesConnectionWhere
+  """
+  Return Styles where one of the related StylesPairsWithVegetablesConnections match this filter
+  """
+  pairsWithVegetablesConnection_SINGLE: StylesPairsWithVegetablesConnectionWhere
+  """
+  Return Styles where some of the related StylesPairsWithVegetablesConnections match this filter
+  """
+  pairsWithVegetablesConnection_SOME: StylesPairsWithVegetablesConnectionWhere
+  """Return Styles where all of the related Vegetables match this filter"""
+  pairsWithVegetables_ALL: VegetablesWhere
+  """Return Styles where none of the related Vegetables match this filter"""
+  pairsWithVegetables_NONE: VegetablesWhere
+  """Return Styles where one of the related Vegetables match this filter"""
+  pairsWithVegetables_SINGLE: VegetablesWhere
+  """Return Styles where some of the related Vegetables match this filter"""
+  pairsWithVegetables_SOME: VegetablesWhere
+  typeId: BigInt
+  typeId_GT: BigInt
+  typeId_GTE: BigInt
+  typeId_IN: [BigInt!]
+  typeId_LT: BigInt
+  typeId_LTE: BigInt
+  varietalsAggregate: StylesVarietalsAggregateInput
+  """
+  Return Styles where all of the related StylesVarietalsConnections match this filter
+  """
+  varietalsConnection_ALL: StylesVarietalsConnectionWhere
+  """
+  Return Styles where none of the related StylesVarietalsConnections match this filter
+  """
+  varietalsConnection_NONE: StylesVarietalsConnectionWhere
+  """
+  Return Styles where one of the related StylesVarietalsConnections match this filter
+  """
+  varietalsConnection_SINGLE: StylesVarietalsConnectionWhere
+  """
+  Return Styles where some of the related StylesVarietalsConnections match this filter
+  """
+  varietalsConnection_SOME: StylesVarietalsConnectionWhere
+  """Return Styles where all of the related Varietals match this filter"""
+  varietals_ALL: VarietalsWhere
+  """Return Styles where none of the related Varietals match this filter"""
+  varietals_NONE: VarietalsWhere
+  """Return Styles where one of the related Varietals match this filter"""
+  varietals_SINGLE: VarietalsWhere
+  """Return Styles where some of the related Varietals match this filter"""
+  varietals_SOME: VarietalsWhere
+}
+
+type Types {
+  id: BigInt!
+  name: String!
+  styles(directed: Boolean = true, options: StylesOptions, where: StylesWhere): [Styles!]!
+  stylesAggregate(directed: Boolean = true, where: StylesWhere): TypesStylesStylesAggregationSelection
+  stylesConnection(after: String, directed: Boolean = true, first: Int, sort: [TypesStylesConnectionSort!], where: TypesStylesConnectionWhere): TypesStylesConnection!
+}
+
+type TypesAggregateSelection {
+  count: Int!
+  id: BigIntAggregateSelection!
+  name: StringAggregateSelection!
+}
+
+input TypesConnectInput {
+  styles: [TypesStylesConnectFieldInput!]
+}
+
+input TypesConnectWhere {
+  node: TypesWhere!
+}
+
+type TypesConnection {
+  edges: [TypesEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+input TypesCreateInput {
+  id: BigInt!
+  name: String!
+  styles: TypesStylesFieldInput
+}
+
+input TypesDeleteInput {
+  styles: [TypesStylesDeleteFieldInput!]
+}
+
+input TypesDisconnectInput {
+  styles: [TypesStylesDisconnectFieldInput!]
+}
+
+type TypesEdge {
+  cursor: String!
+  node: Types!
+}
+
+input TypesOptions {
+  limit: Int
+  offset: Int
+  """
+  Specify one or more TypesSort objects to sort Types by. The sorts will be applied in the order in which they are arranged in the array.
+  """
+  sort: [TypesSort!]
+}
+
+input TypesRelationInput {
+  styles: [TypesStylesCreateFieldInput!]
+}
+
+"""
+Fields to sort Types by. The order in which sorts are applied is not guaranteed when specifying many fields in one TypesSort object.
+"""
+input TypesSort {
+  id: SortDirection
+  name: SortDirection
+}
+
+input TypesStylesAggregateInput {
+  AND: [TypesStylesAggregateInput!]
+  NOT: TypesStylesAggregateInput
+  OR: [TypesStylesAggregateInput!]
+  count: Int
+  count_GT: Int
+  count_GTE: Int
+  count_LT: Int
+  count_LTE: Int
+  node: TypesStylesNodeAggregationWhereInput
+}
+
+input TypesStylesConnectFieldInput {
+  connect: [StylesConnectInput!]
+  """
+  Whether or not to overwrite any matching relationship with the new properties.
+  """
+  overwrite: Boolean! = true
+  where: StylesConnectWhere
+}
+
+type TypesStylesConnection {
+  edges: [TypesStylesRelationship!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+input TypesStylesConnectionSort {
+  node: StylesSort
+}
+
+input TypesStylesConnectionWhere {
+  AND: [TypesStylesConnectionWhere!]
+  NOT: TypesStylesConnectionWhere
+  OR: [TypesStylesConnectionWhere!]
+  node: StylesWhere
+}
+
+input TypesStylesCreateFieldInput {
+  node: StylesCreateInput!
+}
+
+input TypesStylesDeleteFieldInput {
+  delete: StylesDeleteInput
+  where: TypesStylesConnectionWhere
+}
+
+input TypesStylesDisconnectFieldInput {
+  disconnect: StylesDisconnectInput
+  where: TypesStylesConnectionWhere
+}
+
+input TypesStylesFieldInput {
+  connect: [TypesStylesConnectFieldInput!]
+  create: [TypesStylesCreateFieldInput!]
+}
+
+input TypesStylesNodeAggregationWhereInput {
+  AND: [TypesStylesNodeAggregationWhereInput!]
+  NOT: TypesStylesNodeAggregationWhereInput
+  OR: [TypesStylesNodeAggregationWhereInput!]
+  description_AVERAGE_LENGTH_EQUAL: Float
+  description_AVERAGE_LENGTH_GT: Float
+  description_AVERAGE_LENGTH_GTE: Float
+  description_AVERAGE_LENGTH_LT: Float
+  description_AVERAGE_LENGTH_LTE: Float
+  description_LONGEST_LENGTH_EQUAL: Int
+  description_LONGEST_LENGTH_GT: Int
+  description_LONGEST_LENGTH_GTE: Int
+  description_LONGEST_LENGTH_LT: Int
+  description_LONGEST_LENGTH_LTE: Int
+  description_SHORTEST_LENGTH_EQUAL: Int
+  description_SHORTEST_LENGTH_GT: Int
+  description_SHORTEST_LENGTH_GTE: Int
+  description_SHORTEST_LENGTH_LT: Int
+  description_SHORTEST_LENGTH_LTE: Int
+  id_AVERAGE_EQUAL: BigInt
+  id_AVERAGE_GT: BigInt
+  id_AVERAGE_GTE: BigInt
+  id_AVERAGE_LT: BigInt
+  id_AVERAGE_LTE: BigInt
+  id_MAX_EQUAL: BigInt
+  id_MAX_GT: BigInt
+  id_MAX_GTE: BigInt
+  id_MAX_LT: BigInt
+  id_MAX_LTE: BigInt
+  id_MIN_EQUAL: BigInt
+  id_MIN_GT: BigInt
+  id_MIN_GTE: BigInt
+  id_MIN_LT: BigInt
+  id_MIN_LTE: BigInt
+  id_SUM_EQUAL: BigInt
+  id_SUM_GT: BigInt
+  id_SUM_GTE: BigInt
+  id_SUM_LT: BigInt
+  id_SUM_LTE: BigInt
+  name_AVERAGE_LENGTH_EQUAL: Float
+  name_AVERAGE_LENGTH_GT: Float
+  name_AVERAGE_LENGTH_GTE: Float
+  name_AVERAGE_LENGTH_LT: Float
+  name_AVERAGE_LENGTH_LTE: Float
+  name_LONGEST_LENGTH_EQUAL: Int
+  name_LONGEST_LENGTH_GT: Int
+  name_LONGEST_LENGTH_GTE: Int
+  name_LONGEST_LENGTH_LT: Int
+  name_LONGEST_LENGTH_LTE: Int
+  name_SHORTEST_LENGTH_EQUAL: Int
+  name_SHORTEST_LENGTH_GT: Int
+  name_SHORTEST_LENGTH_GTE: Int
+  name_SHORTEST_LENGTH_LT: Int
+  name_SHORTEST_LENGTH_LTE: Int
+  typeId_AVERAGE_EQUAL: BigInt
+  typeId_AVERAGE_GT: BigInt
+  typeId_AVERAGE_GTE: BigInt
+  typeId_AVERAGE_LT: BigInt
+  typeId_AVERAGE_LTE: BigInt
+  typeId_MAX_EQUAL: BigInt
+  typeId_MAX_GT: BigInt
+  typeId_MAX_GTE: BigInt
+  typeId_MAX_LT: BigInt
+  typeId_MAX_LTE: BigInt
+  typeId_MIN_EQUAL: BigInt
+  typeId_MIN_GT: BigInt
+  typeId_MIN_GTE: BigInt
+  typeId_MIN_LT: BigInt
+  typeId_MIN_LTE: BigInt
+  typeId_SUM_EQUAL: BigInt
+  typeId_SUM_GT: BigInt
+  typeId_SUM_GTE: BigInt
+  typeId_SUM_LT: BigInt
+  typeId_SUM_LTE: BigInt
+}
+
+type TypesStylesRelationship {
+  cursor: String!
+  node: Styles!
+}
+
+type TypesStylesStylesAggregationSelection {
+  count: Int!
+  node: TypesStylesStylesNodeAggregateSelection
+}
+
+type TypesStylesStylesNodeAggregateSelection {
+  description: StringAggregateSelection!
+  id: BigIntAggregateSelection!
+  name: StringAggregateSelection!
+  typeId: BigIntAggregateSelection!
+}
+
+input TypesStylesUpdateConnectionInput {
+  node: StylesUpdateInput
+}
+
+input TypesStylesUpdateFieldInput {
+  connect: [TypesStylesConnectFieldInput!]
+  create: [TypesStylesCreateFieldInput!]
+  delete: [TypesStylesDeleteFieldInput!]
+  disconnect: [TypesStylesDisconnectFieldInput!]
+  update: TypesStylesUpdateConnectionInput
+  where: TypesStylesConnectionWhere
+}
+
+input TypesUpdateInput {
+  id: BigInt
+  id_DECREMENT: BigInt
+  id_INCREMENT: BigInt
+  name: String
+  styles: [TypesStylesUpdateFieldInput!]
+}
+
+input TypesWhere {
+  AND: [TypesWhere!]
+  NOT: TypesWhere
+  OR: [TypesWhere!]
+  id: BigInt
+  id_GT: BigInt
+  id_GTE: BigInt
+  id_IN: [BigInt!]
+  id_LT: BigInt
+  id_LTE: BigInt
+  name: String
+  name_CONTAINS: String
+  name_ENDS_WITH: String
+  name_IN: [String!]
+  name_STARTS_WITH: String
+  stylesAggregate: TypesStylesAggregateInput
+  """
+  Return Types where all of the related TypesStylesConnections match this filter
+  """
+  stylesConnection_ALL: TypesStylesConnectionWhere
+  """
+  Return Types where none of the related TypesStylesConnections match this filter
+  """
+  stylesConnection_NONE: TypesStylesConnectionWhere
+  """
+  Return Types where one of the related TypesStylesConnections match this filter
+  """
+  stylesConnection_SINGLE: TypesStylesConnectionWhere
+  """
+  Return Types where some of the related TypesStylesConnections match this filter
+  """
+  stylesConnection_SOME: TypesStylesConnectionWhere
+  """Return Types where all of the related Styles match this filter"""
+  styles_ALL: StylesWhere
+  """Return Types where none of the related Styles match this filter"""
+  styles_NONE: StylesWhere
+  """Return Types where one of the related Styles match this filter"""
+  styles_SINGLE: StylesWhere
+  """Return Types where some of the related Styles match this filter"""
+  styles_SOME: StylesWhere
+}
+
+type UpdateCheesesMutationResponse {
+  cheeses: [Cheeses!]!
+  info: UpdateInfo!
+}
+
+type UpdateFlavorsMutationResponse {
+  flavors: [Flavors!]!
+  info: UpdateInfo!
+}
+
+type UpdateFoodsMutationResponse {
+  foods: [Foods!]!
+  info: UpdateInfo!
+}
+
+type UpdateHerbsAndSpicesMutationResponse {
+  herbsAndSpices: [Herbs_and_Spices!]!
+  info: UpdateInfo!
+}
+
+"""
+Information about the number of nodes and relationships created and deleted during an update mutation
+"""
+type UpdateInfo {
+  bookmark: String @deprecated(reason: "This field has been deprecated because bookmarks are now handled by the driver.")
+  nodesCreated: Int!
+  nodesDeleted: Int!
+  relationshipsCreated: Int!
+  relationshipsDeleted: Int!
+}
+
+type UpdateMeatsMutationResponse {
+  info: UpdateInfo!
+  meats: [Meats!]!
+}
+
+type UpdateStylesMutationResponse {
+  info: UpdateInfo!
+  styles: [Styles!]!
+}
+
+type UpdateTypesMutationResponse {
+  info: UpdateInfo!
+  types: [Types!]!
+}
+
+type UpdateVarietalsMutationResponse {
+  info: UpdateInfo!
+  varietals: [Varietals!]!
+}
+
+type UpdateVegetablesMutationResponse {
+  info: UpdateInfo!
+  vegetables: [Vegetables!]!
+}
+
+type Varietals {
+  aka: String
+  altGlass: String
+  drinkByDateYears: BigInt!
+  glass: String!
+  id: BigInt!
+  includes(directed: Boolean = true, options: StylesOptions, where: StylesWhere): [Styles!]!
+  includesAggregate(directed: Boolean = true, where: StylesWhere): VarietalsStylesIncludesAggregationSelection
+  includesConnection(after: String, directed: Boolean = true, first: Int, sort: [VarietalsIncludesConnectionSort!], where: VarietalsIncludesConnectionWhere): VarietalsIncludesConnection!
+  name: String!
+  origin: String
+  servingTemp: String!
+  tastesLikeFlavors(directed: Boolean = true, options: FlavorsOptions, where: FlavorsWhere): [Flavors!]!
+  tastesLikeFlavorsAggregate(directed: Boolean = true, where: FlavorsWhere): VarietalsFlavorsTastesLikeFlavorsAggregationSelection
+  tastesLikeFlavorsConnection(after: String, directed: Boolean = true, first: Int, sort: [VarietalsTastesLikeFlavorsConnectionSort!], where: VarietalsTastesLikeFlavorsConnectionWhere): VarietalsTastesLikeFlavorsConnection!
+}
+
+type VarietalsAggregateSelection {
+  aka: StringAggregateSelection!
+  altGlass: StringAggregateSelection!
+  count: Int!
+  drinkByDateYears: BigIntAggregateSelection!
+  glass: StringAggregateSelection!
+  id: BigIntAggregateSelection!
+  name: StringAggregateSelection!
+  origin: StringAggregateSelection!
+  servingTemp: StringAggregateSelection!
+}
+
+input VarietalsConnectInput {
+  includes: [VarietalsIncludesConnectFieldInput!]
+  tastesLikeFlavors: [VarietalsTastesLikeFlavorsConnectFieldInput!]
+}
+
+input VarietalsConnectWhere {
+  node: VarietalsWhere!
+}
+
+type VarietalsConnection {
+  edges: [VarietalsEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+input VarietalsCreateInput {
+  aka: String
+  altGlass: String
+  drinkByDateYears: BigInt!
+  glass: String!
+  id: BigInt!
+  includes: VarietalsIncludesFieldInput
+  name: String!
+  origin: String
+  servingTemp: String!
+  tastesLikeFlavors: VarietalsTastesLikeFlavorsFieldInput
+}
+
+input VarietalsDeleteInput {
+  includes: [VarietalsIncludesDeleteFieldInput!]
+  tastesLikeFlavors: [VarietalsTastesLikeFlavorsDeleteFieldInput!]
+}
+
+input VarietalsDisconnectInput {
+  includes: [VarietalsIncludesDisconnectFieldInput!]
+  tastesLikeFlavors: [VarietalsTastesLikeFlavorsDisconnectFieldInput!]
+}
+
+type VarietalsEdge {
+  cursor: String!
+  node: Varietals!
+}
+
+type VarietalsFlavorsTastesLikeFlavorsAggregationSelection {
+  count: Int!
+  node: VarietalsFlavorsTastesLikeFlavorsNodeAggregateSelection
+}
+
+type VarietalsFlavorsTastesLikeFlavorsNodeAggregateSelection {
+  id: BigIntAggregateSelection!
+  name: StringAggregateSelection!
+}
+
+input VarietalsIncludesAggregateInput {
+  AND: [VarietalsIncludesAggregateInput!]
+  NOT: VarietalsIncludesAggregateInput
+  OR: [VarietalsIncludesAggregateInput!]
+  count: Int
+  count_GT: Int
+  count_GTE: Int
+  count_LT: Int
+  count_LTE: Int
+  node: VarietalsIncludesNodeAggregationWhereInput
+}
+
+input VarietalsIncludesConnectFieldInput {
+  connect: [StylesConnectInput!]
+  """
+  Whether or not to overwrite any matching relationship with the new properties.
+  """
+  overwrite: Boolean! = true
+  where: StylesConnectWhere
+}
+
+type VarietalsIncludesConnection {
+  edges: [VarietalsIncludesRelationship!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+input VarietalsIncludesConnectionSort {
+  node: StylesSort
+}
+
+input VarietalsIncludesConnectionWhere {
+  AND: [VarietalsIncludesConnectionWhere!]
+  NOT: VarietalsIncludesConnectionWhere
+  OR: [VarietalsIncludesConnectionWhere!]
+  node: StylesWhere
+}
+
+input VarietalsIncludesCreateFieldInput {
+  node: StylesCreateInput!
+}
+
+input VarietalsIncludesDeleteFieldInput {
+  delete: StylesDeleteInput
+  where: VarietalsIncludesConnectionWhere
+}
+
+input VarietalsIncludesDisconnectFieldInput {
+  disconnect: StylesDisconnectInput
+  where: VarietalsIncludesConnectionWhere
+}
+
+input VarietalsIncludesFieldInput {
+  connect: [VarietalsIncludesConnectFieldInput!]
+  create: [VarietalsIncludesCreateFieldInput!]
+}
+
+input VarietalsIncludesNodeAggregationWhereInput {
+  AND: [VarietalsIncludesNodeAggregationWhereInput!]
+  NOT: VarietalsIncludesNodeAggregationWhereInput
+  OR: [VarietalsIncludesNodeAggregationWhereInput!]
+  description_AVERAGE_LENGTH_EQUAL: Float
+  description_AVERAGE_LENGTH_GT: Float
+  description_AVERAGE_LENGTH_GTE: Float
+  description_AVERAGE_LENGTH_LT: Float
+  description_AVERAGE_LENGTH_LTE: Float
+  description_LONGEST_LENGTH_EQUAL: Int
+  description_LONGEST_LENGTH_GT: Int
+  description_LONGEST_LENGTH_GTE: Int
+  description_LONGEST_LENGTH_LT: Int
+  description_LONGEST_LENGTH_LTE: Int
+  description_SHORTEST_LENGTH_EQUAL: Int
+  description_SHORTEST_LENGTH_GT: Int
+  description_SHORTEST_LENGTH_GTE: Int
+  description_SHORTEST_LENGTH_LT: Int
+  description_SHORTEST_LENGTH_LTE: Int
+  id_AVERAGE_EQUAL: BigInt
+  id_AVERAGE_GT: BigInt
+  id_AVERAGE_GTE: BigInt
+  id_AVERAGE_LT: BigInt
+  id_AVERAGE_LTE: BigInt
+  id_MAX_EQUAL: BigInt
+  id_MAX_GT: BigInt
+  id_MAX_GTE: BigInt
+  id_MAX_LT: BigInt
+  id_MAX_LTE: BigInt
+  id_MIN_EQUAL: BigInt
+  id_MIN_GT: BigInt
+  id_MIN_GTE: BigInt
+  id_MIN_LT: BigInt
+  id_MIN_LTE: BigInt
+  id_SUM_EQUAL: BigInt
+  id_SUM_GT: BigInt
+  id_SUM_GTE: BigInt
+  id_SUM_LT: BigInt
+  id_SUM_LTE: BigInt
+  name_AVERAGE_LENGTH_EQUAL: Float
+  name_AVERAGE_LENGTH_GT: Float
+  name_AVERAGE_LENGTH_GTE: Float
+  name_AVERAGE_LENGTH_LT: Float
+  name_AVERAGE_LENGTH_LTE: Float
+  name_LONGEST_LENGTH_EQUAL: Int
+  name_LONGEST_LENGTH_GT: Int
+  name_LONGEST_LENGTH_GTE: Int
+  name_LONGEST_LENGTH_LT: Int
+  name_LONGEST_LENGTH_LTE: Int
+  name_SHORTEST_LENGTH_EQUAL: Int
+  name_SHORTEST_LENGTH_GT: Int
+  name_SHORTEST_LENGTH_GTE: Int
+  name_SHORTEST_LENGTH_LT: Int
+  name_SHORTEST_LENGTH_LTE: Int
+  typeId_AVERAGE_EQUAL: BigInt
+  typeId_AVERAGE_GT: BigInt
+  typeId_AVERAGE_GTE: BigInt
+  typeId_AVERAGE_LT: BigInt
+  typeId_AVERAGE_LTE: BigInt
+  typeId_MAX_EQUAL: BigInt
+  typeId_MAX_GT: BigInt
+  typeId_MAX_GTE: BigInt
+  typeId_MAX_LT: BigInt
+  typeId_MAX_LTE: BigInt
+  typeId_MIN_EQUAL: BigInt
+  typeId_MIN_GT: BigInt
+  typeId_MIN_GTE: BigInt
+  typeId_MIN_LT: BigInt
+  typeId_MIN_LTE: BigInt
+  typeId_SUM_EQUAL: BigInt
+  typeId_SUM_GT: BigInt
+  typeId_SUM_GTE: BigInt
+  typeId_SUM_LT: BigInt
+  typeId_SUM_LTE: BigInt
+}
+
+type VarietalsIncludesRelationship {
+  cursor: String!
+  node: Styles!
+}
+
+input VarietalsIncludesUpdateConnectionInput {
+  node: StylesUpdateInput
+}
+
+input VarietalsIncludesUpdateFieldInput {
+  connect: [VarietalsIncludesConnectFieldInput!]
+  create: [VarietalsIncludesCreateFieldInput!]
+  delete: [VarietalsIncludesDeleteFieldInput!]
+  disconnect: [VarietalsIncludesDisconnectFieldInput!]
+  update: VarietalsIncludesUpdateConnectionInput
+  where: VarietalsIncludesConnectionWhere
+}
+
+input VarietalsOptions {
+  limit: Int
+  offset: Int
+  """
+  Specify one or more VarietalsSort objects to sort Varietals by. The sorts will be applied in the order in which they are arranged in the array.
+  """
+  sort: [VarietalsSort!]
+}
+
+input VarietalsRelationInput {
+  includes: [VarietalsIncludesCreateFieldInput!]
+  tastesLikeFlavors: [VarietalsTastesLikeFlavorsCreateFieldInput!]
+}
+
+"""
+Fields to sort Varietals by. The order in which sorts are applied is not guaranteed when specifying many fields in one VarietalsSort object.
+"""
+input VarietalsSort {
+  aka: SortDirection
+  altGlass: SortDirection
+  drinkByDateYears: SortDirection
+  glass: SortDirection
+  id: SortDirection
+  name: SortDirection
+  origin: SortDirection
+  servingTemp: SortDirection
+}
+
+type VarietalsStylesIncludesAggregationSelection {
+  count: Int!
+  node: VarietalsStylesIncludesNodeAggregateSelection
+}
+
+type VarietalsStylesIncludesNodeAggregateSelection {
+  description: StringAggregateSelection!
+  id: BigIntAggregateSelection!
+  name: StringAggregateSelection!
+  typeId: BigIntAggregateSelection!
+}
+
+input VarietalsTastesLikeFlavorsAggregateInput {
+  AND: [VarietalsTastesLikeFlavorsAggregateInput!]
+  NOT: VarietalsTastesLikeFlavorsAggregateInput
+  OR: [VarietalsTastesLikeFlavorsAggregateInput!]
+  count: Int
+  count_GT: Int
+  count_GTE: Int
+  count_LT: Int
+  count_LTE: Int
+  node: VarietalsTastesLikeFlavorsNodeAggregationWhereInput
+}
+
+input VarietalsTastesLikeFlavorsConnectFieldInput {
+  connect: [FlavorsConnectInput!]
+  """
+  Whether or not to overwrite any matching relationship with the new properties.
+  """
+  overwrite: Boolean! = true
+  where: FlavorsConnectWhere
+}
+
+type VarietalsTastesLikeFlavorsConnection {
+  edges: [VarietalsTastesLikeFlavorsRelationship!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+input VarietalsTastesLikeFlavorsConnectionSort {
+  node: FlavorsSort
+}
+
+input VarietalsTastesLikeFlavorsConnectionWhere {
+  AND: [VarietalsTastesLikeFlavorsConnectionWhere!]
+  NOT: VarietalsTastesLikeFlavorsConnectionWhere
+  OR: [VarietalsTastesLikeFlavorsConnectionWhere!]
+  node: FlavorsWhere
+}
+
+input VarietalsTastesLikeFlavorsCreateFieldInput {
+  node: FlavorsCreateInput!
+}
+
+input VarietalsTastesLikeFlavorsDeleteFieldInput {
+  delete: FlavorsDeleteInput
+  where: VarietalsTastesLikeFlavorsConnectionWhere
+}
+
+input VarietalsTastesLikeFlavorsDisconnectFieldInput {
+  disconnect: FlavorsDisconnectInput
+  where: VarietalsTastesLikeFlavorsConnectionWhere
+}
+
+input VarietalsTastesLikeFlavorsFieldInput {
+  connect: [VarietalsTastesLikeFlavorsConnectFieldInput!]
+  create: [VarietalsTastesLikeFlavorsCreateFieldInput!]
+}
+
+input VarietalsTastesLikeFlavorsNodeAggregationWhereInput {
+  AND: [VarietalsTastesLikeFlavorsNodeAggregationWhereInput!]
+  NOT: VarietalsTastesLikeFlavorsNodeAggregationWhereInput
+  OR: [VarietalsTastesLikeFlavorsNodeAggregationWhereInput!]
+  id_AVERAGE_EQUAL: BigInt
+  id_AVERAGE_GT: BigInt
+  id_AVERAGE_GTE: BigInt
+  id_AVERAGE_LT: BigInt
+  id_AVERAGE_LTE: BigInt
+  id_MAX_EQUAL: BigInt
+  id_MAX_GT: BigInt
+  id_MAX_GTE: BigInt
+  id_MAX_LT: BigInt
+  id_MAX_LTE: BigInt
+  id_MIN_EQUAL: BigInt
+  id_MIN_GT: BigInt
+  id_MIN_GTE: BigInt
+  id_MIN_LT: BigInt
+  id_MIN_LTE: BigInt
+  id_SUM_EQUAL: BigInt
+  id_SUM_GT: BigInt
+  id_SUM_GTE: BigInt
+  id_SUM_LT: BigInt
+  id_SUM_LTE: BigInt
+  name_AVERAGE_LENGTH_EQUAL: Float
+  name_AVERAGE_LENGTH_GT: Float
+  name_AVERAGE_LENGTH_GTE: Float
+  name_AVERAGE_LENGTH_LT: Float
+  name_AVERAGE_LENGTH_LTE: Float
+  name_LONGEST_LENGTH_EQUAL: Int
+  name_LONGEST_LENGTH_GT: Int
+  name_LONGEST_LENGTH_GTE: Int
+  name_LONGEST_LENGTH_LT: Int
+  name_LONGEST_LENGTH_LTE: Int
+  name_SHORTEST_LENGTH_EQUAL: Int
+  name_SHORTEST_LENGTH_GT: Int
+  name_SHORTEST_LENGTH_GTE: Int
+  name_SHORTEST_LENGTH_LT: Int
+  name_SHORTEST_LENGTH_LTE: Int
+}
+
+type VarietalsTastesLikeFlavorsRelationship {
+  cursor: String!
+  node: Flavors!
+}
+
+input VarietalsTastesLikeFlavorsUpdateConnectionInput {
+  node: FlavorsUpdateInput
+}
+
+input VarietalsTastesLikeFlavorsUpdateFieldInput {
+  connect: [VarietalsTastesLikeFlavorsConnectFieldInput!]
+  create: [VarietalsTastesLikeFlavorsCreateFieldInput!]
+  delete: [VarietalsTastesLikeFlavorsDeleteFieldInput!]
+  disconnect: [VarietalsTastesLikeFlavorsDisconnectFieldInput!]
+  update: VarietalsTastesLikeFlavorsUpdateConnectionInput
+  where: VarietalsTastesLikeFlavorsConnectionWhere
+}
+
+input VarietalsUpdateInput {
+  aka: String
+  altGlass: String
+  drinkByDateYears: BigInt
+  drinkByDateYears_DECREMENT: BigInt
+  drinkByDateYears_INCREMENT: BigInt
+  glass: String
+  id: BigInt
+  id_DECREMENT: BigInt
+  id_INCREMENT: BigInt
+  includes: [VarietalsIncludesUpdateFieldInput!]
+  name: String
+  origin: String
+  servingTemp: String
+  tastesLikeFlavors: [VarietalsTastesLikeFlavorsUpdateFieldInput!]
+}
+
+input VarietalsWhere {
+  AND: [VarietalsWhere!]
+  NOT: VarietalsWhere
+  OR: [VarietalsWhere!]
+  aka: String
+  aka_CONTAINS: String
+  aka_ENDS_WITH: String
+  aka_IN: [String]
+  aka_STARTS_WITH: String
+  altGlass: String
+  altGlass_CONTAINS: String
+  altGlass_ENDS_WITH: String
+  altGlass_IN: [String]
+  altGlass_STARTS_WITH: String
+  drinkByDateYears: BigInt
+  drinkByDateYears_GT: BigInt
+  drinkByDateYears_GTE: BigInt
+  drinkByDateYears_IN: [BigInt!]
+  drinkByDateYears_LT: BigInt
+  drinkByDateYears_LTE: BigInt
+  glass: String
+  glass_CONTAINS: String
+  glass_ENDS_WITH: String
+  glass_IN: [String!]
+  glass_STARTS_WITH: String
+  id: BigInt
+  id_GT: BigInt
+  id_GTE: BigInt
+  id_IN: [BigInt!]
+  id_LT: BigInt
+  id_LTE: BigInt
+  includesAggregate: VarietalsIncludesAggregateInput
+  """
+  Return Varietals where all of the related VarietalsIncludesConnections match this filter
+  """
+  includesConnection_ALL: VarietalsIncludesConnectionWhere
+  """
+  Return Varietals where none of the related VarietalsIncludesConnections match this filter
+  """
+  includesConnection_NONE: VarietalsIncludesConnectionWhere
+  """
+  Return Varietals where one of the related VarietalsIncludesConnections match this filter
+  """
+  includesConnection_SINGLE: VarietalsIncludesConnectionWhere
+  """
+  Return Varietals where some of the related VarietalsIncludesConnections match this filter
+  """
+  includesConnection_SOME: VarietalsIncludesConnectionWhere
+  """Return Varietals where all of the related Styles match this filter"""
+  includes_ALL: StylesWhere
+  """Return Varietals where none of the related Styles match this filter"""
+  includes_NONE: StylesWhere
+  """Return Varietals where one of the related Styles match this filter"""
+  includes_SINGLE: StylesWhere
+  """Return Varietals where some of the related Styles match this filter"""
+  includes_SOME: StylesWhere
+  name: String
+  name_CONTAINS: String
+  name_ENDS_WITH: String
+  name_IN: [String!]
+  name_STARTS_WITH: String
+  origin: String
+  origin_CONTAINS: String
+  origin_ENDS_WITH: String
+  origin_IN: [String]
+  origin_STARTS_WITH: String
+  servingTemp: String
+  servingTemp_CONTAINS: String
+  servingTemp_ENDS_WITH: String
+  servingTemp_IN: [String!]
+  servingTemp_STARTS_WITH: String
+  tastesLikeFlavorsAggregate: VarietalsTastesLikeFlavorsAggregateInput
+  """
+  Return Varietals where all of the related VarietalsTastesLikeFlavorsConnections match this filter
+  """
+  tastesLikeFlavorsConnection_ALL: VarietalsTastesLikeFlavorsConnectionWhere
+  """
+  Return Varietals where none of the related VarietalsTastesLikeFlavorsConnections match this filter
+  """
+  tastesLikeFlavorsConnection_NONE: VarietalsTastesLikeFlavorsConnectionWhere
+  """
+  Return Varietals where one of the related VarietalsTastesLikeFlavorsConnections match this filter
+  """
+  tastesLikeFlavorsConnection_SINGLE: VarietalsTastesLikeFlavorsConnectionWhere
+  """
+  Return Varietals where some of the related VarietalsTastesLikeFlavorsConnections match this filter
+  """
+  tastesLikeFlavorsConnection_SOME: VarietalsTastesLikeFlavorsConnectionWhere
+  """Return Varietals where all of the related Flavors match this filter"""
+  tastesLikeFlavors_ALL: FlavorsWhere
+  """Return Varietals where none of the related Flavors match this filter"""
+  tastesLikeFlavors_NONE: FlavorsWhere
+  """Return Varietals where one of the related Flavors match this filter"""
+  tastesLikeFlavors_SINGLE: FlavorsWhere
+  """Return Varietals where some of the related Flavors match this filter"""
+  tastesLikeFlavors_SOME: FlavorsWhere
+}
+
+type Vegetables {
+  foodsIncludes(directed: Boolean = true, options: FoodsOptions, where: FoodsWhere): [Foods!]!
+  foodsIncludesAggregate(directed: Boolean = true, where: FoodsWhere): VegetablesFoodsFoodsIncludesAggregationSelection
+  foodsIncludesConnection(after: String, directed: Boolean = true, first: Int, sort: [VegetablesFoodsIncludesConnectionSort!], where: VegetablesFoodsIncludesConnectionWhere): VegetablesFoodsIncludesConnection!
+  id: BigInt!
+  name: String!
+  stylesPairsWith(directed: Boolean = true, options: StylesOptions, where: StylesWhere): [Styles!]!
+  stylesPairsWithAggregate(directed: Boolean = true, where: StylesWhere): VegetablesStylesStylesPairsWithAggregationSelection
+  stylesPairsWithConnection(after: String, directed: Boolean = true, first: Int, sort: [VegetablesStylesPairsWithConnectionSort!], where: VegetablesStylesPairsWithConnectionWhere): VegetablesStylesPairsWithConnection!
+  types: String!
+}
+
+type VegetablesAggregateSelection {
+  count: Int!
+  id: BigIntAggregateSelection!
+  name: StringAggregateSelection!
+  types: StringAggregateSelection!
+}
+
+input VegetablesConnectInput {
+  foodsIncludes: [VegetablesFoodsIncludesConnectFieldInput!]
+  stylesPairsWith: [VegetablesStylesPairsWithConnectFieldInput!]
+}
+
+input VegetablesConnectWhere {
+  node: VegetablesWhere!
+}
+
+type VegetablesConnection {
+  edges: [VegetablesEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+input VegetablesCreateInput {
+  foodsIncludes: VegetablesFoodsIncludesFieldInput
+  id: BigInt!
+  name: String!
+  stylesPairsWith: VegetablesStylesPairsWithFieldInput
+  types: String!
+}
+
+input VegetablesDeleteInput {
+  foodsIncludes: [VegetablesFoodsIncludesDeleteFieldInput!]
+  stylesPairsWith: [VegetablesStylesPairsWithDeleteFieldInput!]
+}
+
+input VegetablesDisconnectInput {
+  foodsIncludes: [VegetablesFoodsIncludesDisconnectFieldInput!]
+  stylesPairsWith: [VegetablesStylesPairsWithDisconnectFieldInput!]
+}
+
+type VegetablesEdge {
+  cursor: String!
+  node: Vegetables!
+}
+
+type VegetablesFoodsFoodsIncludesAggregationSelection {
+  count: Int!
+  node: VegetablesFoodsFoodsIncludesNodeAggregateSelection
+}
+
+type VegetablesFoodsFoodsIncludesNodeAggregateSelection {
+  id: BigIntAggregateSelection!
+  name: StringAggregateSelection!
+}
+
+input VegetablesFoodsIncludesAggregateInput {
+  AND: [VegetablesFoodsIncludesAggregateInput!]
+  NOT: VegetablesFoodsIncludesAggregateInput
+  OR: [VegetablesFoodsIncludesAggregateInput!]
+  count: Int
+  count_GT: Int
+  count_GTE: Int
+  count_LT: Int
+  count_LTE: Int
+  node: VegetablesFoodsIncludesNodeAggregationWhereInput
+}
+
+input VegetablesFoodsIncludesConnectFieldInput {
+  connect: [FoodsConnectInput!]
+  """
+  Whether or not to overwrite any matching relationship with the new properties.
+  """
+  overwrite: Boolean! = true
+  where: FoodsConnectWhere
+}
+
+type VegetablesFoodsIncludesConnection {
+  edges: [VegetablesFoodsIncludesRelationship!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+input VegetablesFoodsIncludesConnectionSort {
+  node: FoodsSort
+}
+
+input VegetablesFoodsIncludesConnectionWhere {
+  AND: [VegetablesFoodsIncludesConnectionWhere!]
+  NOT: VegetablesFoodsIncludesConnectionWhere
+  OR: [VegetablesFoodsIncludesConnectionWhere!]
+  node: FoodsWhere
+}
+
+input VegetablesFoodsIncludesCreateFieldInput {
+  node: FoodsCreateInput!
+}
+
+input VegetablesFoodsIncludesDeleteFieldInput {
+  delete: FoodsDeleteInput
+  where: VegetablesFoodsIncludesConnectionWhere
+}
+
+input VegetablesFoodsIncludesDisconnectFieldInput {
+  disconnect: FoodsDisconnectInput
+  where: VegetablesFoodsIncludesConnectionWhere
+}
+
+input VegetablesFoodsIncludesFieldInput {
+  connect: [VegetablesFoodsIncludesConnectFieldInput!]
+  create: [VegetablesFoodsIncludesCreateFieldInput!]
+}
+
+input VegetablesFoodsIncludesNodeAggregationWhereInput {
+  AND: [VegetablesFoodsIncludesNodeAggregationWhereInput!]
+  NOT: VegetablesFoodsIncludesNodeAggregationWhereInput
+  OR: [VegetablesFoodsIncludesNodeAggregationWhereInput!]
+  id_AVERAGE_EQUAL: BigInt
+  id_AVERAGE_GT: BigInt
+  id_AVERAGE_GTE: BigInt
+  id_AVERAGE_LT: BigInt
+  id_AVERAGE_LTE: BigInt
+  id_MAX_EQUAL: BigInt
+  id_MAX_GT: BigInt
+  id_MAX_GTE: BigInt
+  id_MAX_LT: BigInt
+  id_MAX_LTE: BigInt
+  id_MIN_EQUAL: BigInt
+  id_MIN_GT: BigInt
+  id_MIN_GTE: BigInt
+  id_MIN_LT: BigInt
+  id_MIN_LTE: BigInt
+  id_SUM_EQUAL: BigInt
+  id_SUM_GT: BigInt
+  id_SUM_GTE: BigInt
+  id_SUM_LT: BigInt
+  id_SUM_LTE: BigInt
+  name_AVERAGE_LENGTH_EQUAL: Float
+  name_AVERAGE_LENGTH_GT: Float
+  name_AVERAGE_LENGTH_GTE: Float
+  name_AVERAGE_LENGTH_LT: Float
+  name_AVERAGE_LENGTH_LTE: Float
+  name_LONGEST_LENGTH_EQUAL: Int
+  name_LONGEST_LENGTH_GT: Int
+  name_LONGEST_LENGTH_GTE: Int
+  name_LONGEST_LENGTH_LT: Int
+  name_LONGEST_LENGTH_LTE: Int
+  name_SHORTEST_LENGTH_EQUAL: Int
+  name_SHORTEST_LENGTH_GT: Int
+  name_SHORTEST_LENGTH_GTE: Int
+  name_SHORTEST_LENGTH_LT: Int
+  name_SHORTEST_LENGTH_LTE: Int
+}
+
+type VegetablesFoodsIncludesRelationship {
+  cursor: String!
+  node: Foods!
+}
+
+input VegetablesFoodsIncludesUpdateConnectionInput {
+  node: FoodsUpdateInput
+}
+
+input VegetablesFoodsIncludesUpdateFieldInput {
+  connect: [VegetablesFoodsIncludesConnectFieldInput!]
+  create: [VegetablesFoodsIncludesCreateFieldInput!]
+  delete: [VegetablesFoodsIncludesDeleteFieldInput!]
+  disconnect: [VegetablesFoodsIncludesDisconnectFieldInput!]
+  update: VegetablesFoodsIncludesUpdateConnectionInput
+  where: VegetablesFoodsIncludesConnectionWhere
+}
+
+input VegetablesOptions {
+  limit: Int
+  offset: Int
+  """
+  Specify one or more VegetablesSort objects to sort Vegetables by. The sorts will be applied in the order in which they are arranged in the array.
+  """
+  sort: [VegetablesSort!]
+}
+
+input VegetablesRelationInput {
+  foodsIncludes: [VegetablesFoodsIncludesCreateFieldInput!]
+  stylesPairsWith: [VegetablesStylesPairsWithCreateFieldInput!]
+}
+
+"""
+Fields to sort Vegetables by. The order in which sorts are applied is not guaranteed when specifying many fields in one VegetablesSort object.
+"""
+input VegetablesSort {
+  id: SortDirection
+  name: SortDirection
+  types: SortDirection
+}
+
+input VegetablesStylesPairsWithAggregateInput {
+  AND: [VegetablesStylesPairsWithAggregateInput!]
+  NOT: VegetablesStylesPairsWithAggregateInput
+  OR: [VegetablesStylesPairsWithAggregateInput!]
+  count: Int
+  count_GT: Int
+  count_GTE: Int
+  count_LT: Int
+  count_LTE: Int
+  node: VegetablesStylesPairsWithNodeAggregationWhereInput
+}
+
+input VegetablesStylesPairsWithConnectFieldInput {
+  connect: [StylesConnectInput!]
+  edge: PairsWithPropertiesCreateInput!
+  """
+  Whether or not to overwrite any matching relationship with the new properties.
+  """
+  overwrite: Boolean! = true
+  where: StylesConnectWhere
+}
+
+type VegetablesStylesPairsWithConnection {
+  edges: [VegetablesStylesPairsWithRelationship!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+input VegetablesStylesPairsWithConnectionSort {
+  edge: PairsWithPropertiesSort
+  node: StylesSort
+}
+
+input VegetablesStylesPairsWithConnectionWhere {
+  AND: [VegetablesStylesPairsWithConnectionWhere!]
+  NOT: VegetablesStylesPairsWithConnectionWhere
+  OR: [VegetablesStylesPairsWithConnectionWhere!]
+  edge: PairsWithPropertiesWhere
+  node: StylesWhere
+}
+
+input VegetablesStylesPairsWithCreateFieldInput {
+  edge: PairsWithPropertiesCreateInput!
+  node: StylesCreateInput!
+}
+
+input VegetablesStylesPairsWithDeleteFieldInput {
+  delete: StylesDeleteInput
+  where: VegetablesStylesPairsWithConnectionWhere
+}
+
+input VegetablesStylesPairsWithDisconnectFieldInput {
+  disconnect: StylesDisconnectInput
+  where: VegetablesStylesPairsWithConnectionWhere
+}
+
+input VegetablesStylesPairsWithFieldInput {
+  connect: [VegetablesStylesPairsWithConnectFieldInput!]
+  create: [VegetablesStylesPairsWithCreateFieldInput!]
+}
+
+input VegetablesStylesPairsWithNodeAggregationWhereInput {
+  AND: [VegetablesStylesPairsWithNodeAggregationWhereInput!]
+  NOT: VegetablesStylesPairsWithNodeAggregationWhereInput
+  OR: [VegetablesStylesPairsWithNodeAggregationWhereInput!]
+  description_AVERAGE_LENGTH_EQUAL: Float
+  description_AVERAGE_LENGTH_GT: Float
+  description_AVERAGE_LENGTH_GTE: Float
+  description_AVERAGE_LENGTH_LT: Float
+  description_AVERAGE_LENGTH_LTE: Float
+  description_LONGEST_LENGTH_EQUAL: Int
+  description_LONGEST_LENGTH_GT: Int
+  description_LONGEST_LENGTH_GTE: Int
+  description_LONGEST_LENGTH_LT: Int
+  description_LONGEST_LENGTH_LTE: Int
+  description_SHORTEST_LENGTH_EQUAL: Int
+  description_SHORTEST_LENGTH_GT: Int
+  description_SHORTEST_LENGTH_GTE: Int
+  description_SHORTEST_LENGTH_LT: Int
+  description_SHORTEST_LENGTH_LTE: Int
+  id_AVERAGE_EQUAL: BigInt
+  id_AVERAGE_GT: BigInt
+  id_AVERAGE_GTE: BigInt
+  id_AVERAGE_LT: BigInt
+  id_AVERAGE_LTE: BigInt
+  id_MAX_EQUAL: BigInt
+  id_MAX_GT: BigInt
+  id_MAX_GTE: BigInt
+  id_MAX_LT: BigInt
+  id_MAX_LTE: BigInt
+  id_MIN_EQUAL: BigInt
+  id_MIN_GT: BigInt
+  id_MIN_GTE: BigInt
+  id_MIN_LT: BigInt
+  id_MIN_LTE: BigInt
+  id_SUM_EQUAL: BigInt
+  id_SUM_GT: BigInt
+  id_SUM_GTE: BigInt
+  id_SUM_LT: BigInt
+  id_SUM_LTE: BigInt
+  name_AVERAGE_LENGTH_EQUAL: Float
+  name_AVERAGE_LENGTH_GT: Float
+  name_AVERAGE_LENGTH_GTE: Float
+  name_AVERAGE_LENGTH_LT: Float
+  name_AVERAGE_LENGTH_LTE: Float
+  name_LONGEST_LENGTH_EQUAL: Int
+  name_LONGEST_LENGTH_GT: Int
+  name_LONGEST_LENGTH_GTE: Int
+  name_LONGEST_LENGTH_LT: Int
+  name_LONGEST_LENGTH_LTE: Int
+  name_SHORTEST_LENGTH_EQUAL: Int
+  name_SHORTEST_LENGTH_GT: Int
+  name_SHORTEST_LENGTH_GTE: Int
+  name_SHORTEST_LENGTH_LT: Int
+  name_SHORTEST_LENGTH_LTE: Int
+  typeId_AVERAGE_EQUAL: BigInt
+  typeId_AVERAGE_GT: BigInt
+  typeId_AVERAGE_GTE: BigInt
+  typeId_AVERAGE_LT: BigInt
+  typeId_AVERAGE_LTE: BigInt
+  typeId_MAX_EQUAL: BigInt
+  typeId_MAX_GT: BigInt
+  typeId_MAX_GTE: BigInt
+  typeId_MAX_LT: BigInt
+  typeId_MAX_LTE: BigInt
+  typeId_MIN_EQUAL: BigInt
+  typeId_MIN_GT: BigInt
+  typeId_MIN_GTE: BigInt
+  typeId_MIN_LT: BigInt
+  typeId_MIN_LTE: BigInt
+  typeId_SUM_EQUAL: BigInt
+  typeId_SUM_GT: BigInt
+  typeId_SUM_GTE: BigInt
+  typeId_SUM_LT: BigInt
+  typeId_SUM_LTE: BigInt
+}
+
+type VegetablesStylesPairsWithRelationship {
+  cursor: String!
+  node: Styles!
+  properties: PairsWithProperties!
+}
+
+input VegetablesStylesPairsWithUpdateConnectionInput {
+  edge: PairsWithPropertiesUpdateInput
+  node: StylesUpdateInput
+}
+
+input VegetablesStylesPairsWithUpdateFieldInput {
+  connect: [VegetablesStylesPairsWithConnectFieldInput!]
+  create: [VegetablesStylesPairsWithCreateFieldInput!]
+  delete: [VegetablesStylesPairsWithDeleteFieldInput!]
+  disconnect: [VegetablesStylesPairsWithDisconnectFieldInput!]
+  update: VegetablesStylesPairsWithUpdateConnectionInput
+  where: VegetablesStylesPairsWithConnectionWhere
+}
+
+type VegetablesStylesStylesPairsWithAggregationSelection {
+  count: Int!
+  node: VegetablesStylesStylesPairsWithNodeAggregateSelection
+}
+
+type VegetablesStylesStylesPairsWithNodeAggregateSelection {
+  description: StringAggregateSelection!
+  id: BigIntAggregateSelection!
+  name: StringAggregateSelection!
+  typeId: BigIntAggregateSelection!
+}
+
+input VegetablesUpdateInput {
+  foodsIncludes: [VegetablesFoodsIncludesUpdateFieldInput!]
+  id: BigInt
+  id_DECREMENT: BigInt
+  id_INCREMENT: BigInt
+  name: String
+  stylesPairsWith: [VegetablesStylesPairsWithUpdateFieldInput!]
+  types: String
+}
+
+input VegetablesWhere {
+  AND: [VegetablesWhere!]
+  NOT: VegetablesWhere
+  OR: [VegetablesWhere!]
+  foodsIncludesAggregate: VegetablesFoodsIncludesAggregateInput
+  """
+  Return Vegetables where all of the related VegetablesFoodsIncludesConnections match this filter
+  """
+  foodsIncludesConnection_ALL: VegetablesFoodsIncludesConnectionWhere
+  """
+  Return Vegetables where none of the related VegetablesFoodsIncludesConnections match this filter
+  """
+  foodsIncludesConnection_NONE: VegetablesFoodsIncludesConnectionWhere
+  """
+  Return Vegetables where one of the related VegetablesFoodsIncludesConnections match this filter
+  """
+  foodsIncludesConnection_SINGLE: VegetablesFoodsIncludesConnectionWhere
+  """
+  Return Vegetables where some of the related VegetablesFoodsIncludesConnections match this filter
+  """
+  foodsIncludesConnection_SOME: VegetablesFoodsIncludesConnectionWhere
+  """Return Vegetables where all of the related Foods match this filter"""
+  foodsIncludes_ALL: FoodsWhere
+  """Return Vegetables where none of the related Foods match this filter"""
+  foodsIncludes_NONE: FoodsWhere
+  """Return Vegetables where one of the related Foods match this filter"""
+  foodsIncludes_SINGLE: FoodsWhere
+  """Return Vegetables where some of the related Foods match this filter"""
+  foodsIncludes_SOME: FoodsWhere
+  id: BigInt
+  id_GT: BigInt
+  id_GTE: BigInt
+  id_IN: [BigInt!]
+  id_LT: BigInt
+  id_LTE: BigInt
+  name: String
+  name_CONTAINS: String
+  name_ENDS_WITH: String
+  name_IN: [String!]
+  name_STARTS_WITH: String
+  stylesPairsWithAggregate: VegetablesStylesPairsWithAggregateInput
+  """
+  Return Vegetables where all of the related VegetablesStylesPairsWithConnections match this filter
+  """
+  stylesPairsWithConnection_ALL: VegetablesStylesPairsWithConnectionWhere
+  """
+  Return Vegetables where none of the related VegetablesStylesPairsWithConnections match this filter
+  """
+  stylesPairsWithConnection_NONE: VegetablesStylesPairsWithConnectionWhere
+  """
+  Return Vegetables where one of the related VegetablesStylesPairsWithConnections match this filter
+  """
+  stylesPairsWithConnection_SINGLE: VegetablesStylesPairsWithConnectionWhere
+  """
+  Return Vegetables where some of the related VegetablesStylesPairsWithConnections match this filter
+  """
+  stylesPairsWithConnection_SOME: VegetablesStylesPairsWithConnectionWhere
+  """Return Vegetables where all of the related Styles match this filter"""
+  stylesPairsWith_ALL: StylesWhere
+  """Return Vegetables where none of the related Styles match this filter"""
+  stylesPairsWith_NONE: StylesWhere
+  """Return Vegetables where one of the related Styles match this filter"""
+  stylesPairsWith_SINGLE: StylesWhere
+  """Return Vegetables where some of the related Styles match this filter"""
+  stylesPairsWith_SOME: StylesWhere
+  types: String
+  types_CONTAINS: String
+  types_ENDS_WITH: String
+  types_IN: [String!]
+  types_STARTS_WITH: String
+}
