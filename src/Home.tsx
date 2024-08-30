@@ -1,9 +1,9 @@
 import graphqlRequestClient from "./client/graphqlRequestClient";
 import { useQuery } from "@tanstack/react-query";
 import { GetWineTypesQuery } from "./graphql/queries/GetWineTypesQuery";
-import "./App.css";
+import "../App.css";
 
-function App() {
+const Home = () => {
   const { data, error, isLoading } = useQuery({
     queryKey: ["types"],
     queryFn: async () => graphqlRequestClient.request(GetWineTypesQuery),
@@ -13,9 +13,10 @@ function App() {
 
   return (
     <>
-      <div>yoooooo</div>
+      <div>Hero</div>
+      <div>Side Nav?</div>
     </>
   );
-}
+};
 
-export default App;
+export default Home;
