@@ -8,7 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "compile": "graphql-codegen --config codegen.ts",
+    "codegen": "graphql-codegen --config codegen.ts",
     "generate-routes": "tsr generate"
   },
   "dependencies": {

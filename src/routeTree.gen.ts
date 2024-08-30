@@ -13,7 +13,8 @@ import { createFileRoute } from '@tanstack/react-router'
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
-import { Route as WineTypesImport } from './routes/wine-types'
+import { Route as WinesIndexImport } from './routes/wines/index'
+import { Route as WinesTypeNameImport } from './routes/wines/$typeName'
 
 // Create Virtual Routes
 
@@ -21,15 +22,22 @@ const IndexLazyImport = createFileRoute('/')()
 
 // Create/Update Routes
 
-const WineTypesRoute = WineTypesImport.update({
-  path: '/wine-types',
-  getParentRoute: () => rootRoute,
-} as any).lazy(() => import('./routes/wine-types.lazy').then((d) => d.Route))
-
 const IndexLazyRoute = IndexLazyImport.update({
   path: '/',
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/index.lazy').then((d) => d.Route))
+
+const WinesIndexRoute = WinesIndexImport.update({
+  path: '/wines/',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/wines/index.lazy').then((d) => d.Route))
+
+const WinesTypeNameRoute = WinesTypeNameImport.update({
+  path: '/wines/$typeName',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() =>
+  import('./routes/wines/$typeName.lazy').then((d) => d.Route),
+)
 
 // Populate the FileRoutesByPath interface
 
@@ -42,11 +50,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexLazyImport
       parentRoute: typeof rootRoute
     }
-    '/wine-types': {
-      id: '/wine-types'
-      path: '/wine-types'
-      fullPath: '/wine-types'
-      preLoaderRoute: typeof WineTypesImport
+    '/wines/$typeName': {
+      id: '/wines/$typeName'
+      path: '/wines/$typeName'
+      fullPath: '/wines/$typeName'
+      preLoaderRoute: typeof WinesTypeNameImport
+      parentRoute: typeof rootRoute
+    }
+    '/wines/': {
+      id: '/wines/'
+      path: '/wines'
+      fullPath: '/wines'
+      preLoaderRoute: typeof WinesIndexImport
       parentRoute: typeof rootRoute
     }
   }
@@ -56,7 +71,8 @@ declare module '@tanstack/react-router' {
 
 export const routeTree = rootRoute.addChildren({
   IndexLazyRoute,
-  WineTypesRoute,
+  WinesTypeNameRoute,
+  WinesIndexRoute,
 })
 
 /* prettier-ignore-end */
@@ -68,14 +84,18 @@ export const routeTree = rootRoute.addChildren({
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/wine-types"
+        "/wines/$typeName",
+        "/wines/"
       ]
     },
     "/": {
       "filePath": "index.lazy.tsx"
     },
-    "/wine-types": {
-      "filePath": "wine-types.tsx"
+    "/wines/$typeName": {
+      "filePath": "wines/$typeName.tsx"
+    },
+    "/wines/": {
+      "filePath": "wines/index.tsx"
     }
   }
 }

@@ -8,7 +8,7 @@ function Index() {
   return (
     <>
       <div className="p-2 flex gap-2">
-        <Link to="/wine-types">Home</Link>
+        <Link to="/wines">Home</Link>
       </div>
       <hr />
     </>
