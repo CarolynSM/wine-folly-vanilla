@@ -14,7 +14,7 @@ import { createFileRoute } from '@tanstack/react-router'
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as WinesIndexImport } from './routes/wines/index'
-import { Route as WinesTypeNameImport } from './routes/wines/$typeName'
+import { Route as WinesTypeIdImport } from './routes/wines/$typeId'
 
 // Create Virtual Routes
 
@@ -32,12 +32,10 @@ const WinesIndexRoute = WinesIndexImport.update({
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/wines/index.lazy').then((d) => d.Route))
 
-const WinesTypeNameRoute = WinesTypeNameImport.update({
-  path: '/wines/$typeName',
+const WinesTypeIdRoute = WinesTypeIdImport.update({
+  path: '/wines/$typeId',
   getParentRoute: () => rootRoute,
-} as any).lazy(() =>
-  import('./routes/wines/$typeName.lazy').then((d) => d.Route),
-)
+} as any).lazy(() => import('./routes/wines/$typeId.lazy').then((d) => d.Route))
 
 // Populate the FileRoutesByPath interface
 
@@ -50,11 +48,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexLazyImport
       parentRoute: typeof rootRoute
     }
-    '/wines/$typeName': {
-      id: '/wines/$typeName'
-      path: '/wines/$typeName'
-      fullPath: '/wines/$typeName'
-      preLoaderRoute: typeof WinesTypeNameImport
+    '/wines/$typeId': {
+      id: '/wines/$typeId'
+      path: '/wines/$typeId'
+      fullPath: '/wines/$typeId'
+      preLoaderRoute: typeof WinesTypeIdImport
       parentRoute: typeof rootRoute
     }
     '/wines/': {
@@ -71,7 +69,7 @@ declare module '@tanstack/react-router' {
 
 export const routeTree = rootRoute.addChildren({
   IndexLazyRoute,
-  WinesTypeNameRoute,
+  WinesTypeIdRoute,
   WinesIndexRoute,
 })
 
@@ -84,15 +82,15 @@ export const routeTree = rootRoute.addChildren({
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/wines/$typeName",
+        "/wines/$typeId",
         "/wines/"
       ]
     },
     "/": {
       "filePath": "index.lazy.tsx"
     },
-    "/wines/$typeName": {
-      "filePath": "wines/$typeName.tsx"
+    "/wines/$typeId": {
+      "filePath": "wines/$typeId.tsx"
     },
     "/wines/": {
       "filePath": "wines/index.tsx"

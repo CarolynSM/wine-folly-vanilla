@@ -16,8 +16,8 @@ function Wine() {
       <h2>Wine Types:</h2>
       {types.types.map((t) => (
         <Link
-          to="/wines/$typeName"
-          params={{ typeName: t.name.toLowerCase(), typeId: t.id }}
+          to="/wines/$typeId"
+          params={{ typeId: t.id }}
           key={`${t.id}-link`}
         >
           <div>{t.name}</div>

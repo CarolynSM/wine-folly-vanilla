@@ -4,13 +4,12 @@ import graphqlRequestClient from "../../client/graphqlRequestClient";
 import { GetWineStylesWhere } from "../../graphql/queries/GetWineStylesWhere";
 import { getWineStylesByType } from "../../queries/getWineStylesByType";
 
-export const Route = createFileRoute("/wines/$typeName")({
+export const Route = createFileRoute("/wines/$typeId")({
   loader: ({ params, context: { queryClient } }) =>
     queryClient.ensureQueryData(
       queryOptions({
         queryKey: ["GET_WINE_STYLES_BY_TYPE"],
         queryFn: async () => {
-          console.log({ params });
           const styles = await graphqlRequestClient.request({
             document: GetWineStylesWhere,
             variables: {
