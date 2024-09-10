@@ -18,7 +18,7 @@ function Wine() {
   const { types } = loaderData as { types: Type[] };
 
   return (
-    <>
+    <div className="bg-white rounded-lg m-2 w-5/6 p-3">
       <h2>Wine Types:</h2>
       {types.map((t) => (
         <Link
@@ -29,6 +29,6 @@ function Wine() {
           <div>{t.name}</div>
         </Link>
       ))}
-    </>
+    </div>
   );
 }

@@ -23,16 +23,16 @@ function Styles() {
   let typeName = types && types[0] && types[0].name;
 
   return (
-    <div>
-      <div className="font-bold py-8 text-xl bg-secondary rounded-lg m-2 p-4">
+    <div className="w-5/6">
+      <div className="font-bold py-8 text-xl bg-white rounded-lg m-2 p-4">
         This is the {typeName} Wine page. Here are all the different styles of{" "}
         {typeName.toLowerCase()} wine:
       </div>
-      <div className="flex flex-col">
+      <div className="flex flex-wrap">
         {styles.map((style) => (
           <div
             key={`${style.id}-item`}
-            className="flex flex-col m-2 p-5 bg-white rounded-lg"
+            className="flex flex-col m-2 p-5 bg-white rounded-lg w-1/3"
           >
             <span className="font-semibold">{style.name}</span>
             <div className="flex flex-row items-start">
