@@ -1,20 +1,26 @@
+import { Scalars } from "../../graphql/generated/graphql";
+import { getRouteApi } from "@tanstack/react-router";
 import { createLazyFileRoute, Link } from "@tanstack/react-router";
-import { useQuery } from "@tanstack/react-query";
-import { getWineTypesQuery } from "../../queries/getWineTypes";
 
 export const Route = createLazyFileRoute("/wines/")({
   component: Wine,
 });
 
-function Wine() {
-  const { data: types } = useQuery(getWineTypesQuery);
+export type Type = {
+  id: Scalars["BigInt"]["output"];
+  name: Scalars["String"]["output"];
+};
 
-  console.log({ types });
+function Wine() {
+  const route = getRouteApi("/wines/");
+  const loaderData = route.useLoaderData();
+
+  const { types } = loaderData as { types: Type[] };
 
   return (
     <>
       <h2>Wine Types:</h2>
-      {types.types.map((t) => (
+      {types.map((t) => (
         <Link
           to="/wines/$typeId"
           params={{ typeId: t.id }}

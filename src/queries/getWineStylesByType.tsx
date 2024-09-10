@@ -8,8 +8,11 @@ export const getWineStylesByType = queryOptions({
     const styles = await graphqlRequestClient.request({
       document: GetWineStylesWhere,
       variables: {
-        where: {
+        stylesWhere: {
           typeId: typeId,
+        },
+        typesWhere: {
+          id: typeId,
         },
       },
     });

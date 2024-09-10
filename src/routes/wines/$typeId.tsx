@@ -1,8 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { queryOptions, useQuery } from "@tanstack/react-query";
+import { queryOptions } from "@tanstack/react-query";
 import graphqlRequestClient from "../../client/graphqlRequestClient";
 import { GetWineStylesWhere } from "../../graphql/queries/GetWineStylesWhere";
-import { getWineStylesByType } from "../../queries/getWineStylesByType";
 
 export const Route = createFileRoute("/wines/$typeId")({
   loader: ({ params, context: { queryClient } }) =>
@@ -13,8 +12,11 @@ export const Route = createFileRoute("/wines/$typeId")({
           const styles = await graphqlRequestClient.request({
             document: GetWineStylesWhere,
             variables: {
-              where: {
+              stylesWhere: {
                 typeId: params.typeId,
+              },
+              typesWhere: {
+                id: params.typeId,
               },
             },
           });
